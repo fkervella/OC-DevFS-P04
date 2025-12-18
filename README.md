@@ -1,13 +1,14 @@
-Projet TomTroc
+## Projet TomTroc
 Mise en contact de lectuers pour partager et échanger leurs livres
-
 Portée du projet : MVP
 
+## Architecture
 L'architecture Modèle-Vue-Controleur est choisie
 
 A ce stade la partie administration de la modération n'est pas nécessaire.
 La partie responsive peut être un plus
 
+## Fonctionnalités
 Les fonctionnalités de cette application sont 
 - Inscription et connexion des membres : Inscription directe, sans validation mail ou administrateur. Après inscription, l'utilisateur peut se connecter
 - Page de profil des utilateurs : modification de profil possible par l'utilisateur. Consultation des profils des autres utilisateurs possible. Pas de liste des utilisateurs. La mise en relation se fait par la bibliothèque
@@ -17,7 +18,7 @@ Les fonctionnalités de cette application sont
 - Messagerie : consultation des messages, vois fil de discussion, envoi de message et de réponse
 
 
-
+## Informations
 Utilisateur : pseudo, mail, password
     Bibliothèque de livres
     Inscription : auto inscription
@@ -32,8 +33,7 @@ Messages : date/heure, auteur, message
     Envoi de message depuis la page d'un livre (initiation de la communication)
     poursuite de la communication par la page dédiée
 
-
-
+##Pages de l'application
 Page accueil : 
     Article avec lien la page 'livres à l'échange'
     derniers livres ajoutés avec lien vers chaque livre et lien vers la liste de tous les livres
@@ -41,7 +41,7 @@ Page accueil :
 
 Page livres à l'échange : 
     tous les livres disponibles
-    Recherche
+    Recherche (réponse dans la page)
     Lien vers chaque page de livre
     Pagination de l'affichage des livres
 
@@ -68,12 +68,15 @@ Page messagerie :
     liste des conversations : image utilisateur, pseudo, date/heure dernier message, texte dernier message
     historique message + saisie et envoi message
 
+Header : logo + Tomtroc / accueil / nos livres à l'échange / Messagerie / Mon compte / Connexion/Déconnexion
 
-structure de données :
-utilisateur : pseudo / mail / password / date/heure création / avatar
+Footer : politique de confidentialité / Mentions légales / TomTroc© / logo
 
-livre : image / titre / auteur / description / utilisateur déclarant / disponibilité
+##Structure de données :
+utilisateur : id / pseudo / mail / password / date/heure création / avatar
+
+livre : id / image / titre / auteur / description / utilisateur déclarant / disponibilité
 
 Bibliothèque : livre / utilisateur
 
-Message : auteur / destinataire / message / date/heure
+Message : id / auteur / destinataire / message / date/heure
