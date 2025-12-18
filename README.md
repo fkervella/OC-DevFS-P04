@@ -2,7 +2,7 @@
 Mise en contact de lectuers pour partager et échanger leurs livres
 Portée du projet : MVP
 
-## Architecture
+## Architecture
 L'architecture Modèle-Vue-Controleur est choisie
 
 A ce stade la partie administration de la modération n'est pas nécessaire.
