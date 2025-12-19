@@ -80,3 +80,59 @@ livre : id / image / titre / auteur / description / utilisateur déclarant / dis
 Bibliothèque : livre / utilisateur
 
 Message : id / auteur / destinataire / message / date/heure
+
+
+
+## Organisation des fichiers
+
+Dossier config pour la configuration de la connexion à la base de données
+Dossier css pour les fichiers de style
+Dossier sql pour les fichiers d'import/export de la base de données
+Dossier controlleurs pour les controlleurs
+    userController.php
+    bookController.php
+    libraryController.php
+    messageController.php
+
+Dossier views pour les vues
+    home.php
+    bookExchange.php
+    bookDetail.php
+    logIn.php
+    signUp.php
+    account.php
+    chat.php
+    updateAccount.php
+    privacyPolicy.php
+    legalNotices.php
+
+Dossier models pour les modèles
+    dbManager.php
+    user.php
+    userManager.php
+    book.php
+    bookManager.php
+    library.php
+    libraryManager.php
+    message.php
+    messageManager.php
+    abstractEntity.php
+    abstractEntityManager.php
+
+Fichier index.php : routeur
+    showHome
+    showBookExchange
+    showBookDetail
+    showLogIn
+    showSignUp
+    showAccount
+    showChat
+    showUpdateAccount
+    updateAccount
+    updateBookDetail
+    addBook
+    removeBook
+    updateBook
+    sendMessage
+
+Dossier services pour les classes de fonctionnalités génériques
