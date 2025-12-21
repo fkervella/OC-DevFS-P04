@@ -27,13 +27,13 @@ Utilisateur : pseudo, mail, password
 Livre :  titre, auteur, description, image, disponibilité
 
 Bibliothèque : lien utilisateur / livres
-1 seule bibliothèque de livrs par utilisateur
+1 seule bibliothèque de livre par utilisateur
 
 Messages : date/heure, auteur, message
     Envoi de message depuis la page d'un livre (initiation de la communication)
     poursuite de la communication par la page dédiée
 
-##Pages de l'application
+## Pages de l'application
 Page accueil : 
     Article avec lien la page 'livres à l'échange'
     derniers livres ajoutés avec lien vers chaque livre et lien vers la liste de tous les livres
@@ -72,7 +72,7 @@ Header : logo + Tomtroc / accueil / nos livres à l'échange / Messagerie / Mon 
 
 Footer : politique de confidentialité / Mentions légales / TomTroc© / logo
 
-##Structure de données :
+## Structure de données :
 utilisateur : id / pseudo / mail / password / date/heure création / avatar
 
 livre : id / image / titre / auteur / description / utilisateur déclarant / disponibilité
@@ -136,3 +136,4 @@ Fichier index.php : routeur
     sendMessage
 
 Dossier services pour les classes de fonctionnalités génériques
+
