@@ -86,8 +86,11 @@ Message : id / auteur / destinataire / message / date/heure
 ## Organisation des fichiers
 
 Dossier config pour la configuration de la connexion à la base de données
+
 Dossier css pour les fichiers de style
+
 Dossier sql pour les fichiers d'import/export de la base de données
+
 Dossier controlleurs pour les controlleurs
     userController.php
     bookController.php
@@ -137,3 +140,5 @@ Fichier index.php : routeur
 
 Dossier services pour les classes de fonctionnalités génériques
 
+
+Ajouter l'état Lu/Non lu des messages
