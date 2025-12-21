@@ -1,24 +1,25 @@
 <?php
 
 /**
- * DBManager : class pour la connexion à la base de données
- * Cette classe est un singleton. Cela signifie qu'il n'est pas possible de créer plusieurs instances de cette classe
- * Pour récupérer une instance de cette classe, il faut uiliser la méthode getIntance()
+ * \brief Classe pour la connexion à la base de données.
+ * 
+ * Cette classe est un singleton. Cela signifie qu'il n'est pas possible de créer plusieurs instances de cette classe.
+ * Pour récupérer une instance de cette classe, il faut uiliser la méthode getIntance().
  *
  */
 class DBManager {
 
-    //Classe singleton permettant de se connecter à la base données
-    //création d'une instance de la class DBCoonect qui permet de se connecter à la base de données
+    //Instance de DBManager
     private static $instance;
 
+    //Objet PDO de connexion à la base de données
     private $db;
 
     /**
-     * Constructeur de la class DBManager
-     * Initialise la connexion à la base de données
-     * Ce constructeur est privé. Pour récupérer une instance de la classe, il faut utiliser la méthode getInstance()
-     * @see DBManager::getInstalce()
+     * Constructeur de la classe DBManager.
+     * Initialise la connexion à la base de données.
+     * Ce constructeur est privé. Pour récupérer une instance de la classe, il faut utiliser la méthode getInstance().
+     * @see DBManager::getInstance().
      */
     private function __construct(){
 
@@ -29,7 +30,7 @@ class DBManager {
     }
 
     /**
-     * Récupération de l'instance de la classe DBManager
+     * Récupération de l'instance de la classe DBManager.
      * @return DBManager
      */
     public static function getInstance() : DBManager {
@@ -41,7 +42,7 @@ class DBManager {
     }
 
     /**
-     * Récupération de l'objet PDO permettant de se connecter à la base de données
+     * Récupération de l'objet PDO permettant de se connecter à la base de données.
      * @return PDO
      */
     public function getPDO() : PDO {
@@ -50,11 +51,11 @@ class DBManager {
     }
 
     /**
-     * Exécution d'une requête SQL
-     * Si des paramètres sont passés, utilisation d'une requête préparée
-     * @param string $sql : requête SQL à exécuter
-     * @param array|null $params : paramètres de la requête SQL
-     * @return PDOStatement : résultat de la requête SQL
+     * Exécution d'une requête SQL.
+     * Si des paramètres sont passés, utilisation d'une requête préparée.
+     * @param string $sql : requête SQL à exécuter.
+     * @param array|null $params : paramètres de la requête SQL.
+     * @return PDOStatement : résultat de la requête SQL.
      */
     public function query(string $sql, ?array $params=null) : PDOStatement {
 
