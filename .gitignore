@@ -1,3 +1,5 @@
 config/config.php
 docs
-
+vendor
+*.lock
+*.swp
