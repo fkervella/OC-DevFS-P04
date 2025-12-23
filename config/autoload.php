@@ -6,22 +6,20 @@
  * et chercher dans les dossiers (ici models, controllers, views, services) s'il trouve
  * un fichier avec ne bon nom. Si c'est le cas, il l'inclut avec require_once.
  */
-spl_autoload_register(function($className) {
-
-    if (file_exists('services/' . $className . '.php')) {
-        require_once 'services/' . $className . '.php';
+spl_autoload_register(function ($className) {
+    if (file_exists('services/'.$className.'.php')) {
+        require_once 'services/'.$className.'.php';
     }
 
-    if (file_exists('models/' . $className . '.php')) {
-        require_once 'models/' . $className . '.php';
+    if (file_exists('models/'.$className.'.php')) {
+        require_once 'models/'.$className.'.php';
     }
 
-    if (file_exists('controllers/' . $className . '.php')) {
-        require_once 'controllers/' . $className . '.php';
+    if (file_exists('controllers/'.$className.'.php')) {
+        require_once 'controllers/'.$className.'.php';
     }
 
-    if (file_exists('views/' . $className . '.php')) {
-        require_once 'views/' . $className . '.php';
+    if (file_exists('views/'.$className.'.php')) {
+        require_once 'views/'.$className.'.php';
     }
 });
-

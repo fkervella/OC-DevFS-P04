@@ -6,6 +6,6 @@
 ?>
 <div class="error">
     <h2>Erreur</h2>
-    <p><?= $errorMessage ?></p>
+    <p><?php echo $errorMessage; ?></p>
     <a href="index.php?action=showHome">Retour à la page d'accueil</a>
 </div>
