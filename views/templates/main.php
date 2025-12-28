@@ -7,7 +7,6 @@
  *  $title string : titre de la page
  *  $content string: contenu de la page
  */
-
 ?>
 <!DOCTYPE html>
 <html lang = "fr">
@@ -21,24 +20,33 @@
     <body>
         <header>
             <nav>
-                <a href='index.php'>TomTroc</a>
-                <a href='index.php'>Accueil</a>
-                <a href='index.php'>Nos livres à l'échange</a>
-                <a href='index.php'>Messagerie</a>
-                <a href='index.php'>Mon compte</a>
-                <a href='index.php'>Connexion</a>
+                <div class="box">
+                    <a href='index.php'><img src='img/logo.svg'></img></a>
+                    <a href='index.php'>Accueil</a>
+                    <a href='index.php'>Nos livres à l'échange</a>
+                </div>
+                <div class="box">
+                    <a href='index.php'>Messagerie</a>
+                    <a href='index.php'>Mon compte</a>
+                    <a href='index.php'>Connexion</a>
+                </div>
             </nav>
         </header>
 
         <main>
-            <?= $content /*Ici est affiché le contenu réel de la page. */?>
+            <?php echo $content; /* Ici est affiché le contenu réel de la page. */ ?>
         </main>
 
         <footer>
             <a href='index.php'>Politique de confidentialité</a>
             <a href='index.php'>Mentions légales</a>
             <a href='index.php'>TomTroc©</a>
-            <a href='index.php'>TomTroc</a>
+            <div class="logoFooter">
+                <a href='index.php'>
+                    <div class="element1"><img src="img/T.png" alt="T"></div>
+                    <div class="element2"><img src="img/T.png" alt="T"></div>
+                </a>
+            </div>
         </footer>
     </body>
 </html>
