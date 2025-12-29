@@ -18,8 +18,9 @@ class Router
         try {
             switch ($action) {
                 case 'showHome':
-                    $bookController = new bookController();
+                    $bookController = new BookController();
                     $bookController->showHome();
+
                     break;
 
                 default:
