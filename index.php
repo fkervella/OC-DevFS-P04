@@ -6,4 +6,4 @@ require_once 'config/autoload.php';
 
 require_once 'bootstrap/router.php';
 
-Router::Router('showHome');
+Router::showHome();

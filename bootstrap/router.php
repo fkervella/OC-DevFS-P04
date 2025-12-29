@@ -18,8 +18,12 @@ class Router
         try {
             switch ($action) {
                 case 'showHome':
+                    $bookController = new bookController();
+                    $bookController->showHome();
+                    break;
+
                 default:
-                    throw new Exception("La page demandée n'existe pas.");
+                    throw new Exception("La page {$action} demandée n'existe pas.");
             }
         } catch (Exception $error) {
             // En cas d'erreur, affichage de la page d'erreur
