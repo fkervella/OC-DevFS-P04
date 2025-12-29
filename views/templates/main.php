@@ -20,16 +20,20 @@
     <body>
         <header>
             <nav>
-                <div class="box">
-                    <a href='index.php'><img src='img/logo.svg'></img></a>
+                <div class="logo">
+                    <a href='index.php'><img src='img/logo.svg' alt='Tomtroc logo'></a>
+                </div>
+                <div class="menu">
                     <a href='index.php'>Accueil</a>
                     <a href='index.php'>Nos livres à l'échange</a>
                 </div>
-                <div class="box">
+                <div class="menu">
                     <a href='index.php'>Messagerie</a>
                     <a href='index.php'>Mon compte</a>
                     <a href='index.php'>Connexion</a>
                 </div>
+                <div class="burgerMenu">
+                    <a href='index.php'><img src='img/iconMenu.svg' alt='icône menu'></a>
             </nav>
         </header>
 
@@ -38,9 +42,15 @@
         </main>
 
         <footer>
-            <a href='index.php'>Politique de confidentialité</a>
-            <a href='index.php'>Mentions légales</a>
-            <a href='index.php'>TomTroc©</a>
+            <div class="box">
+                <a href='index.php'>Politique de confidentialité</a>
+            </div>
+            <div class="box">
+                <a href='index.php'>Mentions légales</a>
+            </div>
+            <div class="box">
+                <a href='index.php'>TomTroc©</a>
+            </div>
             <div class="logoFooter">
                 <a href='index.php'>
                     <div class="element1"><img src="img/T.png" alt="T"></div>

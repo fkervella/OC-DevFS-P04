@@ -31,7 +31,7 @@ footer {
     font-family: 'inter', sans-serif;
     font-size:12px;
     background-color: white;
-    height:61px;
+    padding:20px;
     display:flex;
     align-items:center;
     column-gap:40px;
@@ -49,27 +49,59 @@ nav {
     justify-content: space-between;
 }
 
-.box {
+nav .menu {
     display:flex;
     align-items: center;
     column-gap:60px;
 }
 
-.logoFooter {
+nav .burgerMenu {
+    display: none;
+    align-items: center;
+}
+
+.logoFooter a {
     position: relative;
     height:22px;
     width:17px;
     padding-right:20px;
 }
 
-.logoFooter .element1 {
+.logoFooter a .element1 {
     position: absolute;
     left:0px;
     top:0px;
 }
 
-.logoFooter .element2 {
+.logoFooter a .element2 {
     position: absolute;
     left:12px;
     top:6px;
+}
+
+@media all and (max-width :700px) {
+
+    nav {
+    }
+
+    nav .menu {
+        display: none;
+    }
+
+    nav .burgerMenu {
+        display: flex;
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer .box {
+        padding:10px;
+    }
+
+    footer .logoFooter {
+        padding: 10px;
+
 }
