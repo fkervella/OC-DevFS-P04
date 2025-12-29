@@ -98,7 +98,7 @@ Dossier controlleurs pour les controlleurs
     messageController.php
 
 Dossier views pour les vues
-    home.php
+    welcome.php
     bookExchange.php
     bookDetail.php
     logIn.php

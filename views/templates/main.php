@@ -24,7 +24,7 @@
                     <a href='index.php'><img src='img/logo.svg' alt='Tomtroc logo'></a>
                 </div>
                 <div class="menu">
-                    <a href='index.php'>Accueil</a>
+                    <a href='index.php?action=showHome'>Accueil</a>
                     <a href='index.php'>Nos livres à l'échange</a>
                 </div>
                 <div class="menu">
