@@ -25,10 +25,11 @@ class View
      *
      * @param string $viewName : nom de la vue demandée par le controller
      * @param array  $params   : paramètres que le controller a envoyé à la vue
+     * @param string $syle : style complémentaire à utiliser dans la vue
      *
      * @return string
      */
-    public function render(string $viewName, array $params = []): void
+    public function render(string $viewName, array $params = [], ?string $style = ''): void
     {
         // vue envoyée
         $viewPath = $this->buildViewPath($viewName);
@@ -36,6 +37,7 @@ class View
         // Les deux variaables ci-dessous sont utilisées dans le main.php qui est le template principal
         $content = $this->_renderViewFromTemplate($viewPath, $params);
         $title = $this->title;
+        $additionalStyle = $style;
         ob_start();
 
         require MAIN_VIEW_PATH;
