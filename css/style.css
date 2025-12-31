@@ -12,6 +12,8 @@
  */
 :root{
     --background-color: #f5f3ef;
+    --button-green-background-color: #00ac66;
+    --grey-text-color:#a6a6a6;
 }
 
 body {
@@ -24,6 +26,8 @@ header {
     font-family: 'inter', sans-serif;
     font-size: 14px;
     background-color: var(--background-color);
+    padding-left:150px;
+    padding-right:150px;
 }
 
 footer {
@@ -79,6 +83,111 @@ nav .burgerMenu {
     top:6px;
 }
 
+.button {
+    width: fit-content;
+    padding:15px 40px 15px 40px;
+    background-color: var(--button-green-background-color);
+    border-radius:10px;
+    color: white;
+    font-weight:600;
+    align-items: center;
+
+}
+
+.button-reverse {
+
+    width: fit-content;
+    padding:15px 40px 15px 40px;
+    background-color: var(--background-color);
+    border-radius:10px;
+    color: var(--button-green-background-color);
+    border: 1px solid var(--button-green-background-color);
+    font-weight:600;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+}
+
+h2 {
+    font-family:'Playfair Display';
+    font-size:36px;
+    font-weight:400;
+}
+
+.legend {
+    font-family:inter;
+    font-weight:400;
+    font-style:italic;
+    color: var(--grey-text-color);
+}
+
+.bookCard {
+
+    display: flex;
+    flex-direction:column;
+    margin-left:9px;
+    margin-right:9px;
+    background-color:white;
+}
+
+.bookCards {
+
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    margin-bottom:40px;
+}
+
+.bookCard img {
+
+    width: 160px;
+    height: 160px;
+}
+
+.bookCard .title {
+
+    font-family:inter;
+    font-weight:400;
+    font-size:16px;
+    margin-top:10px;
+    margin-bottom:5px;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.bookCard .author {
+
+    font-family:inter;
+    font-weight:400;
+    font-size:14px;
+    color: var(--grey-text-color);
+    margin-top:5px;
+    margin-bottom:10px;
+    padding-left:10px;
+    padding-right:10px;
+
+}
+
+.bookCard .seller {
+
+    display:flex;
+    font-family:inter;
+    font-weight:400;
+    font-size:10px;
+    color: var(--grey-text-color);
+    height:62px;
+    align-items:center;
+    padding-left:10px;
+    padding-right:10px;
+
+}
+
+.content {
+    max-width:1230px;
+    margin:auto;
+    display:flex;
+}
 @media all and (max-width :700px) {
 
     nav {
@@ -105,3 +214,4 @@ nav .burgerMenu {
         padding: 10px;
 
 }
+
