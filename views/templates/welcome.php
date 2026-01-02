@@ -103,7 +103,7 @@
             <div class="legend">
             L'équipe Tom Troc
             </div>
-            <div class="">
+            <div class="pictureContainer">
                 <img src="img/coeur.svg" alt="coeur accueil">
             </div>
         </div>

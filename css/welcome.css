@@ -95,8 +95,8 @@ p {
 
     display:flex;
     flex-direction:row;
-    gap:20px;
-    padding:0px 0px 0px 0px;
+    gap:40px;
+    padding:0px 20px 0px 20px;
 }
 
 .howDoesItWork li {
@@ -104,14 +104,16 @@ p {
     display:flex;
     align-items:center;
     list-style:none;
-    height:100px;
-    width:160px;
+    height:140px;
+    width:215px;
     padding: 10px;
     text-align:center;
     background-color: white;
     font-family: inter;
     font-weight: 400;
     font-size: 14px;
+    border-radius: 10px;
+    box-sizing: border-box;
 }
 
 .howDoesItWork .button-reverse {
@@ -155,4 +157,102 @@ p {
     display: flex;
     position: relative;
     top: -30px;
+}
+
+@media all and (max-width :800px) {
+
+    p {
+
+        padding: 0;
+    }
+
+    .introduction {
+
+        padding: 0px 0px 0px 0px;
+    }
+
+    .introduction .content {
+
+        flex-direction:column-reverse;
+    }
+
+    .introduction .content .column1 {
+
+        padding: 10px 15px 30px 15px;
+        width: 100%;
+        align-items:center;
+        box-sizing: border-box;
+    }
+
+    .introduction .content .column2 {
+
+        width:100%;
+    }
+
+    .introduction .content .column2 .legend {
+
+        padding-right:25px;
+    }
+
+    .lastAddedBooks h2 {
+
+        font-size: 28px;
+        padding: 0px 55px 30px 55px;
+        text-align:center;
+    }
+
+    .lastAddedBooks .button {
+
+        display: none;
+    }
+
+    .howDoesItWork ul{
+
+        flex-direction:column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .howDoesItWork p {
+
+        width: 100%;
+    }
+
+    .howDoesItWork li {
+
+        width:100%;
+        padding: 0px 50px 0px 50px;
+        height: 139px;
+    }
+
+    .howDoesItWork .button-reverse {
+
+        margin: 20px 20px 20px 20px;
+
+    }
+
+    .values {
+
+        padding: 30px 0px 30px 0px;
+    }
+    
+    .values .content {
+
+        width:100%;
+        margin: 0px 20px 0px 20px;
+    }
+
+    .values .pictureContainer {
+
+        display:flex;
+        justify-content:center;
+        margin-top: 30px;
+    }
+
+    .values img {
+
+        right:0px;
+        top:0px;
+        position:relative;
+    }
 }
