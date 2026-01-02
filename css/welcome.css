@@ -1,0 +1,218 @@
+.introduction {
+    padding: 50px 250px 50px 250px;
+}
+
+.introduction .column1 {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 10px 100px 10px 10px;
+    justify-content: center;
+}
+
+p {
+    padding: 0px 20px 20px 0px;
+}
+
+.introduction .column2 {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.column2 img{
+    width: 100%;
+    height: auto;
+}
+.column2 .legend {
+    text-align: right;
+}
+
+.lastAddedBooks .content {
+    flex-direction: column;
+}
+
+.lastAddedBooks {
+    display: flex;
+    flex-direction: column;
+    background-color: #faf9f7;
+    padding: 50px 0px 50px 0px;
+}
+
+.lastAddedBooks h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.lastAddedBooks .button {
+    display: flex;
+    margin: auto;
+}
+
+.howDoesItWork {
+    display: flex;
+    flex-direction: column;
+}
+
+.howDoesItWork .content {
+    flex-direction: column;
+}
+
+.howDoesItWork h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.howDoesItWork p {
+    width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+.howDoesItWork ul {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    padding: 0px 20px 0px 20px;
+}
+
+.howDoesItWork li {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 140px;
+    width: 215px;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    background-color: white;
+    font-weight: 400;
+    font-size: 14px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-family: 'inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.howDoesItWork .button-reverse {
+    margin: 30px auto 50px auto;
+}
+
+.landscapePicture {
+    height: 230px;
+    background-image: url("../img/bandeauAccueil.jpg");
+    background-position: center 40%;
+    background-size: cover;
+}
+
+.values {
+    display: flex;
+    flex-direction: column;
+    margin: 40px 250px 0px 250px;
+    box-sizing: border-box;
+}
+
+.values .content {
+    flex-direction: column;
+}
+
+.values .text {
+    width: 400px;
+}
+
+.values img {
+    right: -350px;
+    display: flex;
+    position: relative;
+    top: -30px;
+}
+
+@media all and (max-width :800px) {
+
+    p {
+        padding: 0;
+    }
+
+    .introduction {
+        padding: 0px 0px 0px 0px;
+    }
+
+    .introduction .content {
+        flex-direction: column-reverse;
+    }
+
+    .introduction .content .column1 {
+        padding: 10px 15px 30px 15px;
+        width: 100%;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .introduction .content .column2 {
+        width:100%;
+    }
+
+    .introduction .content .column2 .legend {
+        padding-right: 25px;
+    }
+
+    .lastAddedBooks h2 {
+        font-size: 28px;
+        padding: 0px 55px 30px 55px;
+        text-align: center;
+    }
+
+    .lastAddedBooks .button {
+        display: none;
+    }
+
+    .howDoesItWork ul{
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .howDoesItWork p {
+        width: 100%;
+    }
+
+    .howDoesItWork li {
+        width: 100%;
+        padding: 0px 50px 0px 50px;
+        height: 139px;
+    }
+
+    .howDoesItWork .button-reverse {
+        margin: 20px 20px 20px 20px;
+
+    }
+
+    .landscapePicture {
+        height: 425px;
+        width: auto;
+        background-position: 100% center;
+    }
+    .values {
+        margin: 30px 20px 30px 20px;
+    }
+    
+    .values .content {
+        width:100%;
+    }
+
+    .values .pictureContainer {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .values .text {
+        width: auto;
+    }
+
+    .values img {
+        right: 0px;
+        top: 0px;
+        position: relative;
+    }
+}

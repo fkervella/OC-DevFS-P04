@@ -12,30 +12,38 @@
  */
 :root{
     --background-color: #f5f3ef;
+    --button-green-background-color: #00ac66;
+    --grey-text-color: #a6a6a6;
 }
 
 body {
-    font-family:'inter', sans-serif;
-    font-size: 14px;
     background-color: var(--background-color);
+    margin : 0;
+}
+
+p {
+    font-family:'inter', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
 }
 
 header {
     font-family: 'inter', sans-serif;
     font-size: 14px;
     background-color: var(--background-color);
+    margin: 10px 150px 10px 150px;
 }
 
 footer {
 
     font-family: 'inter', sans-serif;
-    font-size:12px;
+    font-size: 12px;
     background-color: white;
-    padding:20px;
-    display:flex;
-    align-items:center;
-    column-gap:40px;
-    justify-content:right;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    justify-content: right;
 }
 
 a {
@@ -45,14 +53,13 @@ a {
 
 nav {
     display: flex;
-    align-items: center;
     justify-content: space-between;
 }
 
 nav .menu {
-    display:flex;
+    display: flex;
     align-items: center;
-    column-gap:60px;
+    column-gap: 60px;
 }
 
 nav .burgerMenu {
@@ -62,24 +69,120 @@ nav .burgerMenu {
 
 .logoFooter a {
     position: relative;
-    height:22px;
-    width:17px;
-    padding-right:20px;
+    height: 22px;
+    width: 17px;
+    padding-right: 20px;
 }
 
 .logoFooter a .element1 {
     position: absolute;
-    left:0px;
-    top:0px;
+    left: 0px;
+    top: 0px;
 }
 
 .logoFooter a .element2 {
     position: absolute;
-    left:12px;
-    top:6px;
+    left: 12px;
+    top: 6px;
 }
 
-@media all and (max-width :700px) {
+.button {
+    padding: 15px 40px 15px 40px;
+    background-color: var(--button-green-background-color);
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+    font-family: 'inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.button-reverse {
+    padding: 15px 40px 15px 40px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    color: var(--button-green-background-color);
+    border: 1px solid var(--button-green-background-color);
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    font-family: 'inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+h2 {
+    font-family: 'Playfair Display';
+    font-size: 36px;
+    font-weight: 400;
+    margin: 10px 0px 50px 0px;
+}
+
+.legend {
+    font-family: 'inter', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--grey-text-color);
+}
+
+.bookCard {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 9px 0px 9px;
+    background-color: white;
+}
+
+.bookCards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0px 0px 40px 0px;
+    gap: 40px;
+}
+
+.bookCard img {
+    width: 200px;
+    height: 200px;
+}
+
+.bookCard .title {
+    font-family: 'inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    margin: 10px 10px 5px 10px;
+}
+
+.bookCard .author {
+    font-family: 'inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--grey-text-color);
+    margin: 5px 10px 10px 10px;
+}
+
+.bookCard .seller {
+    display: flex;
+    font-family: 'inter', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    color: var(--grey-text-color);
+    height: 62px;
+    align-items: center;
+    margin: 0px 10px 0px 10px;
+}
+
+.content {
+    margin: auto;
+    display: flex;
+}
+@media all and (max-width :800px) {
+
+    header {
+        margin:15px 0px 15px 0px;
+        padding: 0px 20px 0px 15px;    
+    }
 
     nav {
     }
@@ -98,10 +201,59 @@ nav .burgerMenu {
     }
 
     footer .box {
-        padding:10px;
+        padding: 10px;
     }
 
     footer .logoFooter {
         padding: 10px;
 
+    }
+
+    h2 {
+        font-size: 30px;
+        margin: 10px 0px 10px 0px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .bookCards {
+        margin: 0px 15px 0px 15px;
+        gap: 15px;
+    }
+
+    .bookCard img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .bookCard .title {
+        font-size: 13px;
+    }
+
+    .bookCard .author {
+        font-size: 11px;
+    }
+
+    .bookCard .seller {
+        font-size: 8px;
+    }
+
+    .content {
+        width: 100%;
+        margin: 0;
+    }
+
+    .button {
+        width: 100%;
+        margin: 20px 0px 20px 0px;
+    }
+
+    .button-reverse {
+        margin: 0px 20px 0px 20px;
+        padding: 20px 0px 20px 0px;
+        width: auto;
+    }
 }
+
