@@ -142,3 +142,10 @@ Dossier services pour les classes de fonctionnalités génériques
 
 
 Ajouter l'état Lu/Non lu des messages
+
+## Dette technique
+Afficher dans le header en gras le nom de la vue active
+Menu en responsive lors de l'appui sur le burger menu
+Afficher dans le header le logo de la messagerie
+Afficher dans le header le logo de "Mon compte"
+Afficher dans le header le nombre de messages non lus
