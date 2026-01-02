@@ -11,6 +11,6 @@ class BookController
         $lastAddedBooks = $bookManager->getLastAddedBooks(4);
 
         $view = new View('Accueil');
-        $view->render('welcome', []);
+        $view->render('welcome', [], 'welcome.css');
     }
 }
