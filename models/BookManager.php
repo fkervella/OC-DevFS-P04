@@ -24,4 +24,25 @@ class BookManager extends AbstractEntityManager
 
         return $books;
     }
+
+    /**
+     * Récupère les livres disponibles pour échange selon les mots clés indiqués.
+     *
+     * @param mixed $limit    : nombre maximum de livres renvoyés
+     * @param array $keyWords : mots clés recherchés
+     *
+     * @return array : tableau d'objets Book
+     */
+    public function getSearchedBooks(?int $limit = 1, ?array $keyWords = []): array
+    {
+        $sql = "SELECT * FROM book LIMIT {$limit}";
+        $result = $this->db->query($sql);
+        $books = [];
+
+        while ($book = $result->fetch()) {
+            $books = new Book($book);
+        }
+
+        return $books;
+    }
 }

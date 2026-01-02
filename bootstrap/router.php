@@ -23,6 +23,18 @@ class Router
 
                     break;
 
+                case 'showErrorPage':
+                    $errorView = new View('Erreur');
+                    $errorView->render('errorPage', ['errorMessage' => $arguments[0]]);
+
+                    break;
+
+                case 'showBookExchange':
+                    $bookController = new BookController();
+                    $bookController->showBookExchange();
+
+                    break;
+
                 default:
                     throw new Exception("La page {$action} demandée n'existe pas.");
             }
