@@ -1,0 +1,45 @@
+.content {
+    padding: 10px 250px 50px 250px; 
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 50px 250px 10px 250px;
+}
+
+.search {
+    display:flex;
+    flex-direction:row;
+    background-color: white;
+    height: 50px;
+    width: 320px;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    align-items:center;
+
+}
+
+.search img {
+    height: 16px;
+    width: 16px;
+    margin: 0px 12px 0px 12px;
+}
+
+label {
+    display: none
+}
+
+.searchWords {
+    font-family: 'inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--grey-text-color);
+    border: none;
+}
+
+.bookCards {
+    row-gap: 40px;
+    column-gap: 20px
+}
