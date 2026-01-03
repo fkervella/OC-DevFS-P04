@@ -35,7 +35,7 @@
                 </div>
                 <div class="menu">
                     <a href='index.php?action=showHome'>Accueil</a>
-                    <a href='index.php'>Nos livres à l'échange</a>
+                    <a href='index.php?action=showBookExchange'>Nos livres à l'échange</a>
                 </div>
                 <div class="menu">
                     <a href='index.php'>Messagerie</a>
