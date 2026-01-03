@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe qui gère les livres.
+ * \brief gère les livres avec ajout, changement d'état, renvoi des livres.
  */
 class BookManager extends AbstractEntityManager
 {

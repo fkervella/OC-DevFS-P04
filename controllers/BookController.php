@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * \brief Contient la logique de l'entité Book.
+ */
 class BookController
 {
     /**
@@ -14,6 +17,9 @@ class BookController
         $view->render('welcome', [], 'welcome.css');
     }
 
+    /**
+     * Affiche les livres disponibles à l'échange.
+     */
     public function showBookExchange(): void
     {
         $bookManager = new BookManager();
