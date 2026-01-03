@@ -44,3 +44,33 @@ label {
     row-gap: 40px;
     column-gap: 20px
 }
+
+@media all and (max-width :800px) {
+
+    h2 {
+        margin: 10px 0px 15px 0px;    
+    }
+    
+    .content {
+        padding: 0px 20px 50px 20px;
+        box-sizing: border-box;
+    }
+
+    .top {
+        flex-direction: column;
+        padding: 0px 20px 30px 20px;
+    }
+
+    .search {
+        width: 100%;
+    }
+
+    .bookCards {
+        gap: 20px;
+    }
+
+    .bookCard {
+        margin: 0px 0px 0px 0px;
+    }
+
+}
