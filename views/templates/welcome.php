@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="button">
-                <a href='index.php?action=showbookExchange'>Voir tous les livres</a>
+                <a href='index.php?action=showBookExchange'>Voir tous les livres</a>
             </div>
         </div>
     </div>
