@@ -145,7 +145,17 @@ Ajouter l'état Lu/Non lu des messages
 
 ## Dette technique
 Afficher dans le header en gras le nom de la vue active
+
 Menu en responsive lors de l'appui sur le burger menu
+
 Afficher dans le header le logo de la messagerie
+
 Afficher dans le header le logo de "Mon compte"
+
+
 Afficher dans le header le nombre de messages non lus
+
+Convertir la date d'ajout de livre dans les fonctions setAddDate et getAddDate de la classe Book
+
+Bouton de la page Welcome a son attribut margin mal défini
+

@@ -35,13 +35,21 @@ class Router
 
                     break;
 
+                case 'showBookDetail' :
+                    $bookId = $arguments[0];
+
+                    $bookController = new BookController();
+                    $bookController->showBookDetail($bookId);
+
+                    break;
+
                 default:
-                    throw new Exception("La page {$action} demandée n'existe pas.");
+                    throw new Exception("Router : La page {$action} demandée n'existe pas.");
             }
         } catch (Exception $error) {
             // En cas d'erreur, affichage de la page d'erreur
             $errorView = new View('Erreur');
-            $errorView->render('errorPage', ['errorMessage' => $error->getMessage()]);
+            $errorView->render('errorPage', ['errorMessage' => 'Router : '.$error->getMessage()]);
         }
     }
 }

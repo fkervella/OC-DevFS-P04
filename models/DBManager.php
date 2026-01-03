@@ -63,7 +63,7 @@ class DBManager
         if (null == $params) {
             $query = $this->db->query($sql);
         } else {
-            $query = $this->db->perpare($sql);
+            $query = $this->db->prepare($sql);
             $query->execute($params);
         }
 
