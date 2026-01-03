@@ -43,6 +43,12 @@ class Router
 
                     break;
 
+                case 'showSignIn':
+                    $userController = new UserController();
+                    $userController->showSignIn();
+                    
+                    break;
+
                 default:
                     throw new Exception("Router : La page {$action} demandée n'existe pas.");
             }
