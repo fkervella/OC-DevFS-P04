@@ -99,7 +99,7 @@ Dossier controlleurs pour les controlleurs
 
 Dossier views pour les vues
     > welcome.php
-    bookExchange.php
+    > bookExchange.php
     bookDetail.php
     logIn.php
     signUp.php
