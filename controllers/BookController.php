@@ -28,4 +28,18 @@ class BookController
         $view = new View("Nos livres à l'échange");
         $view->render('bookExchange', [], 'bookExchange.css');
     }
+
+    /**
+     * Affiche les données du livre.
+     *
+     * @param mixed $bookId
+     */
+    public function showBookDetail($bookId): void
+    {
+        $bookManager = new BookManager();
+        $book = $bookManager->getBookDetail($bookId);
+
+        $view = new View($book->getTitle());
+        $view->render('bookDetail', [], 'bookDetail.css');
+    }
 }

@@ -20,11 +20,21 @@ try {
 
             break;
 
+        case 'showBookDetail':
+            $bookId = Utils::request('bookId', -1);
+            if (-1 !== $bookId) {
+                Router::showBookDetail($bookId);
+            } else {
+                throw new Exception('Index : Le numéro du livre indiqué est invalide : -1');
+            }
+
+            break;
+
         default:
-            throw new Exception("La page demandée {$action} n'existe pas.");
+            throw new Exception("Index : La page demandée {$action} n'existe pas.");
 
             break;
     }
 } catch (Exception $error) {
-    Router::showErrorPage($error->getMessage());
+    Router::showErrorPage('Index : '.$error->getMessage());
 }

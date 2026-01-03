@@ -13,11 +13,11 @@ class Book extends AbstractEntity
     private string $title = '';
     private string $author = '';
     private string $description = '';
-    private bool $availability = false;
-    private ?DateTime $addDate = null;
+    private int $availability = 0;
+    private ?string $addDate = null;
 
     /**
-     * Sette pour l'id de l'utilisateur.
+     * Setter pour l'id de l'utilisateur.
      */
     public function setIdUser(int $idUser): void
     {
@@ -30,5 +30,101 @@ class Book extends AbstractEntity
     public function getIdUser(): int
     {
         return $this->idUser;
+    }
+
+    /**
+     * Setter pour le titre du livre.
+     */
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * Getter pour le titre du livre.
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * Setter pour le nom de l'auteur du livre.
+     */
+    public function setAuthor(string $author): void
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * Getter pour le nom de l'auteur du livre.
+     */
+    public function getAuthor(): string
+    {
+        return $this->author;
+    }
+
+    /**
+     * Setter pour l'image du livre.
+     */
+    public function setPicture(string $picture): void
+    {
+        $this->picture = $picture;
+    }
+
+    /**
+     * Getter pour l'image du livre.
+     */
+    public function getPicture(): string
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Setter pour la description du livre.
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * Getter pour la description du livre.
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * Setter pour la disponibilité du livre.
+     */
+    public function setAvailability(int $availability): void
+    {
+        $this->availability = $availability;
+    }
+
+    /**
+     * Getter pour la disponibilité du livre.
+     */
+    public function getAvailability(): int
+    {
+        return $this->availability;
+    }
+
+    /**
+     * Setter pour la date d'ajout du livre.
+     */
+    public function setAddDate(string $date): void
+    {
+        $this->addDate = $date;
+    }
+
+    /**
+     * Getter pour la date d'ajout du livre.
+     */
+    public function getAddDate(): string
+    {
+        return $this->addDate;
     }
 }

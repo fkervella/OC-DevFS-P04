@@ -45,4 +45,23 @@ class BookManager extends AbstractEntityManager
 
         return $books;
     }
+
+    /**
+     * Renvoie les données du livre passé en paramètre.
+     *
+     * @param $bookId : identifiant du livre dont les données sont à renvoyée
+     *
+     * @return Book : données du livre demandé
+     */
+    public function getBookDetail(int $bookId): Book
+    {
+        $sql = "SELECT * FROM book WHERE id={$bookId}";
+        $result = $this->db->query($sql);
+
+        if ($result) {
+            return new Book($result->fetch());
+        }
+
+        return null;
+    }
 }
