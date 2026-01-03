@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="button">
-                <a href='index.php?action=showbookEchange'>Voir tous les livres</a>
+                <a href='index.php?action=showbookExchange'>Voir tous les livres</a>
             </div>
         </div>
     </div>
@@ -83,7 +83,7 @@
                 <li>Proposez un échange et discutez avec d'autres passionnés de lecture.</li>
             </ul>
             <div class="button-reverse">
-                <a href='index.php?action=showBookEchange'>Voir tous les livres</a>
+                <a href='index.php?action=showBookExchange'>Voir tous les livres</a>
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe qui gère les livres.
+ * \brief gère les livres avec ajout, changement d'état, renvoi des livres.
  */
 class BookManager extends AbstractEntityManager
 {
@@ -15,6 +15,27 @@ class BookManager extends AbstractEntityManager
     public function getLastAddedBooks($limit): array
     {
         $sql = "SELECT * FROM book ORDER BY add_date DESC LIMIT {$limit}";
+        $result = $this->db->query($sql);
+        $books = [];
+
+        while ($book = $result->fetch()) {
+            $books = new Book($book);
+        }
+
+        return $books;
+    }
+
+    /**
+     * Récupère les livres disponibles pour échange selon les mots clés indiqués.
+     *
+     * @param mixed $limit    : nombre maximum de livres renvoyés
+     * @param array $keyWords : mots clés recherchés
+     *
+     * @return array : tableau d'objets Book
+     */
+    public function getSearchedBooks(?int $limit = 1, ?array $keyWords = []): array
+    {
+        $sql = "SELECT * FROM book LIMIT {$limit}";
         $result = $this->db->query($sql);
         $books = [];
 

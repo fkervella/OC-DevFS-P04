@@ -98,8 +98,8 @@ Dossier controlleurs pour les controlleurs
     messageController.php
 
 Dossier views pour les vues
-    welcome.php
-    bookExchange.php
+    > welcome.php
+    > bookExchange.php
     bookDetail.php
     logIn.php
     signUp.php

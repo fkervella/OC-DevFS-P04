@@ -1,8 +1,15 @@
 <?php
 
+/**
+ * \brief Classe permettant la définition de ses attributs à partir d'un tableau associatif.
+ *
+ * AbstractEntity est une classe permettant de définir ses attributs à partir d'un tableau associatif.
+ */
 abstract class AbstractEntity
 {
-    // Par défaut l'id vaut -1, ce qui permet de vérifier facilement si l'entité est nouvelle ou pas.
+    /**
+     * $id : par défaut $id vaut -1, ce qui permet de vérifier facilement si l'entité est nouvelle ou pas.
+     */
     protected int $id = -1;
 
     /**
