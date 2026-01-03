@@ -17,6 +17,11 @@
     width: 50%;
 }
 
+.column2 img {
+    width: 100%;
+    height: auto;
+}
+
 label {
     font-family: 'inter', sans-serif;
     font-size: 14px;
@@ -43,6 +48,42 @@ p {
     font-weight: 400;
 }
 
-c
+p a {
     text-decoration: underline;
+}
+
+@media all and (max-width :800px) {
+    .content {
+        flex-direction: column;
+    }
+    
+    .content .column1 {
+        width: 100%;
+        padding: 50px 20px 50px 20px;
+        box-sizing: border-box;
+    }
+    
+    .signIn {
+    }
+    
+    .content .column2 {
+        width: 100%;
+    }
+    
+    label {
+    }
+    
+    input {
+        width: 100%;
+    }
+    
+    .button {
+    }
+    
+    p {
+    }
+    
+    p a {
+    }
+
 }
