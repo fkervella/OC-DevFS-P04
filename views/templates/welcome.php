@@ -30,40 +30,48 @@
             <h2>Les derniers livres ajoutés</h2>
             <div class="bookCards">
                 <div class="bookCard">
-                    <img src="img/imageTest.png" alt="image1">
-                    <div class="title">Image 1
-                    </div>
-                    <div class="author">Auteur 1
-                    </div>
-                    <div class="seller">Vendu par : vendeur 1
-                    </div>
+                    <a href="index.php?action=showBookDetail&bookId=1">
+                        <img src="img/imageTest.png" alt="image1">
+                        <div class="title">Image 1
+                        </div>
+                        <div class="author">Auteur 1
+                        </div>
+                        <div class="seller">Vendu par : vendeur 1
+                        </div>
+                    </a>
                 </div>
                 <div class="bookCard">
-                    <img src="img/imageTest.png" alt="image2">
-                    <div class="title">Image 2
-                    </div>
-                    <div class="author">Auteur 2
-                    </div>
-                    <div class="seller">Vendu par : vendeur 2
-                    </div>
+                    <a href="index.php?action=showBookDetail&bookId=2">
+                        <img src="img/imageTest.png" alt="image2">
+                        <div class="title">Image 2
+                        </div>
+                        <div class="author">Auteur 2
+                        </div>
+                        <div class="seller">Vendu par : vendeur 2
+                        </div>
+                    </a>
                 </div>
                 <div class="bookCard">
-                    <img src="img/imageTest.png" alt="image3">
-                    <div class="title">Image 3
-                    </div>
-                    <div class="author">Auteur 3
-                    </div>
-                    <div class="seller">Vendu par : vendeur 3
-                    </div>
+                    <a href="index.php?action=showBookDetail&bookId=3">
+                        <img src="img/imageTest.png" alt="image3">
+                        <div class="title">Image 3
+                        </div>
+                        <div class="author">Auteur 3
+                        </div>
+                        <div class="seller">Vendu par : vendeur 3
+                        </div>
+                    </a>
                 </div>
                 <div class="bookCard">
-                    <img src="img/imageTest.png" alt="image4">
-                    <div class="title">Image 4
-                    </div>
-                    <div class="author">Auteur 4
-                    </div>
-                    <div class="seller">Vendu par : vendeur 4
-                    </div>
+                    <a href="index.php?action=showBookDetail&bookId=4">
+                        <img src="img/imageTest.png" alt="image4">
+                        <div class="title">Image 4
+                        </div>
+                        <div class="author">Auteur 4
+                        </div>
+                        <div class="seller">Vendu par : vendeur 4
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="button">
