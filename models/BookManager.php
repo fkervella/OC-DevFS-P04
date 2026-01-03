@@ -12,14 +12,14 @@ class BookManager extends AbstractEntityManager
      *
      * @return array: tableau d'objets Book
      */
-    public function getLastAddedBooks($limit): array
+    public function getLastAddedBooks($limit): ?array
     {
         $sql = "SELECT * FROM book ORDER BY add_date DESC LIMIT {$limit}";
         $result = $this->db->query($sql);
         $books = [];
 
         while ($book = $result->fetch()) {
-            $books = new Book($book);
+            $books[] = new Book($book);
         }
 
         return $books;
@@ -33,14 +33,14 @@ class BookManager extends AbstractEntityManager
      *
      * @return array : tableau d'objets Book
      */
-    public function getSearchedBooks(?int $limit = 1, ?array $keyWords = []): array
+    public function getSearchedBooks(?int $limit = 1, ?array $keyWords = []): ?array
     {
         $sql = "SELECT * FROM book LIMIT {$limit}";
         $result = $this->db->query($sql);
         $books = [];
 
         while ($book = $result->fetch()) {
-            $books = new Book($book);
+            $books[] = new Book($book);
         }
 
         return $books;
@@ -53,13 +53,14 @@ class BookManager extends AbstractEntityManager
      *
      * @return Book : données du livre demandé
      */
-    public function getBookDetail(int $bookId): Book
+    public function getBookDetail(int $bookId): ?Book
     {
         $sql = "SELECT * FROM book WHERE id={$bookId}";
         $result = $this->db->query($sql);
 
-        if ($result) {
-            return new Book($result->fetch());
+        $bookData = $result->fetch();
+        if ($bookData) {
+            return new Book($bookData);
         }
 
         return null;

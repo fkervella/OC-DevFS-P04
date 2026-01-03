@@ -13,8 +13,12 @@ class BookController
         $bookManager = new BookManager();
         $lastAddedBooks = $bookManager->getLastAddedBooks(4);
 
-        $view = new View('Accueil');
-        $view->render('welcome', [], 'welcome.css');
+        if ($lastAddedBooks) {
+            $view = new View('Accueil');
+            $view->render('welcome', [], 'welcome.css');
+        } else {
+            throw new Exception('Les données des derniers livres ajoutés sont incomplètes');
+        }
     }
 
     /**
@@ -25,8 +29,12 @@ class BookController
         $bookManager = new BookManager();
         $books = $bookManager->getSearchedBooks();
 
-        $view = new View("Nos livres à l'échange");
-        $view->render('bookExchange', [], 'bookExchange.css');
+        if ($books) {
+            $view = new View("Nos livres à l'échange");
+            $view->render('bookExchange', [], 'bookExchange.css');
+        } else {
+            throw new Exception("Les données des livres à l'échange sont incomplètes");
+        }
     }
 
     /**
@@ -39,7 +47,11 @@ class BookController
         $bookManager = new BookManager();
         $book = $bookManager->getBookDetail($bookId);
 
-        $view = new View($book->getTitle());
-        $view->render('bookDetail', [], 'bookDetail.css');
+        if ($book) {
+            $view = new View($book->getTitle());
+            $view->render('bookDetail', [], 'bookDetail.css');
+        } else {
+            throw new Exception('Les données du livre sont incomplètes.');
+        }
     }
 }
