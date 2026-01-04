@@ -101,8 +101,8 @@ Dossier views pour les vues
     > welcome.php
     > bookExchange.php
     > bookDetail.php
-    logIn.php
-    signUp.php
+    > logIn.php
+    > signIn.php
     account.php
     chat.php
     updateAccount.php
@@ -159,3 +159,4 @@ Convertir la date d'ajout de livre dans les fonctions setAddDate et getAddDate d
 
 Bouton de la page Welcome a son attribut margin mal défini
 
+Encodage des mots de passe dans la base de données
