@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template pour afficher la page d'inscription
+ * Template pour afficher la page d'inscription.
  */
 ?>
 

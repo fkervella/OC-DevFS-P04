@@ -35,6 +35,11 @@ try {
 
             break;
 
+        case 'showLogIn':
+            Router::showLogIn();
+
+            break;
+
         default:
             throw new Exception("Index : La page demandée {$action} n'existe pas.");
 

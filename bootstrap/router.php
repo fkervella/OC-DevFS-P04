@@ -46,7 +46,13 @@ class Router
                 case 'showSignIn':
                     $userController = new UserController();
                     $userController->showSignIn();
-                    
+
+                    break;
+
+                case 'showLogIn':
+                    $userController = new UserController();
+                    $userController->showLogIn();
+
                     break;
 
                 default:
