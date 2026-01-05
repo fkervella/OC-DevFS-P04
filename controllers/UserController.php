@@ -22,4 +22,11 @@ class UserController
         $view = new View('Log In');
         $view->render('login', [], 'login.css');
     }
+
+    // Affiche la page du compte utilisateur
+    public function showAccount(int $userId): void
+    {
+        $view = new View('account');
+        $view->render('account', [], 'account.css');
+    }
 }
