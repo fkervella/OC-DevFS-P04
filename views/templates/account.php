@@ -40,108 +40,58 @@
         </div>
     </div>
     <div class="row2">
-        <table>
-            <thead>
-                <tr>
-                    <th class="hImage">Photo</th>
-                    <th class="hTitle">Titre</th>
-                    <th class="hAuthor">Auteur</th>
-                    <th class="hDescription">Description</th>
-                    <th class="hAvailability">Disponiblité</th>
-                    <th class="hActions">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="oddRow">
-                    <td>
-                        <img src="img/detailLivre.jpg" alt="couverture livre">
-                    </td>
-                    <td>
-                        <p class="bookTitle">The Kinfolk Table</p>
-                    </td>
-                    <td>
-                        <p class="bookAuthor">Nathan Williams</p>
-                    </td>
-                    <td>
-                        <p class="bookDescription">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par ce que j'ai lu. Et j'ai encore plein d'autres choses à dire dessu, mais pour le moment, il je dois aller à la piscine.</p>
-                    </td>
-                    <td>
-                        <div class="available">disponible
-                        </div>
-                    </td>
-                    <td>
-                        <a href="" class="modifyBook">Editer</a>
-                        <a href="" class="deleteBookFromLibrary">Supprimer</a>
-                    </td>
-                </tr>
-                <tr class="evenRow">
-                    <td>
-                        <img src="img/detailLivre.jpg" alt="couverture livre">
-                    </td>
-                    <td>
-                        <p class="bookTitle">The Kinfolk Table</p>
-                    </td>
-                    <td>
-                        <p class="bookAuthor">Nathan Williams</p>
-                    </td>
-                    <td>
-                        <p class="bookDescription">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par ce que j'ai lu</p>
-                    </td>
-                    <td>
-                        <div class="unavailable">non dispo.
-                        </div>
-                    </td>
-                    <td>
-                        <a href="" class="modifyBook">Editer</a>
-                        <a href="" class="deleteBookFromLibrary">Supprimer</a>
-                    </td>
-                </tr>
-                <tr class="oddRow">
-                    <td>
-                        <img src="img/detailLivre.jpg" alt="couverture livre">
-                    </td>
-                    <td>
-                        <p class="bookTitle">The Kinfolk Table</p>
-                    </td>
-                    <td>
-                        <p class="bookAuthor">Nathan Williams</p>
-                    </td>
-                    <td>
-                        <p class="bookDescription">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par ce que j'ai lu</p>
-                    </td>
-                    <td>
-                        <div class="available">disponible
-                        </div>
-                    </td>
-                    <td>
-                        <a href="" class="modifyBook">Editer</a>
-                        <a href="" class="deleteBookFromLibrary">Supprimer</a>
-                    </td>
-                </tr>
-                <tr class="evenRow">
-                    <td>
-                        <img src="img/detailLivre.jpg" alt="couverture livre">
-                    </td>
-                    <td>
-                        <p class="bookTitle">The Kinfolk Table</p>
-                    </td>
-                    <td>
-                        <p class="bookAuthor">Nathan Williams</p>
-                    </td>
-                    <td>
-                        <p class="bookDescription">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par ce que j'ai lu</p>
-                    </td>
-                    <td>
-                        <div class="unavailable">non dispo.
-                        </div>
-                    </td>
-                    <td>
-                        <a href="" class="modifyBook">Editer</a>
-                        <a href="" class="deleteBookFromLibrary">Supprimer</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="flex-header">
+            <div class="flex-header-cell hImage">Photo</div>
+            <div class="flex-header-cell hTitle">Titre</div>
+            <div class="flex-header-cell hAuthor">Auteur</div>
+            <div class="flex-header-cell hDescription">Description</div>
+            <div class="flex-header-cell hAvailability">Disponiblité</div>
+            <div class="flex-header-cell hActions">Actions</div>
+        </div>
+        <div class="flex-row oddRow">
+            <div class="flex-row-cell hImage">
+                <img src="img/detailLivre.jpg" alt="couverture livre">
+            </div>
+            <div class="flex-row-cell hTitle">
+                <p class="bookTitle">The Kinfolk Table</p>
+            </div>
+            <div class="flex-row-cell hAuthor">
+                <p class="bookAuthor">Nathan Williams</p>
+            </div>
+            <div class="flex-row-cell hDescription">
+                <p class="bookDescription">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par ce que j'ai lu. Et j'ai encore plein d'autres choses à dire dessu, mais pour le moment, il je dois aller à la piscine.</p>
+            </div>
+            <div class="flex-row-cell hAvailability">
+                <div class="available">disponible
+                </div>
+            </div>
+            <div class="flex-row-cell hActions">
+                <a href="" class="modifyBook">Editer</a>
+                <a href="" class="deleteBookFromLibrary">Supprimer</a>
+            </div>
+        </div>
+        <div class="flex-row evenRow lastRow">
+            <div class="flex-row-cell hImage">
+                <img src="img/detailLivre.jpg" alt="couverture livre">
+            </div>
+            <div class="flex-row-cell hTitle">
+                <p class="bookTitle">The Kinfolk Table</p>
+            </div>
+            <div class="flex-row-cell hAuthor">
+                <p class="bookAuthor">Nathan Williams</p>
+            </div>
+            <div class="flex-row-cell hDescription">
+                <p class="bookDescription">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par ce que j'ai lu</p>
+            </div>
+            <div class="flex-row-cell hAvailability">
+                <div class="unavailable">non dispo.
+                </div>
+            </div>
+            <div class="flex-row-cell hActions">
+                <a href="" class="modifyBook">Editer</a>
+                <a href="" class="deleteBookFromLibrary">Supprimer</a>
+            </div>
+        </div>
     </div>
 </div>
 </div>

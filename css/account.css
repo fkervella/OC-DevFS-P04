@@ -104,66 +104,17 @@
 }
 
 .row2 {
-    background-color: white;
+    width: 100%;
+    display: table;
+    border-radius: 16px;
 }
 
-table {
-    margin: 30px 0px 0px 0px;
-    border: none;
-    border-collapse: collapse;
-    box-sizing: border-box;
-}
-
-.oddRow {
-    background-color: white;
-}
-
-.evenRow {
-    background-color: var(--background-color);
-}
-
-th {
+.flex-header-cell {
     font-family: 'inter', sans-serif;
     font-size: 8px;
     font-weight: 600;
     text-transform: uppercase;
     text-align: left;
-}
-
-.hImage {
-    width: 10%;
-    padding: 0px 0px 0px 50px;
-}
-
-.hTitle {
-    width: 20%;
-}
-
-.hAuthor {
-    width: 20%;
-}
-
-.hDescription {
-    width: 20%;
-}
-
-.hAvailability {
-    width: 10%;
-}
-
-.hActions {
-    width: 20%;
-}
-
-td {
-    max-height: 50px;
-    padding: 20px 60px 20px 0px;
-}
-
-td img {
-    width: 78px;
-    height: auto;
-    margin: 0px 0px 0px 50px;
 }
 
 .bookTitle, .bookAuthor {
@@ -199,6 +150,56 @@ td img {
     font-weight: 400;
     color: #CB2D2D;
     text-decoration: underline;
+}
+
+.flex-header, .flex-row{
+    display: flex;
+    width: 100%;
+    background-color: white;
+    padding: 0px 0px 0px 50px;
+    box-sizing: border-box;
+}
+
+.flex-header {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.lastRow {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.flex-header-cell, .flex-row-cell {
+    flex: 1;
+    min-width: 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.evenRow {
+    background-color: var(--background-row-table);
+}
+
+.flex-row-cell {
+    text-align: left;
+}
+
+.hImage img {
+    width: 78px;
+    height: auto;
+}
+
+.hAvailability {
+    margin: auto;
+}
+
+.hActions {
+    margin: auto; 
+}
+
+.hTitle, .hAuthor, .hDescription {
+    margin: auto;
 }
 
 @media all and (max-width :800px) {
@@ -255,43 +256,12 @@ td img {
         padding: 0px;
     }
     
-    .row2 {
+   .row2 {
+        display: flex;
+        gap: 20px;
     }
     
-    table {
-    }
-    
-    .oddRow {
-    }
-    
-    .evenRow {
-    }
-    
-    th {
-    }
-    
-    .hImage {
-    }
-    
-    .hTitle {
-    }
-    
-    .hAuthor {
-    }
-    
-    .hDescription {
-    }
-    
-    .hAvailability {
-    }
-    
-    .hActions {
-    }
-    
-    td {
-    }
-    
-    td img {
+    .flex-header-cell {
     }
     
     .bookTitle, .bookAuthor {
@@ -306,4 +276,40 @@ td img {
     .deleteBookFromLibrary {
     }
     
+    .flex-header, .flex-row{
+        border-radius: 20px;
+        padding: 40px 40px 40px 40px;
+    }
+    
+    .flex-header {
+        display: none;
+    }
+    
+    .lastRow {
+    }
+    
+    .flex-header-cell, .flex-row-cell {
+    }
+    
+    .oddRow {
+    }
+
+    .evenRow {
+        background-color: white;
+    }
+    
+    .flex-row-cell {
+    }
+    
+    .hImage img {
+        width: 78px;
+        height: auto;
+    }
+    
+    .hAvailability {
+    }
+    
+    .hActions {
+    } 
+
 }
