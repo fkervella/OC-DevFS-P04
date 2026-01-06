@@ -103,7 +103,7 @@ Dossier views pour les vues
     > bookDetail.php
     > logIn.php
     > signIn.php
-    account.php
+    > account.php
     chat.php
     updateAccount.php
     privacyPolicy.php
