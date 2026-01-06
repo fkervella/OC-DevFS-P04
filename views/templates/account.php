@@ -40,54 +40,54 @@
         </div>
     </div>
     <div class="row2">
-        <div class="flex-header">
-            <div class="flex-header-cell hImage">Photo</div>
-            <div class="flex-header-cell hTitle">Titre</div>
-            <div class="flex-header-cell hAuthor">Auteur</div>
-            <div class="flex-header-cell hDescription">Description</div>
-            <div class="flex-header-cell hAvailability">Disponiblité</div>
-            <div class="flex-header-cell hActions">Actions</div>
+        <div class="grid-header">
+            <div class="grid-header-cell hImage">Photo</div>
+            <div class="grid-header-cell hTitle">Titre</div>
+            <div class="grid-header-cell hAuthor">Auteur</div>
+            <div class="grid-header-cell hDescription">Description</div>
+            <div class="grid-header-cell hAvailability">Disponiblité</div>
+            <div class="grid-header-cell hActions">Actions</div>
         </div>
-        <div class="flex-row oddRow">
-            <div class="flex-row-cell hImage">
+        <div class="grid-row oddRow">
+            <div class="grid-row-cell hImage">
                 <img src="img/detailLivre.jpg" alt="couverture livre">
             </div>
-            <div class="flex-row-cell hTitle">
+            <div class="grid-row-cell hTitle">
                 <p class="bookTitle">The Kinfolk Table</p>
             </div>
-            <div class="flex-row-cell hAuthor">
+            <div class="grid-row-cell hAuthor">
                 <p class="bookAuthor">Nathan Williams</p>
             </div>
-            <div class="flex-row-cell hDescription">
-                <p class="bookDescription">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par ce que j'ai lu. Et j'ai encore plein d'autres choses à dire dessu, mais pour le moment, il je dois aller à la piscine.</p>
+            <div class="grid-row-cell hDescription">
+                <p class="bookDescription">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par ce que j'ai lu. Et j'ai encore plein d'autres choses à dire dessus, mais pour le moment, il je dois aller à la piscine.</p>
             </div>
-            <div class="flex-row-cell hAvailability">
+            <div class="grid-row-cell hAvailability">
                 <div class="available">disponible
                 </div>
             </div>
-            <div class="flex-row-cell hActions">
+            <div class="grid-row-cell hActions">
                 <a href="" class="modifyBook">Editer</a>
                 <a href="" class="deleteBookFromLibrary">Supprimer</a>
             </div>
         </div>
-        <div class="flex-row evenRow lastRow">
-            <div class="flex-row-cell hImage">
+        <div class="grid-row evenRow lastRow">
+            <div class="grid-row-cell hImage">
                 <img src="img/detailLivre.jpg" alt="couverture livre">
             </div>
-            <div class="flex-row-cell hTitle">
+            <div class="grid-row-cell hTitle">
                 <p class="bookTitle">The Kinfolk Table</p>
             </div>
-            <div class="flex-row-cell hAuthor">
+            <div class="grid-row-cell hAuthor">
                 <p class="bookAuthor">Nathan Williams</p>
             </div>
-            <div class="flex-row-cell hDescription">
+            <div class="grid-row-cell hDescription">
                 <p class="bookDescription">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par ce que j'ai lu</p>
             </div>
-            <div class="flex-row-cell hAvailability">
+            <div class="grid-row-cell hAvailability">
                 <div class="unavailable">non dispo.
                 </div>
             </div>
-            <div class="flex-row-cell hActions">
+            <div class="grid-row-cell hActions">
                 <a href="" class="modifyBook">Editer</a>
                 <a href="" class="deleteBookFromLibrary">Supprimer</a>
             </div>

@@ -109,7 +109,7 @@
     border-radius: 16px;
 }
 
-.flex-header-cell {
+.grid-header-cell {
     font-family: 'inter', sans-serif;
     font-size: 8px;
     font-weight: 600;
@@ -152,15 +152,15 @@
     text-decoration: underline;
 }
 
-.flex-header, .flex-row{
-    display: flex;
-    width: 100%;
+.grid-header, .grid-row{
+    display: grid;
+    /*width: 100%;*/
     background-color: white;
     padding: 0px 0px 0px 50px;
     box-sizing: border-box;
 }
 
-.flex-header {
+.grid-header {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
@@ -170,7 +170,7 @@
     border-bottom-right-radius: 20px;
 }
 
-.flex-header-cell, .flex-row-cell {
+.grid-header-cell, .grid-row-cell {
     flex: 1;
     min-width: 0;
     padding: 10px;
@@ -181,7 +181,7 @@
     background-color: var(--background-row-table);
 }
 
-.flex-row-cell {
+.grid-row-cell {
     text-align: left;
 }
 
@@ -208,11 +208,9 @@
         padding: 0px 0px 0px 0px;
     }
     
-    .page h2{
-    }
-    
     .content {
         flex-direction: column;
+        margin: 0px 0px 20px 0px;
     }
     
     .row1 {
@@ -227,30 +225,6 @@
         width: 100%;
     }
     
-    .column1 img {
-    }
-    
-    .column1 a{
-    }
-    
-    .column1 .pseudo {
-    }
-    
-    .column1 .memberSince {
-    }
-    
-    .column1 p {
-    }
-    
-    .column1 .librarySize {
-    }
-    
-    .column2 .title {
-    }
-    
-    .personalInfo {
-    }
-    
     .button-reverse {
         width: 100%;
         padding: 0px;
@@ -258,58 +232,96 @@
     
    .row2 {
         display: flex;
+        flex-direction: column;
         gap: 20px;
     }
     
-    .flex-header-cell {
-    }
-    
     .bookTitle, .bookAuthor {
+        font-size: 14px;
     }
     
     .bookDescription {
+        font-size: 14px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        margin: 0;
+    }
+   
+    .available {
+       font-size: 9px;
+    }
+
+    .modifyBook, .deleteBookFromLibrary {
+        font-size: 16px;
     }
     
-    .modifyBook {
-    }
-    
-    .deleteBookFromLibrary {
-    }
-    
-    .flex-header, .flex-row{
+    .grid-header, .grid-row{
         border-radius: 20px;
         padding: 40px 40px 40px 40px;
+        grid-template-columns: 100px auto;
+        grid-template-rows: 30px 20px 50px 70px 70px;
+        gap: 0px;
     }
     
-    .flex-header {
+    .hImage { 
+        grid-column: 1;
+        grid-row: 1 / 4;
+    }
+    
+    .hTitle { 
+        grid-column: 2;
+        grid-row: 1;
+        padding: 10px 0px 0px 0px;
+        margin: 0;
+    }
+
+    .hTitle p {
+        margin: 0;
+    }
+    
+    .hAuthor { 
+        grid-column: 2;
+        grid-row: 2;
+        padding: 0px 0px 0px 0px;
+        margin: 0;
+    }
+
+    .hAuthor p{
+        margin: 0;
+    }
+
+    .hDescription { 
+        grid-column: 1 / 3;
+        grid-row: 4;
+    }
+
+    .hAvailability {
+        grid-column: 2;
+        grid-row: 3;
+        margin: 0;
+        padding: 15px 0px 10px 0px;
+    }
+
+    .hActions { 
+        grid-column: 1 / 3;
+        grid-row: 5;
+    }
+
+    .hDescription {
+        grid-column: 1 / span 2;
+    }
+
+    .grid-header {
         display: none;
     }
     
-    .lastRow {
-    }
-    
-    .flex-header-cell, .flex-row-cell {
-    }
-    
-    .oddRow {
-    }
-
     .evenRow {
         background-color: white;
-    }
-    
-    .flex-row-cell {
     }
     
     .hImage img {
         width: 78px;
         height: auto;
     }
-    
-    .hAvailability {
-    }
-    
-    .hActions {
-    } 
-
 }
