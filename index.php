@@ -25,7 +25,7 @@ try {
             if (-1 !== $bookId) {
                 Router::showBookDetail($bookId);
             } else {
-                throw new Exception('Index : Le numéro du livre indiqué est invalide : -1');
+                throw new Exception('Le numéro du livre indiqué est invalide : -1');
             }
 
             break;
@@ -40,8 +40,18 @@ try {
 
             break;
 
+        case 'showAccount':
+            $userId = Utils::request('userId', -1);
+            if (-1 !== $userId) {
+                Router::showAccount($userId);
+            } else {
+                throw new Exception("l'identifiant de l'utilisateur indiqué n'est pas valide : {$userId}");
+            }
+
+            break;
+
         default:
-            throw new Exception("Index : La page demandée {$action} n'existe pas.");
+            throw new Exception("La page demandée {$action} n'existe pas.");
 
             break;
     }

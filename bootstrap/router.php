@@ -55,6 +55,14 @@ class Router
 
                     break;
 
+                case 'showAccount':
+                    $userId = $arguments[0];
+
+                    $userController = new UserController();
+                    $userController->showAccount($userId);
+
+                    break;
+
                 default:
                     throw new Exception("Router : La page {$action} demandée n'existe pas.");
             }

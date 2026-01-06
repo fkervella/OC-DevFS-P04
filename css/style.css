@@ -14,6 +14,9 @@
     --background-color: #f5f3ef;
     --button-green-background-color: #00ac66;
     --grey-text-color: #a6a6a6;
+    --background-available: #6DC5A1;
+    --background-unavailable: #C56D6D;
+    --background-row-table: #EDF2F6;
 }
 
 body {
@@ -213,6 +216,45 @@ h2 {
     color: var(--grey-text-color);
 }
 
+label {
+    font-family: 'inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--grey-text-color);
+    margin: 20px 0px 10px 0px;
+}
+
+input {
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #f0f0f0;
+    height: 50px;
+    width: 320px;
+}
+
+.available {
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+    background-color: var(--background-available);
+    color: white;
+    font-family: 'inter', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    text-align: center;
+    width: 50px;
+}
+
+.unavailable {
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+    background-color: var(--background-unavailable);
+    color: white;
+    font-family: 'inter', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    text-align: center;
+    width: 50px;
+}
 @media all and (max-width :800px) {
 
     header {
@@ -291,5 +333,10 @@ h2 {
         padding: 20px 0px 20px 0px;
         width: auto;
     }
+
+    input {
+        width: 100%;
+    }
+
 }
 
