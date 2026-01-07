@@ -163,3 +163,6 @@ Encodage des mots de passe dans la base de données
 Balise h2 à remplacer par h1
 
 page account : logo du nombre de livres
+
+page account : js pour affichage en responsive
+
