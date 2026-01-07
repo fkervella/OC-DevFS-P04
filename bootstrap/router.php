@@ -63,6 +63,14 @@ class Router
 
                     break;
 
+                case 'showChat':
+                    $userId = $arguments[0];
+
+                    $messageController = new MessageController();
+                    $messageController->showChat($userId);
+
+                    break;
+
                 default:
                     throw new Exception("Router : La page {$action} demandée n'existe pas.");
             }

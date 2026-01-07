@@ -50,6 +50,16 @@ try {
 
             break;
 
+        case 'showChat':
+            $userId = Utils::request('userId', 1);
+            if (-1 !== $userId) {
+                Router::showChat($userId);
+            } else {
+                throw new Exception("l'identifiant indiqué pour l'utilisateur n'est pas valide : {$userId}");
+            }
+
+            break;
+
         default:
             throw new Exception("La page demandée {$action} n'existe pas.");
 
