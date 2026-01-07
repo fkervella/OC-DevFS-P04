@@ -38,9 +38,9 @@
                     <a href='index.php?action=showBookExchange'>Nos livres à l'échange</a>
                 </div>
                 <div class="menu">
-                    <a href='index.php'>Messagerie</a>
-                    <a href='index.php'>Mon compte</a>
-                    <a href='index.php'>Connexion</a>
+                    <a href='index.php?action=showChat'>Messagerie</a>
+                    <a href='index.php?action=showAccount&userId=1'>Mon compte</a>
+                    <a href='index.php?action=showLogIn'>Connexion</a>
                 </div>
                 <div class="burgerMenu">
                     <a href='index.php'><img src='img/iconMenu.svg' alt='icône menu'></a>
