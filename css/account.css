@@ -154,10 +154,12 @@
 
 .grid-header, .grid-row{
     display: grid;
-    /*width: 100%;*/
     background-color: white;
     padding: 0px 0px 0px 50px;
     box-sizing: border-box;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr;
+    grid-template-rows: 1fr;
+    justify-content: left;
 }
 
 .grid-header {
@@ -171,8 +173,6 @@
 }
 
 .grid-header-cell, .grid-row-cell {
-    flex: 1;
-    min-width: 0;
     padding: 10px;
     box-sizing: border-box;
 }
@@ -191,14 +191,6 @@
 }
 
 .hAvailability {
-    margin: auto;
-}
-
-.hActions {
-    margin: auto; 
-}
-
-.hTitle, .hAuthor, .hDescription {
     margin: auto;
 }
 
