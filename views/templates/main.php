@@ -38,9 +38,14 @@
                     <a href='index.php?action=showBookExchange'>Nos livres à l'échange</a>
                 </div>
                 <div class="menu">
-                    <a href='index.php?action=showChat'>Messagerie</a>
-                    <a href='index.php?action=showAccount&userId=1'>Mon compte</a>
-                    <a href='index.php?action=showLogIn'>Connexion</a>
+                    <?php if ($userConnected) { ?>
+                        <a href='index.php?action=showChat'><img class="headerIcon" src="img/iconeMessagerie.svg" alt="icone Messagerie">Messagerie</a>
+                        <a href='index.php?action=showAccount&userId=1'><img class="headerIcon" src="img/iconeMonCompte.svg" alt="icone mon compte">Mon compte</a>
+                        <a href='index.php?action=showLogOut'>Déconnexion</a>
+                    <?php } else { ?>
+                        <a href='index.php?action=showLogIn'>Connexion</a>
+                    <?php } ?>
+
                 </div>
                 <div class="burgerMenu">
                     <a href='index.php'><img src='img/iconMenu.svg' alt='icône menu'></a>
