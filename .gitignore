@@ -4,3 +4,4 @@ vendor
 *.lock
 *.swp
 .php-cs-fixer.*
+.vscode
