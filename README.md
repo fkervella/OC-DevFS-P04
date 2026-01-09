@@ -148,15 +148,9 @@ Afficher dans le header en gras le nom de la vue active
 
 Menu en responsive lors de l'appui sur le burger menu
 
-Afficher dans le header le logo de la messagerie
-
-Afficher dans le header le logo de "Mon compte"
-
 Afficher dans le header le nombre de messages non lus
 
 Convertir la date d'ajout de livre dans les fonctions setAddDate et getAddDate de la classe Book
-
-Bouton de la page Welcome a son attribut margin mal défini
 
 Encodage des mots de passe dans la base de données
 
@@ -166,3 +160,10 @@ page account : logo du nombre de livres
 
 page account : js pour affichage en responsive
 
+Toutes les pages : travailler sur la variation de la taille d'écran
+
+Dans index, ne pas récupérer les paramètres de la page, mais les récupérer dans les controllers
+
+Dans le header, afficher Déconnexion lorsqu'un utilisateur est connecté
+
+Dans le routeur, gérer la déconnexion utilisateur
