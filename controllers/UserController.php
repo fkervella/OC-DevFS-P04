@@ -10,7 +10,7 @@ class UserController
      */
     public function showSignIn(): void
     {
-        $view = new View('Sign in');
+        $view = new View('Inscription');
         $view->render('signin', [], 'signin.css');
     }
 
@@ -19,7 +19,7 @@ class UserController
      */
     public function showLogIn(): void
     {
-        $view = new View('Log In');
+        $view = new View('Connexion');
         $view->render('login', [], 'login.css');
     }
 
@@ -31,7 +31,7 @@ class UserController
         unset($_SESSION['user']);
         unset($_SESSION['userId']);
 
-        $view = new View('welcome');
+        $view = new View('Accueil');
         $view->render('welcome', [], 'welcome.css');
     }
     /**
@@ -39,7 +39,7 @@ class UserController
      */
     public function showAccount(int $userId): void
     {
-        $view = new View('account');      
+        $view = new View('Mon compte');      
         $view->render('account', [], 'account.css');
     }
 

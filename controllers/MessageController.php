@@ -10,7 +10,7 @@ class MessageController
      */
     public function showChat(int $userId): void
     {
-        $view = new View('chat');
+        $view = new View('Messagerie');
         $view->render('chat', [], 'chat.css');
     }
 }

@@ -13,7 +13,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tomtroc</title>
+        <title>Tomtroc - <?php echo $title?></title>
         <link rel='stylesheet' href='./css/style.css'>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,16 +34,16 @@
                     <a href='index.php'><img src='img/logo.svg' alt='Tomtroc logo'></a>
                 </div>
                 <div class="menu">
-                    <a href='index.php?action=showHome'>Accueil</a>
-                    <a href='index.php?action=showBookExchange'>Nos livres à l'échange</a>
+                <a href='index.php?action=showHome' <?php if($viewName === 'welcome') echo 'class="activePage"'; ?>>Accueil</a>
+                    <a href='index.php?action=showBookExchange' <?php if($viewName === 'bookExchange') echo 'class="activePage"'; ?>>Nos livres à l'échange</a>
                 </div>
                 <div class="menu">
                     <?php if ($userConnected) { ?>
-                        <a href='index.php?action=showChat'><img class="headerIcon" src="img/iconeMessagerie.svg" alt="icone Messagerie">Messagerie</a>
-                        <a href='index.php?action=showAccount&userId=1'><img class="headerIcon" src="img/iconeMonCompte.svg" alt="icone mon compte">Mon compte</a>
+                        <a href='index.php?action=showChat' <?php if($viewName === 'chat') echo 'class="activePage"'; ?>><img class="headerIcon" src="img/iconeMessagerie.svg" alt="icone Messagerie">Messagerie</a>
+                        <a href='index.php?action=showAccount&userId=1' <?php if($viewName === 'account') echo 'class="activePage"'; ?>><img class="headerIcon" src="img/iconeMonCompte.svg" alt="icone mon compte">Mon compte</a>
                         <a href='index.php?action=showLogOut'>Déconnexion</a>
                     <?php } else { ?>
-                        <a href='index.php?action=showLogIn'>Connexion</a>
+                        <a href='index.php?action=showLogIn' <?php if($viewName === 'login') echo 'class="activePage"'; ?>>Connexion</a>
                     <?php } ?>
 
                 </div>

@@ -265,6 +265,10 @@ input {
     margin: 0px 5px 0px 5px;
 }
 
+.activePage {
+    font-weight: bold;
+}
+
 @media all and (max-width :800px) {
 
     header {

@@ -37,6 +37,7 @@ class View
         // Les deux variaables ci-dessous sont utilisées dans le main.php qui est le template principal
         $content = $this->_renderViewFromTemplate($viewPath, $params);
         $title = $this->title;
+        $view = $viewName;
         $additionalStyle = $style;
         $userConnected = isset($_SESSION['user']);
         ob_start();
