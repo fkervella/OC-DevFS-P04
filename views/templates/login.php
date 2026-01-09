@@ -8,11 +8,11 @@
 <div class="content">
     <div class="column1">
         <h2>Connexion</h2>
-        <form class="signIn">
-            <label for="mail">Adresse email</label>
-            <input type="text" class="mail" id="mail">
+        <form class="signIn" method="post" action="index.php?action=connectUser">
+            <label for="login">Adresse email</label>
+            <input name="login"type="text" class="login" id="login" required>
             <label for="password">Mot de passe</label>
-            <input type="password" class="password" id="password">
+            <input type="password" name="password" class="password" id="password" required>
             <input type="submit" class="button" value="Se connecter">
         </form>
         <p>Pas de compte ? <a href="index.php?action=showSignIn">Inscrivez-vous</a></p>

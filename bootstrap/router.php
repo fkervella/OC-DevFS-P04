@@ -55,6 +55,12 @@ class Router
 
                     break;
 
+                case 'showLogOut':
+                    $userController = new UserController();
+                    $userController->logOut();
+
+                    break;
+
                 case 'showAccount':
                     $userId = $arguments[0];
 

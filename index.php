@@ -40,6 +40,11 @@ try {
 
             break;
 
+        case 'showLogOut':
+            Router::showLogOut();
+
+            break;
+
         case 'showAccount':
             $userId = Utils::request('userId', -1);
             if (-1 !== $userId) {
@@ -57,6 +62,12 @@ try {
             } else {
                 throw new Exception("l'identifiant indiqué pour l'utilisateur n'est pas valide : {$userId}");
             }
+
+            break;
+
+        case 'connectUser':
+            $userController = new UserController();
+            $userController->connectUser();
 
             break;
 

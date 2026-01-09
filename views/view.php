@@ -38,6 +38,7 @@ class View
         $content = $this->_renderViewFromTemplate($viewPath, $params);
         $title = $this->title;
         $additionalStyle = $style;
+        $userConnected = isset($_SESSION['user']);
         ob_start();
 
         require MAIN_VIEW_PATH;
