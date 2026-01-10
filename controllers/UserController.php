@@ -24,22 +24,22 @@ class UserController
     }
 
     /**
-     * Déconnecte l'utilisateur courant
+     * Déconnecte l'utilisateur courant.
      */
-    public function logOut():void
+    public function logOut(): void
     {
-        unset($_SESSION['user']);
-        unset($_SESSION['userId']);
+        unset($_SESSION['user'], $_SESSION['userId']);
 
         $view = new View('Accueil');
         $view->render('welcome', [], 'welcome.css');
     }
+
     /**
      * Affiche la page du compte utilisateur.
      */
     public function showAccount(int $userId): void
     {
-        $view = new View('Mon compte');      
+        $view = new View('Mon compte');
         $view->render('account', [], 'account.css');
     }
 
