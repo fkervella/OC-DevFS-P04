@@ -144,7 +144,6 @@ Dossier services pour les classes de fonctionnalités génériques
 Ajouter l'état Lu/Non lu des messages
 
 ## Dette technique
-Afficher dans le header en gras le nom de la vue active
 
 Menu en responsive lors de l'appui sur le burger menu
 
@@ -164,6 +163,3 @@ Toutes les pages : travailler sur la variation de la taille d'écran
 
 Dans index, ne pas récupérer les paramètres de la page, mais les récupérer dans les controllers
 
-Dans le header, afficher Déconnexion lorsqu'un utilisateur est connecté
-
-Dans le routeur, gérer la déconnexion utilisateur
