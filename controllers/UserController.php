@@ -47,12 +47,20 @@ class UserController
         $avatar = htmlspecialchars($user->getAvatar());
         $userId = $user->getId();
 
+        // Calcul pour déterminer depuis quand l'utilisateur est enregistré
+        $creationDate = new DateTime($user->getCreationDate());
+        $nowDate = new DateTime();
+
+        $interval = $creationDate->diff($nowDate);
+        $ecart = $interval->format('%a jours');
+
         $view = new View('Mon compte');
         $view->render('account', [
             'pseudo' => $pseudo,
             'login' => $login,
             'avatar' => $avatar,
             'userId' => $userId,
+            'ecart' => $ecart,
         ], 'account.css');
     }
 
@@ -126,7 +134,7 @@ class UserController
     }
 
     /**
-     * Met à jour les informations personnelles de l'utilsateur
+     * Met à jour les informations personnelles de l'utilsateur.
      */
     public function updateUser(): void
     {

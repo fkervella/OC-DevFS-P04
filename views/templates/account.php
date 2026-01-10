@@ -16,7 +16,7 @@
                 <?php echo $pseudo; ?>
             </div>
             <div class="memberSince">
-                Membre depuis 1 an
+            Membre depuis <?php echo $ecart; ?>
             </div>
             <p>Bibliothèque</p>
             <div class="librarySize">

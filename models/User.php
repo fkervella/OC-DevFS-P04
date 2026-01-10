@@ -9,7 +9,7 @@ class User extends AbstractEntity
     private string $login;
     private string $password;
     private string $pseudo;
-    private string $registrationDate;
+    private string $creationDate;
     private string $avatar;
 
     /**
@@ -77,19 +77,19 @@ class User extends AbstractEntity
     }
 
     /**
-     * Setter pour le registrationiDate.
+     * Setter pour le creationDate.
      */
-    public function setRegistrationDate(string $registrationDate): void
+    public function setCreationDate(string $creationDate): void
     {
-        $this->registrationDate = $registrationDate;
+        $this->creationDate = $creationDate;
     }
 
     /**
-     * Getter pour le registrationDate.
+     * Getter pour le creationDate.
      */
-    public function getRegistrationDate(): string
+    public function getCreationDate(): string
     {
-        return $this->registrationDate;
+        return $this->creationDate;
     }
 
     /**
