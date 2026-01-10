@@ -39,8 +39,19 @@ class UserController
      */
     public function showAccount(int $userId): void
     {
+        $userManager = new UserManager();
+        $user = $userManager->getUserById($userId);
+
+        $pseudo = htmlspecialchars($user->getPseudo());
+        $login = htmlspecialchars($user->getLogin());
+        $avatar = htmlspecialchars($user->getAvatar());
+
         $view = new View('Mon compte');
-        $view->render('account', [], 'account.css');
+        $view->render('account', [
+            'pseudo' => $pseudo,
+            'login' => $login,
+            'avatar' => $avatar,
+        ], 'account.css');
     }
 
     /**

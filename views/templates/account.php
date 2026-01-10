@@ -10,16 +10,17 @@
 <div class="content">
     <div class="row1">
         <div class="column1">
-            <img src='img/user.jpg' alt='avatar utilisateur'>
+        <img id="avatar" src='<?php echo $avatar; ?>' alt='avatar <?php echo $pseudo; ?>'>
             <a href="">modifier</a>
             <div class="pseudo">
-                nathalire
+                <?php echo $pseudo; ?>
             </div>
             <div class="memberSince">
                 Membre depuis 1 an
             </div>
             <p>Bibliothèque</p>
             <div class="librarySize">
+                <img id="icon" src='img/iconeBibliotheque.svg' alt='icone bibliothèque'>
                 4 livres
             </div>
         </div>
@@ -27,13 +28,14 @@
             <div class="title">
                 Vos informations personnelles
             </div>
-            <form class="personalInfo">
-                <label for="mail">Adresse email</label>
-                <input type="text" class="mail" id="mail">
+            <form method="post" action="index.php?action=updateUser" class="personalInfo">
+                <label for="login">Adresse email</label>
+                <input type="text" name="login" class="login" id="login" value="<?php echo $login; ?>">
                 <label for="password">Mot de passe</label>
-                <input type="password" class="password" id="password">
+                <input type="password" name="password" class="password" id="password">
                 <label for="pseudo">Pseudo</label>
-                <input type="text" class="pseudo" id="pseudo">
+                <input type="text" name="pseudo" class="pseudo" id="pseudo" value="<?php echo $pseudo; ?>">
+                <input type="hidden" name="userId" value="<?php echo $userId; ?>">
                 <input type="submit" class="button-reverse" value="Enregistrer">
             </form>
 

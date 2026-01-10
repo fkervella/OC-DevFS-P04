@@ -42,7 +42,7 @@
     box-sizing: border-box
 }
 
-.column1 img {
+.column1 #avatar {
     width: 135px;
     height: auto;
     border-radius: 80px;
@@ -84,6 +84,15 @@
     font-family: 'inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.librarySize #icon {
+    height: 13px;
+    width: auto;
+    padding: 0px 5px 0px 5px;
 }
 
 .column2 .title {

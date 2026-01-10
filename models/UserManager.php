@@ -1,17 +1,37 @@
 <?php
 
 /**
+ * \brief Contient la logique métie de User Manager
  * UserManager gère les requêtes liées aux users et à l'authentification.
  */
 class UserManager extends AbstractEntityManager
 {
     /**
      * \brief Récupère un user par son login.
+     *
+     * @return User demandé ou null si non trouvé
      */
     public function getUserByLogin(string $login): ?User
     {
         $sql = 'SELECT * FROM user WHERE login=:login';
         $result = $this->db->query($sql, ['login' => $login]);
+        $user = $result->fetch();
+        if ($user) {
+            return new User($user);
+        }
+
+        return null;
+    }
+
+    /**
+     * \brief Récupère un User par son id.
+     *
+     * @return User demandé ou null si non trouvé
+     */
+    public function getUserById(int $userId): ?User
+    {
+        $sql = 'SELECT * FROM user WHERE id=:userId';
+        $result = $this->db->query($sql, ['userId' => $userId]);
         $user = $result->fetch();
         if ($user) {
             return new User($user);

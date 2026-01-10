@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * \brief représete un utilisateur
  * Entité User : un User est défini par son id, un login, un password, un pseudo, une date d'inscription et un avatar.
  */
 class User extends AbstractEntity
