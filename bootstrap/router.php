@@ -36,7 +36,11 @@ class Router
                     break;
 
                 case 'showBookDetail' :
-                    $bookId = $arguments[0];
+                    $bookId = Utils::request('bookId', -1);
+
+                    if (-1 === $bookId) {
+                        throw new Exception('Le numéro du livre indiqué est invalide : -1');
+                    }
 
                     $bookController = new BookController();
                     $bookController->showBookDetail($bookId);
@@ -74,7 +78,10 @@ class Router
                     break;
 
                 case 'showAccount':
-                    $userId = $arguments[0];
+                    $userId = Utils::request('userId', -1);
+                    if (-1 === $userId) {
+                        throw new Exception("l'identifiant de l'utilisateur indiqué n'est pas valide : {$userId}");
+                    }
 
                     $userController = new UserController();
                     $userController->showAccount($userId);
@@ -82,10 +89,19 @@ class Router
                     break;
 
                 case 'showChat':
-                    $userId = $arguments[0];
+                    $userId = Utils::request('userId', 1);
+                    if (-1 === $userId) {
+                        throw new Exception("l'identifiant indiqué pour l'utilisateur n'est pas valide : {$userId}");
+                    }
 
                     $messageController = new MessageController();
                     $messageController->showChat($userId);
+
+                    break;
+
+                case 'connectUser':
+                    $userController = new UserController();
+                    $userController->connectUser();
 
                     break;
 

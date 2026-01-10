@@ -157,5 +157,4 @@ page account : js pour affichage en responsive
 
 Toutes les pages : travailler sur la variation de la taille d'écran
 
-Dans index, ne pas récupérer les paramètres de la page, mais les récupérer dans les controllers
 
