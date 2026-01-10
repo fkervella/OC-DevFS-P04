@@ -45,12 +45,14 @@ class UserController
         $pseudo = htmlspecialchars($user->getPseudo());
         $login = htmlspecialchars($user->getLogin());
         $avatar = htmlspecialchars($user->getAvatar());
+        $userId = $user->getId();
 
         $view = new View('Mon compte');
         $view->render('account', [
             'pseudo' => $pseudo,
             'login' => $login,
             'avatar' => $avatar,
+            'userId' => $userId,
         ], 'account.css');
     }
 
@@ -121,5 +123,48 @@ class UserController
         $userManager->registerUser($pseudo, $login, $hash);
 
         Utils::redirect('showLogIn');
+    }
+
+    /**
+     * Met à jour les informations personnelles de l'utilsateur
+     */
+    public function updateUser(): void
+    {
+        // Récupération des données du formulaire
+        $pseudo = htmlspecialchars(Utils::request('pseudo'));
+        $login = htmlspecialchars(Utils::request('login'));
+        $password = htmlspecialchars(Utils::request('password'));
+        $userId = Utils::request('userId');
+
+        // Vérification que les données soient valides
+        if (empty($pseudo) || empty($login) || empty($password)) {
+            throw new Exception("Le pseudo, l'adresse mail et le mot de passe doivent être saisis.");
+        }
+
+        // Validation des données saisies
+        if (!filter_var($login, FILTER_VALIDATE_EMAIL)) {
+            throw new Exception("L'adresse mail saisie n'est pas valide");
+        }
+
+        // Vérification que l'utilisateur existe
+        $userManager = new UserManager();
+        $user = $userManager->getUserById($userId);
+        if (!$user) {
+            throw new Exception("L'utilisateur n'existe pas.");
+        }
+
+        if ($login !== $user->getLogin()) {
+            // Vérification qu'un utilisateur avec la même adresse mail n'existe pas
+            $userManager = new UserManager();
+            $user = $userManager->getUserByLogin($login);
+            if ($user) {
+                throw new Exception('Un utilisateur avec la même adresse mail existe déjà.');
+            }
+        }
+
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $userManager->updateUser($userId, $pseudo, $login, $hash);
+
+        Utils::redirect('showAccount&userId='.$userId);
     }
 }

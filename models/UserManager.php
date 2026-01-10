@@ -28,7 +28,7 @@ class UserManager extends AbstractEntityManager
      *
      * @return User demandé ou null si non trouvé
      */
-    public function getUserById(int $userId): ?User
+    public function getUserById(int|string $userId): ?User
     {
         $sql = 'SELECT * FROM user WHERE id=:userId';
         $result = $this->db->query($sql, ['userId' => $userId]);
@@ -57,6 +57,29 @@ class UserManager extends AbstractEntityManager
             'login' => $login,
             'password' => $hash,
             'avatar' => 'img/user.png',
+        ]);
+
+        return $result->rowCount() > 0;
+    }
+
+    /**
+     * \brief Met à jour les informations personnelles d'un utilisateur dans la base de données.
+     *
+     * @param $userId identifiant de l'utilisateur à mettre à jour
+     * @param $pseudo nouveau pseudo de l'utilisateur
+     * @param $login  nouvelle adresse mail de l'utilisateur
+     * @param $hash   nouveau mot de passe hashé de l'utilisateur
+     *
+     * @return true si la mise à jour a réussi, sinon false
+     */
+    public function updateUser($userId, $pseudo, $login, $hash): bool
+    {
+        $sql = 'UPDATE user SET pseudo=:pseudo, login=:login, password=:password WHERE id=:userId';
+        $result = $this->db->query($sql, [
+            'pseudo' => $pseudo,
+            'login' => $login,
+            'password' => $hash,
+            'userId' => $userId,
         ]);
 
         return $result->rowCount() > 0;

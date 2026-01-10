@@ -67,6 +67,12 @@ class Router
 
                     break;
 
+                case 'updateUser':
+                    $userController = new UserController();
+                    $userController->updateUser();
+
+                    break;
+
                 case 'showAccount':
                     $userId = $arguments[0];
 

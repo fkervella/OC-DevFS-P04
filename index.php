@@ -76,6 +76,11 @@ try {
 
             break;
 
+        case 'updateUser':
+            Router::updateUser();
+
+            break;
+
         default:
             throw new Exception("La page demandée {$action} n'existe pas.");
 
