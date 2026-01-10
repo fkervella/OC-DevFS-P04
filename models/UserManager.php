@@ -20,6 +20,28 @@ class UserManager extends AbstractEntityManager
         return null;
     }
 
+    /**
+     * \brief Enregistre l'utilisateur dans la base de données.
+     *
+     * @param $pseudo pseudo de l'utilisateur
+     * @param $login  adresse mail de l'utilisateur
+     * @param $hash   mot de passe hashé de l'utilisateur
+     *
+     * @return true si l'ajout a réussi, sinon false
+     */
+    public function registerUser($pseudo, $login, $hash): bool
+    {
+        $sql = 'INSERT INTO user (pseudo, login, password, creation_date, avatar) VALUES (:pseudo, :login, :password, NOW(), :avatar)';
+        $result = $this->db->query($sql, [
+            'pseudo' => $pseudo,
+            'login' => $login,
+            'password' => $hash,
+            'avatar' => 'img/user.png',
+        ]);
+
+        return $result->rowCount() > 0;
+    }
+
     /*
      * \brief Vérifie si l'utilisateur est connecté
      * @return état de connexion de l'utilisateur (1 : connecté / 0 : non connecté)

@@ -78,4 +78,37 @@ class UserController
         // Redirection vers la page du compte utilisateur
         Utils::redirect('showAccount&userId='.$user->getId());
     }
+
+    /**
+     * Enregistre un nouvel utilisateur.
+     */
+    public function registerUser(): void
+    {
+        // Récupération des données du formulaire
+        $pseudo = htmlspecialchars(Utils::request('pseudo'));
+        $login = htmlspecialchars(Utils::request('login'));
+        $password = htmlspecialchars(Utils::request('password'));
+
+        // Vérification que les données soient valides
+        if (empty($pseudo) || empty($login) || empty($password)) {
+            throw new Exception("Le pseudo, l'adresse mail et le mot de passe doivent être saisis.");
+        }
+
+        // Validation des données saisies
+        if (!filter_var($login, FILTER_VALIDATE_EMAIL)) {
+            throw new Exception("L'adresse mail saisie n'est pas valide");
+        }
+
+        // Vérification que l'utilisateur n'existe pas
+        $userManager = new UserManager();
+        $user = $userManager->getUserByLogin($login);
+        if ($user) {
+            throw new Exception("L'utilisateur existe déjà");
+        }
+
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $userManager->registerUser($pseudo, $login, $hash);
+
+        Utils::redirect('showLogIn');
+    }
 }

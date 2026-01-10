@@ -45,6 +45,11 @@ try {
 
             break;
 
+        case 'registerUser':
+            Router::registerUser();
+
+            break;
+
         case 'showAccount':
             $userId = Utils::request('userId', -1);
             if (-1 !== $userId) {
