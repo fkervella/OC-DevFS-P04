@@ -151,8 +151,6 @@ Afficher dans le header le nombre de messages non lus
 
 Convertir la date d'ajout de livre dans les fonctions setAddDate et getAddDate de la classe Book
 
-Balise h2 à remplacer par h1
-
 page account : js pour affichage en responsive
 
 Toutes les pages : travailler sur la variation de la taille d'écran
