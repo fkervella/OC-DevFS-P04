@@ -235,6 +235,28 @@ input {
     padding: 0px 10px 0px 10px;
 }
 
+textarea {
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #f0f0f0;
+    min-height: 150px;
+    width: 100%;
+    padding: 0px 10px 0px 10px;
+    font-family: 'inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+
+}
+
+select {
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #f0f0f0;
+    height: 50px;
+    padding: 0px 10px 0px 10px;
+    width: 100px;
+}
+
 .available {
     padding: 5px 10px 5px 10px;
     border-radius: 30px;

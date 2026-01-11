@@ -105,6 +105,18 @@ class Router
 
                     break;
 
+                case 'addBook':
+                    $bookController = new BookController();
+                    $bookController->showAddBook();
+
+                    break;
+
+                case 'registerBook':
+                    $bookController = new BookController();
+                    $bookController->registerBook();
+
+                    break;
+
                 default:
                     throw new Exception("Router : La page {$action} demandée n'existe pas.");
             }

@@ -33,6 +33,22 @@ class Book extends AbstractEntity
     }
 
     /**
+     * Setter pour l'id de l'utilisateur.
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * Getter pour l'id de l'utilisateur.
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
      * Setter pour le titre du livre.
      */
     public function setTitle(string $title): void
@@ -67,17 +83,25 @@ class Book extends AbstractEntity
     /**
      * Setter pour l'image du livre.
      */
-    public function setPicture(string $picture): void
+    public function setPicture(?string $picture): void
     {
-        $this->picture = $picture;
+        if (is_null($picture)) {
+            $this->picture = '';
+        } else {
+            $this->picture = $picture;
+        }
     }
 
     /**
      * Getter pour l'image du livre.
      */
-    public function getPicture(): string
+    public function getPicture(): ?string
     {
-        return $this->picture;
+        if ('' !== $this->picture) {
+            return $this->picture;
+        }
+
+        return null;
     }
 
     /**

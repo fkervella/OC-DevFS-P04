@@ -65,6 +65,16 @@ try {
 
             break;
 
+        case 'addBook':
+            Router::addBook();
+
+            break;
+
+        case 'registerBook':
+            Router::registerBook();
+
+            break;
+
         default:
             throw new Exception("La page demandée {$action} n'existe pas.");
 

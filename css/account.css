@@ -87,6 +87,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 0px 0px 20px 0px;
 }
 
 .librarySize #icon {

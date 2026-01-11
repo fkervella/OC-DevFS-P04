@@ -1,0 +1,13 @@
+.content 
+{
+    margin: 0px 150px 0px 150px;
+}
+
+form 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    margin: auto;
+}
+

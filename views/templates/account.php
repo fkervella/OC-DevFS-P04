@@ -23,6 +23,11 @@
                 <img id="icon" src='img/iconeBibliotheque.svg' alt='icone bibliothèque'>
                 4 livres
             </div>
+            <a href="index.php?action=addBook">
+                <div class="button">
+                    Ajouter un livre
+                </div>
+            </a>
         </div>
         <div class="column2">
             <div class="title">
