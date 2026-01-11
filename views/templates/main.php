@@ -59,6 +59,7 @@
                 </div>
                 <div class="burgerMenu">
                     <a href='index.php'><img src='img/iconMenu.svg' alt='icône menu'></a>
+                </div>
             </nav>
         </header>
 

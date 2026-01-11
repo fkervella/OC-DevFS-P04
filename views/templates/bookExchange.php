@@ -12,7 +12,7 @@
         <img src='img/chercher.png' alt='recherche'>
         <form>
             <label for='searchWords'>Recherche :</label>
-            <input type="text" class="searchWords" id='searchWords' value='Rechercher un livre'></input>
+            <input type="text" class="searchWords" id='searchWords' value='Rechercher un livre'>
         </form>
     </div>
 </div>

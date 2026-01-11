@@ -10,13 +10,13 @@
         <h2>Ajouter un livre</h2>
         <form method="post" action="index.php?action=registerBook" enctype="multipart/form-data">
             <label for="title">Titre</label>
-            <input type="text" name="title" class="title">
+            <input type="text" name="title" id="title" class="title">
             <label for="author">Auteur</label>
-            <input type="text" name="author" class="author">
+            <input type="text" name="author" id="author" class="author">
             <label for="description">Description</label>
-            <textarea name="description" class="description"></textarea>
-            <label for"availability">Disponibilité</label>
-            <select name="availability" class="availability">
+            <textarea name="description" id="description" class="description"></textarea>
+            <label for="availability">Disponibilité</label>
+            <select name="availability" id="availability" class="availability">
                 <option value="available">Disponible</option>
                 <option value="unavailable">Non disponible</option>
             </select>
