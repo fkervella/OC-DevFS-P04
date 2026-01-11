@@ -5,3 +5,4 @@ vendor
 *.swp
 .php-cs-fixer.*
 .vscode
+img/books
