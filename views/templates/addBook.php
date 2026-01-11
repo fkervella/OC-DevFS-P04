@@ -7,7 +7,7 @@
 
 <div class="content">
     <div class="column2">
-        <h2>Ajouter un livre</h2>
+        <h1>Ajouter un livre</h1>
         <form method="post" action="index.php?action=registerBook" enctype="multipart/form-data">
             <label for="title">Titre</label>
             <input type="text" name="title" id="title" class="title">

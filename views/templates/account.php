@@ -6,7 +6,7 @@
 ?>
 
 <div class="page">
-<h2>Mon compte</h2>
+<h1>Mon compte</h1>
 <div class="content">
     <div class="row1">
         <div class="column1">

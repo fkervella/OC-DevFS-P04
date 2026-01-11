@@ -7,7 +7,7 @@
 
 <div class="content">
     <div class="column1">
-        <h2>Connexion</h2>
+        <h1>Connexion</h1>
         <form class="signIn" method="post" action="index.php?action=connectUser">
             <label for="login">Adresse email</label>
             <input name="login"type="text" class="login" id="login" required>

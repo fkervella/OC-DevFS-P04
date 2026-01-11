@@ -43,7 +43,7 @@ p {
     padding: 50px 0px 50px 0px;
 }
 
-.lastAddedBooks h2 {
+.lastAddedBooks h1 {
     display: flex;
     justify-content: center;
 }
@@ -62,7 +62,7 @@ p {
     flex-direction: column;
 }
 
-.howDoesItWork h2 {
+.howDoesItWork h1 {
     display: flex;
     justify-content: center;
 }
@@ -160,7 +160,7 @@ p {
         padding-right: 25px;
     }
 
-    .lastAddedBooks h2 {
+    .lastAddedBooks h1 {
         font-size: 28px;
         padding: 0px 55px 30px 55px;
         text-align: center;

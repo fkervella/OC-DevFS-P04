@@ -47,7 +47,7 @@ label {
 
 @media all and (max-width :800px) {
 
-    h2 {
+    h1 {
         margin: 10px 0px 15px 0px;    
     }
     

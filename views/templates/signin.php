@@ -7,7 +7,7 @@
 
 <div class="content">
     <div class="column1">
-        <h2>Inscription</h2>
+        <h1>Inscription</h1>
         <form class="signIn" method="post" action="index.php?action=registerUser">
             <label for="pseudo">Pseudo</label>
             <input type="text" name="pseudo" class="pseudo" id="pseudo">

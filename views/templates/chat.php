@@ -7,7 +7,7 @@
 
 <div class="content">
     <div class="column1">
-        <h2>Messagerie</h2>
+        <h1>Messagerie</h1>
         <div class="chats">
             <div class="chat selectedChat">
                 <img src="img/user.jpg" alt="">
@@ -66,7 +66,7 @@
         </div>
         <form class="newMessage">
             <label for="newMessageText">Message: </label>
-            <input type="text" class="newMessageText" id="newMessageText" value="Tapez votre message ici">
+            <input type="text" class="newMessageText" name="newMessageText" id="newMessageText" value="Tapez votre message ici">
             <input type="submit" class="button" value="Envoyer"> 
         </form>
     </div>

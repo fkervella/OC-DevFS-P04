@@ -117,7 +117,7 @@ nav .burgerMenu {
     font-weight: 600;
 }
 
-h2 {
+h1 {
     font-family: 'Playfair Display';
     font-size: 36px;
     font-weight: 400;
@@ -329,7 +329,7 @@ select {
 
     }
 
-    h2 {
+    h1 {
         font-size: 30px;
         margin: 10px 0px 10px 0px;
     }

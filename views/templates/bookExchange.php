@@ -7,12 +7,12 @@
 
 <div class='top'>
 
-    <h2>Nos livres à l'échange</h2>
+    <h1>Nos livres à l'échange</h1>
     <div class='search'>
         <img src='img/chercher.png' alt='recherche'>
         <form>
-            <label for='searchWords'>Recherche :</label>
-            <input type="text" class="searchWords" id='searchWords' value='Rechercher un livre'>
+            <label for="searchWords">Recherche :</label>
+            <input type="text" class="searchWords" name="searchWords" id="searchWords" value="Rechercher un livre">
         </form>
     </div>
 </div>
