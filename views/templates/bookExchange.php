@@ -10,7 +10,7 @@
     <h1>Nos livres à l'échange</h1>
     <div class='search'>
         <img src='img/chercher.png' alt='recherche'>
-        <form>
+        <form method="get" action="index.php?action=showBookExhange">
             <label for="searchWords">Recherche :</label>
             <input type="text" class="searchWords" name="searchWords" id="searchWords" value="Rechercher un livre">
         </form>
@@ -19,6 +19,29 @@
 
 <div class='content'>
     <div class='bookCards'>
+        <?php foreach ($books as $book) { ?>
+            <div class="bookCard">
+                <a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>">
+                <img src="<?php if (empty($book->getPicture())) {
+                    echo 'img/imageTest.png';
+                } else {
+                    echo $book->getPicture();
+                }
+            ?>" alt="image1">
+                <div class="title">
+                    <?php echo $book->getTitle(); ?>
+                </div>
+                    <div class="author"><?php echo $book->getAuthor(); ?>
+                    </div>
+                        <div class="seller">Vendu par : <?php echo $book->getSellerPseudo(); ?>
+                    </div>
+                </a>
+            </div>
+            <?php } ?>
+
+<!--
+
+
         <div class="bookCard">
             <a href="index.php?action=showBookDetail&bookId=1">
                 <img src="img/imageTest.png" alt="image1">
@@ -194,6 +217,6 @@
                 <div class="seller">Vendu par : vendeur 16
                 </div>
             </a>
-        </div>
+        </div>-->
     </div>
 </div>

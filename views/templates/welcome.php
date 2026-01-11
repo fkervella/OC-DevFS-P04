@@ -29,50 +29,26 @@
         <div class="content">
             <h1>Les derniers livres ajoutés</h1>
             <div class="bookCards">
+                <?php foreach ($books as $book) { ?>
                 <div class="bookCard">
-                    <a href="index.php?action=showBookDetail&bookId=1">
-                        <img src="img/imageTest.png" alt="image1">
-                        <div class="title">Image 1
+                    <a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>">
+                    <img src="<?php if (empty($book->getPicture())) {
+                        echo 'img/imageTest.png';
+                    } else {
+                        echo $book->getPicture();
+                    }
+                    ?>" alt="image1">
+                    <div class="title">
+                        <?php echo $book->getTitle(); ?>
+                    </div>
+                        <div class="author"><?php echo $book->getAuthor(); ?>
                         </div>
-                        <div class="author">Auteur 1
-                        </div>
-                        <div class="seller">Vendu par : vendeur 1
+                            <div class="seller">Vendu par : <?php echo $book->getSellerPseudo(); ?>
                         </div>
                     </a>
                 </div>
-                <div class="bookCard">
-                    <a href="index.php?action=showBookDetail&bookId=2">
-                        <img src="img/imageTest.png" alt="image2">
-                        <div class="title">Image 2
-                        </div>
-                        <div class="author">Auteur 2
-                        </div>
-                        <div class="seller">Vendu par : vendeur 2
-                        </div>
-                    </a>
-                </div>
-                <div class="bookCard">
-                    <a href="index.php?action=showBookDetail&bookId=3">
-                        <img src="img/imageTest.png" alt="image3">
-                        <div class="title">Image 3
-                        </div>
-                        <div class="author">Auteur 3
-                        </div>
-                        <div class="seller">Vendu par : vendeur 3
-                        </div>
-                    </a>
-                </div>
-                <div class="bookCard">
-                    <a href="index.php?action=showBookDetail&bookId=4">
-                        <img src="img/imageTest.png" alt="image4">
-                        <div class="title">Image 4
-                        </div>
-                        <div class="author">Auteur 4
-                        </div>
-                        <div class="seller">Vendu par : vendeur 4
-                        </div>
-                    </a>
-                </div>
+
+                <?php } ?>
             </div>
             <div class="button">
                 <a href='index.php?action=showBookExchange'>Voir tous les livres</a>

@@ -14,7 +14,7 @@ class BookManager extends AbstractEntityManager
      */
     public function getLastAddedBooks($limit): ?array
     {
-        $sql = "SELECT * FROM book ORDER BY add_date DESC LIMIT {$limit}";
+        $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'sellerId', user.pseudo as 'sellerPseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id ORDER BY add_date DESC LIMIT {$limit}";
         $result = $this->db->query($sql);
         $books = [];
 
@@ -33,9 +33,29 @@ class BookManager extends AbstractEntityManager
      *
      * @return array : tableau d'objets Book
      */
-    public function getSearchedBooks(?int $limit = 1, ?array $keyWords = []): ?array
+    public function getSearchedBooks(?int $limit = 1, ?array $keyWordsArray = []): ?array
     {
-        $sql = "SELECT * FROM book LIMIT {$limit}";
+        $initial = 1;
+        $search = "";
+        foreach($keyWordsArray as $keyWord)
+        {
+            if($keyWord !== "")
+            {
+                if ($initial === 1)
+                {
+                    $search = "WHERE title like %{$keyWord}% ";
+                    $initial = 0;
+                }
+                else
+                    $search .= "AND title like %{$keyWord}% ";
+            }
+        }
+
+        if ($search ==='')
+            $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'sellerId', user.pseudo as 'sellerPseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id ORDER BY add_date DESC LIMIT {$limit}";
+        else
+            $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'sellerId', user.pseudo as 'sellerPseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id WHERE {$search} ORDER BY add_date DESC LIMIT {$limit}";
+
         $result = $this->db->query($sql);
         $books = [];
 

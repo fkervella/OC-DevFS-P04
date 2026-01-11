@@ -15,6 +15,8 @@ class Book extends AbstractEntity
     private string $description = '';
     private int $availability = 0;
     private ?string $addDate = null;
+    private string $sellerPseudo = '';
+    private ?int $sellerId = null;
 
     /**
      * Setter pour l'id de l'utilisateur.
@@ -150,5 +152,41 @@ class Book extends AbstractEntity
     public function getAddDate(): string
     {
         return $this->addDate;
+    }
+
+    /**
+     * Setter pour le pseudo du vendeur du livre.
+     */
+    public function setSellerPseudo(?string $pseudo): void
+    {
+        if (is_null($pseudo)) {
+            $this->sellerPseudo = '';
+        } else {
+            $this->sellerPseudo = $pseudo;
+        }
+    }
+
+    /**
+     * Getter pour le pseudo du vendeur du livre.
+     */
+    public function getSellerPseudo(): string
+    {
+        return $this->sellerPseudo;
+    }
+
+    /**
+     * Setter pour l'identifiant du vendeur du livre.
+     */
+    public function setSellerId(?int $userId): void
+    {
+        $this->sellerId = $userId;
+    }
+
+    /**
+     * Getter pour l'identifiant du vendeur du livre.
+     */
+    public function getSellerId(): string
+    {
+        return $this->sellerId;
     }
 }
