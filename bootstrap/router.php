@@ -78,13 +78,8 @@ class Router
                     break;
 
                 case 'showAccount':
-                    $userId = Utils::request('userId', -1);
-                    if (-1 === $userId) {
-                        throw new Exception("l'identifiant de l'utilisateur indiqué n'est pas valide : {$userId}");
-                    }
-
                     $userController = new UserController();
-                    $userController->showAccount($userId);
+                    $userController->showAccount();
 
                     break;
 

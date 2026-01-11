@@ -37,8 +37,13 @@ class UserController
     /**
      * Affiche la page du compte utilisateur.
      */
-    public function showAccount(int $userId): void
+    public function showAccount(): void
     {
+        $userId = Utils::request('userId', -1);
+        if (-1 === $userId) {
+            throw new Exception("l'identifiant de l'utilisateur indiqué n'est pas valide : {$userId}");
+        }
+
         $userManager = new UserManager();
         $user = $userManager->getUserById($userId);
 
@@ -54,6 +59,10 @@ class UserController
         $interval = $creationDate->diff($nowDate);
         $ecart = $interval->format('%a jours');
 
+        // Récupération des livres de l'utilisateur
+        $bookManager = new BookManager();
+        $books = $bookManager->getUserBooks($userId);
+
         $view = new View('Mon compte');
         $view->render('account', [
             'pseudo' => $pseudo,
@@ -61,6 +70,7 @@ class UserController
             'avatar' => $avatar,
             'userId' => $userId,
             'ecart' => $ecart,
+            'books' => $books,
         ], 'account.css');
     }
 

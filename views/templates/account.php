@@ -55,50 +55,50 @@
             <div class="grid-header-cell hAvailability">Disponiblité</div>
             <div class="grid-header-cell hActions">Actions</div>
         </div>
-        <div class="grid-row oddRow">
+
+        <?php
+            $counter = 1;
+foreach ($books as $book) { ?>
+            <div class="grid-row 
+                <?php if (Utils::isEven($counter)) {
+                    echo 'evenRow';
+                } else {
+                    echo 'oddRow';
+                }
+
+    if ($counter === sizeof($books) - 1) {
+        echo ' lastRow';
+    }
+
+    ++$counter;
+    ?>">
             <div class="grid-row-cell hImage">
-                <img src="img/detailLivre.jpg" alt="couverture livre">
+            <img src="<?php echo $book->getPicture(); ?>" alt="couverture livre <?php echo $book->getTitle(); ?>">
             </div>
             <div class="grid-row-cell hTitle">
-                <p class="bookTitle">The Kinfolk Table</p>
+            <p class="bookTitle"><?php echo $book->getTitle(); ?></p>
             </div>
             <div class="grid-row-cell hAuthor">
-                <p class="bookAuthor">Nathan Williams</p>
+            <p class="bookAuthor"><?php echo $book->getAuthor(); ?></p>
             </div>
             <div class="grid-row-cell hDescription">
-                <p class="bookDescription">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par ce que j'ai lu. Et j'ai encore plein d'autres choses à dire dessus, mais pour le moment, il je dois aller à la piscine.</p>
+            <p class="bookDescription"><?php echo $book->getDescription(); ?></p>
             </div>
             <div class="grid-row-cell hAvailability">
-                <div class="available">disponible
-                </div>
+                <?php if (1 === $book->getAvailability()) { ?>
+                    <div class="available">disponible
+                    </div>
+                <?php } else { ?>
+                    <div class="unavailable">non dispo.
+                    </div>
+                <?php }?>
             </div>
             <div class="grid-row-cell hActions">
-                <a href="" class="modifyBook">Editer</a>
-                <a href="" class="deleteBookFromLibrary">Supprimer</a>
+            <a href="index.php?action=modifyBook&bookId=<?php echo $book->getId(); ?>" class="modifyBook">Editer</a>
+            <a href="index.php?action=deleteBook&bookId=<?php echo $book->getId(); ?>" class="deleteBookFromLibrary">Supprimer</a>
             </div>
         </div>
-        <div class="grid-row evenRow lastRow">
-            <div class="grid-row-cell hImage">
-                <img src="img/detailLivre.jpg" alt="couverture livre">
-            </div>
-            <div class="grid-row-cell hTitle">
-                <p class="bookTitle">The Kinfolk Table</p>
-            </div>
-            <div class="grid-row-cell hAuthor">
-                <p class="bookAuthor">Nathan Williams</p>
-            </div>
-            <div class="grid-row-cell hDescription">
-                <p class="bookDescription">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par ce que j'ai lu</p>
-            </div>
-            <div class="grid-row-cell hAvailability">
-                <div class="unavailable">non dispo.
-                </div>
-            </div>
-            <div class="grid-row-cell hActions">
-                <a href="" class="modifyBook">Editer</a>
-                <a href="" class="deleteBookFromLibrary">Supprimer</a>
-            </div>
-        </div>
+        <?php } ?>
     </div>
 </div>
 </div>

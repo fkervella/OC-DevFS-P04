@@ -15,7 +15,7 @@ class Utils
      * ou celle qui est passée en paramètre si elle existe.
      *
      * @param string $variableName : le nom de la variable à récupérer
-     * @param mixes  $defaultValue : la valeur par défaut retournée si la variable n'est pas définie
+     * @param mixed  $defaultValue : la valeur par défaut retournée si la variable n'est pas définie
      *
      * @return mixed : la valeur de la variable ou la valeur par défaut
      */
@@ -39,5 +39,48 @@ class Utils
         header("Location: {$url}");
 
         exit;
+    }
+
+    /**
+     * Cette méthode protège une chaine de caractères contre les attaques XSS.
+     * De plus, elle transforme les retours à la ligne en balises <p> pour un affichage plus agréable.
+     *
+     * @param string $string : la chaine à protéger
+     *
+     * @return string : la chaine protégée
+     */
+    public static function format(string $string): string
+    {
+        // Etape 1 : protection du texte avec htmlspecialchard
+        $finalString = htmlspecialchars($string, ENT_QUOTES);
+
+        // Etape 2 : texte découpé par rapport aux retours à la ligne
+        $lines = explode("\n", $finalString);
+
+        // Etape 3 : Recontruction en mettant chaque ligne dans un paragraphe (et en sautant les lignes vides)
+        $finalString = '';
+        foreach ($lines as $line) {
+            if ('' != trim($line)) {
+                $finalString .= "<p>{$line}</p>";
+            }
+        }
+
+        return $finalString;
+    }
+
+    /**
+     * Cette méthode vérifie si le nombre est pair.
+     *
+     * @param $number nombre à évaluer
+     *
+     * @return true si le nombre est pair, sinon false
+     */
+    public static function isEven(int $number): bool
+    {
+        if (0 == $number % 2) {
+            return true;
+        }
+
+        return false;
     }
 }

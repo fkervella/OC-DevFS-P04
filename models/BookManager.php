@@ -28,33 +28,30 @@ class BookManager extends AbstractEntityManager
     /**
      * Récupère les livres disponibles pour échange selon les mots clés indiqués.
      *
-     * @param mixed $limit    : nombre maximum de livres renvoyés
-     * @param array $keyWords : mots clés recherchés
+     * @param mixed $limit : nombre maximum de livres renvoyés
      *
      * @return array : tableau d'objets Book
      */
     public function getSearchedBooks(?int $limit = 1, ?array $keyWordsArray = []): ?array
     {
         $initial = 1;
-        $search = "";
-        foreach($keyWordsArray as $keyWord)
-        {
-            if($keyWord !== "")
-            {
-                if ($initial === 1)
-                {
+        $search = '';
+        foreach ($keyWordsArray as $keyWord) {
+            if ('' !== $keyWord) {
+                if (1 === $initial) {
                     $search = "WHERE title like %{$keyWord}% ";
                     $initial = 0;
-                }
-                else
+                } else {
                     $search .= "AND title like %{$keyWord}% ";
+                }
             }
         }
 
-        if ($search ==='')
+        if ('' === $search) {
             $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'sellerId', user.pseudo as 'sellerPseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id ORDER BY add_date DESC LIMIT {$limit}";
-        else
+        } else {
             $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'sellerId', user.pseudo as 'sellerPseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id WHERE {$search} ORDER BY add_date DESC LIMIT {$limit}";
+        }
 
         $result = $this->db->query($sql);
         $books = [];
@@ -153,5 +150,25 @@ class BookManager extends AbstractEntityManager
         }
 
         return null;
+    }
+
+    /**
+     * Renvoi un tableau de Book contenant les livres de l'utilisateur.
+     *
+     * @param $userId identifiant de l'utilisateur
+     *
+     * @return array tableau de Book de l'utilisateur
+     */
+    public function getUserBooks($userId): array
+    {
+        $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'sellerId', user.pseudo as 'sellerPseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id ORDER BY add_date DESC";
+        $result = $this->db->query($sql);
+        $books = [];
+
+        while ($book = $result->fetch()) {
+            $books[] = new Book($book);
+        }
+
+        return $books;
     }
 }
