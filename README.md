@@ -160,3 +160,5 @@ page account : modification de l'avatar de l'utilisateur
 registerBook : vérifier qu'un livre avec le même titre et le même auteur n'existe pas déjà
 
 addBook : rendre plus beau le bouton de sélection de l'image du livre
+
+Nos livres à l'échange : JS : lors du clic sur la recherche, effacer le contenu si c'est le texte pas défaut qui est saisi
