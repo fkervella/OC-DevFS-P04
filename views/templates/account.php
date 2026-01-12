@@ -73,7 +73,12 @@ foreach ($books as $book) { ?>
     ++$counter;
     ?>">
             <div class="grid-row-cell hImage">
-            <img src="<?php echo $book->getPicture(); ?>" alt="couverture livre <?php echo $book->getTitle(); ?>">
+            <img src="<?php 
+                            if (empty($book->getPicture())) {
+                                echo 'img/imageTest.png';
+                            } else {
+                                echo$book->getPicture();
+                            } ?>" alt="couverture livre <?php echo $book->getTitle(); ?>">
             </div>
             <div class="grid-row-cell hTitle">
             <p class="bookTitle"><?php echo $book->getTitle(); ?></p>
