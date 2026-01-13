@@ -54,64 +54,66 @@
 
         </div>
     </div>
-    <div class="row2">
-        <div class="grid-header">
-            <div class="grid-header-cell hImage">Photo</div>
-            <div class="grid-header-cell hTitle">Titre</div>
-            <div class="grid-header-cell hAuthor">Auteur</div>
-            <div class="grid-header-cell hDescription">Description</div>
-            <div class="grid-header-cell hAvailability">Disponiblité</div>
-            <div class="grid-header-cell hActions">Actions</div>
+    <?php if ($bookNumber > 0) { ?>
+        <div class="row2">
+            <div class="grid-header">
+                <div class="grid-header-cell hImage">Photo</div>
+                <div class="grid-header-cell hTitle">Titre</div>
+                <div class="grid-header-cell hAuthor">Auteur</div>
+                <div class="grid-header-cell hDescription">Description</div>
+                <div class="grid-header-cell hAvailability">Disponiblité</div>
+                <div class="grid-header-cell hActions">Actions</div>
+            </div>
+    
+            <?php
+                $counter = 1;
+        foreach ($books as $book) { ?>
+                <div class="grid-row 
+                    <?php if (Utils::isEven($counter)) {
+                        echo 'evenRow';
+                    } else {
+                        echo 'oddRow';
+                    }
+
+            if ($counter === sizeof($books) - 1) {
+                echo ' lastRow';
+            }
+
+            ++$counter;
+            ?>">
+                <div class="grid-row-cell hImage">
+                <img src="<?php
+                                if (empty($book->getPicture())) {
+                                    echo 'img/imageTest.png';
+                                } else {
+                                    echo $book->getPicture();
+                                } ?>" alt="couverture livre <?php echo $book->getTitle(); ?>">
+                </div>
+                <div class="grid-row-cell hTitle">
+                <p class="bookTitle"><?php echo $book->getTitle(); ?></p>
+                </div>
+                <div class="grid-row-cell hAuthor">
+                <p class="bookAuthor"><?php echo $book->getAuthor(); ?></p>
+                </div>
+                <div class="grid-row-cell hDescription">
+                <p class="bookDescription"><?php echo $book->getDescription(); ?></p>
+                </div>
+                <div class="grid-row-cell hAvailability">
+                    <?php if (1 === $book->getAvailability()) { ?>
+                        <div class="available">disponible
+                        </div>
+                    <?php } else { ?>
+                        <div class="unavailable">non dispo.
+                        </div>
+                    <?php }?>
+                </div>
+                <div class="grid-row-cell hActions">
+                <a href="index.php?action=showUpdateBook&bookId=<?php echo $book->getId(); ?>" class="modifyBook">Editer</a>
+                <a href="index.php?action=deleteBook&bookId=<?php echo $book->getId(); ?>" class="deleteBookFromLibrary">Supprimer</a>
+                </div>
+            </div>
+            <?php } ?>
         </div>
-
-        <?php
-            $counter = 1;
-foreach ($books as $book) { ?>
-            <div class="grid-row 
-                <?php if (Utils::isEven($counter)) {
-                    echo 'evenRow';
-                } else {
-                    echo 'oddRow';
-                }
-
-    if ($counter === sizeof($books) - 1) {
-        echo ' lastRow';
-    }
-
-    ++$counter;
-    ?>">
-            <div class="grid-row-cell hImage">
-            <img src="<?php
-                            if (empty($book->getPicture())) {
-                                echo 'img/imageTest.png';
-                            } else {
-                                echo $book->getPicture();
-                            } ?>" alt="couverture livre <?php echo $book->getTitle(); ?>">
-            </div>
-            <div class="grid-row-cell hTitle">
-            <p class="bookTitle"><?php echo $book->getTitle(); ?></p>
-            </div>
-            <div class="grid-row-cell hAuthor">
-            <p class="bookAuthor"><?php echo $book->getAuthor(); ?></p>
-            </div>
-            <div class="grid-row-cell hDescription">
-            <p class="bookDescription"><?php echo $book->getDescription(); ?></p>
-            </div>
-            <div class="grid-row-cell hAvailability">
-                <?php if (1 === $book->getAvailability()) { ?>
-                    <div class="available">disponible
-                    </div>
-                <?php } else { ?>
-                    <div class="unavailable">non dispo.
-                    </div>
-                <?php }?>
-            </div>
-            <div class="grid-row-cell hActions">
-            <a href="index.php?action=showUpdateBook&bookId=<?php echo $book->getId(); ?>" class="modifyBook">Editer</a>
-            <a href="index.php?action=deleteBook&bookId=<?php echo $book->getId(); ?>&userId=<?php echo $book->getSellerId(); ?>" class="deleteBookFromLibrary">Supprimer</a>
-            </div>
-        </div>
-        <?php } ?>
-    </div>
+    <?php } ?>
 </div>
 </div>

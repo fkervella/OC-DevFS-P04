@@ -67,6 +67,10 @@ class BookController
      */
     public function showAddBook(): void
     {
+        if (!isset($_SESSION['userId'])) {
+            Utils::redirect('showHome');
+        }
+
         $view = new View("Ajout d'un livre");
         $view->render('addBook', [], 'addBook.css');
     }
@@ -76,7 +80,11 @@ class BookController
      */
     public function registerBook(): void
     {
-        $userId = htmlspecialchars(Utils::request('userId'));
+        if (!isset($_SESSION['userId'])) {
+            Utils::redirect('showHome');
+        }
+
+        $userId = $_SESSION['userId'];
         $title = htmlspecialchars(Utils::request('title'));
         $author = htmlspecialchars(Utils::request('author'));
         $description = htmlspecialchars(Utils::request('description'));
@@ -143,7 +151,7 @@ class BookController
 
         $bookManager->updatePicture($bookId, $bookPicture);
 
-        Utils::redirect('showAccount&userId='.$userId);
+        Utils::redirect('showAccount');
     }
 
     /**
@@ -151,6 +159,10 @@ class BookController
      */
     public function showUpdateBook(): void
     {
+        if (!isset($_SESSION['userId'])) {
+            Utils::redirect('showHome');
+        }
+
         $bookId = htmlspecialchars(Utils::request('bookId'));
 
         $bookManager = new BookManager();
@@ -167,8 +179,12 @@ class BookController
      */
     public function deleteBook(): void
     {
+        if (!isset($_SESSION['userId'])) {
+            Utils::redirect('showHome');
+        }
+
         $bookId = htmlspecialchars(Utils::request('bookId'));
-        $userId = htmlspecialchars(Utils::request('userId'));
+        $userId = $_SESSION['userId'];
 
         if (empty($userId)) {
             throw new Exception('Suppression du livre impossible, structure incohérente');
@@ -203,7 +219,7 @@ class BookController
             throw new Exception('Une erreur est survenue lors de la suppression du livre');
         }
 
-        Utils::redirect('showAccount&userId='.$userId);
+        Utils::redirect('showAccount');
     }
 
     /**
@@ -211,8 +227,12 @@ class BookController
      */
     public function updateBook(): void
     {
+        if (!isset($_SESSION['userId'])) {
+            Utils::redirect('showHome');
+        }
+
         $bookId = htmlspecialchars(Utils::request('bookId'));
-        $userId = htmlspecialchars(Utils::request('userId'));
+        $userId = $_SESSION['userId'];
         $title = htmlspecialchars(Utils::request('title'));
         $author = htmlspecialchars(Utils::request('author'));
         $description = htmlspecialchars(Utils::request('description'));
@@ -273,6 +293,6 @@ class BookController
 
         $bookManager->updatePicture($bookId, $bookPicture);
          */
-        Utils::redirect('showAccount&userId='.$userId);
+        Utils::redirect('showAccount');
     }
 }

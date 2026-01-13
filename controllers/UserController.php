@@ -39,10 +39,11 @@ class UserController
      */
     public function showAccount(): void
     {
-        $userId = Utils::request('userId', -1);
-        if (-1 === $userId) {
-            throw new Exception("l'identifiant de l'utilisateur indiqué n'est pas valide : {$userId}");
+        if (!isset($_SESSION['userId'])) {
+            Utils::redirect('showHome');
         }
+
+        $userId = $_SESSION['userId'];
 
         $userManager = new UserManager();
         $user = $userManager->getUserById($userId);
@@ -50,7 +51,6 @@ class UserController
         $pseudo = htmlspecialchars($user->getPseudo());
         $login = htmlspecialchars($user->getLogin());
         $avatar = htmlspecialchars($user->getAvatar());
-        $userId = $user->getId();
 
         // Calcul pour déterminer depuis quand l'utilisateur est enregistré
         $creationDate = new DateTime($user->getCreationDate());
@@ -109,7 +109,7 @@ class UserController
         $_SESSION['userId'] = $user->getId();
 
         // Redirection vers la page du compte utilisateur
-        Utils::redirect('showAccount&userId='.$user->getId());
+        Utils::redirect('showAccount');
     }
 
     /**
@@ -150,11 +150,16 @@ class UserController
      */
     public function updateUser(): void
     {
+        if (!isset($_SESSION['userId'])) {
+            Utils::redirect('showHome');
+        }
+
+        $userId = $_SESSION['userId'];
+
         // Récupération des données du formulaire
         $pseudo = htmlspecialchars(Utils::request('pseudo'));
         $login = htmlspecialchars(Utils::request('login'));
         $password = htmlspecialchars(Utils::request('password'));
-        $userId = Utils::request('userId');
 
         // Vérification que les données soient valides
         if (empty($pseudo) || empty($login) || empty($password)) {
@@ -185,6 +190,6 @@ class UserController
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $userManager->updateUser($userId, $pseudo, $login, $hash);
 
-        Utils::redirect('showAccount&userId='.$userId);
+        Utils::redirect('showAccount');
     }
 }

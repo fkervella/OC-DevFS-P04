@@ -46,7 +46,7 @@
                         <a href='index.php?action=showChat' <?php if ('chat' === $viewName) {
                             echo 'class="activePage"';
                         } ?>><img class="headerIcon" src="img/iconeMessagerie.svg" alt="icone Messagerie">Messagerie</a>
-                            <a href='index.php?action=showAccount&userId=<?php echo $_SESSION['userId']; ?>' <?php if ('account' === $viewName) {
+                            <a href='index.php?action=showAccount' <?php if ('account' === $viewName) {
                                 echo 'class="activePage"';
                             } ?>><img class="headerIcon" src="img/iconeMonCompte.svg" alt="icone mon compte">Mon compte</a>
                         <a href='index.php?action=showLogOut'>Déconnexion</a>
