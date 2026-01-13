@@ -162,3 +162,5 @@ registerBook : vérifier qu'un livre avec le même titre et le même auteur n'ex
 addBook : rendre plus beau le bouton de sélection de l'image du livre
 
 Nos livres à l'échange : JS : lors du clic sur la recherche, effacer le contenu si c'est le texte pas défaut qui est saisi
+
+UpdateBook : réussir la prise en compte de la valeur précédente d'image pour la mise à jour (doit fonctionner sans modifier l'image, ce qui n'est pas le cas aujourd'hui)
