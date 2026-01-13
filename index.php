@@ -65,13 +65,28 @@ try {
 
             break;
 
-        case 'addBook':
-            Router::addBook();
+        case 'showAddBook':
+            Router::showAddBook();
 
             break;
 
         case 'registerBook':
             Router::registerBook();
+
+            break;
+
+        case 'showUpdateBook':
+            Router::showUpdateBook();
+
+            break;
+
+        case 'deleteBook':
+            Router::deleteBook();
+
+            break;
+
+        case 'updateBook':
+            Router::updateBook();
 
             break;
 

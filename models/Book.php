@@ -185,7 +185,7 @@ class Book extends AbstractEntity
     /**
      * Getter pour l'identifiant du vendeur du livre.
      */
-    public function getSellerId(): string
+    public function getSellerId(): int
     {
         return $this->sellerId;
     }

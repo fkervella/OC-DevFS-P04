@@ -28,7 +28,8 @@ class BookManager extends AbstractEntityManager
     /**
      * Récupère les livres disponibles pour échange selon les mots clés indiqués.
      *
-     * @param mixed $limit : nombre maximum de livres renvoyés
+     * @param mixed $limit         : nombre maximum de livres renvoyés
+     * @param       $keyWordsArray mots clés recherchés
      *
      * @return array : tableau d'objets Book
      */
@@ -122,7 +123,7 @@ class BookManager extends AbstractEntityManager
             'picture' => $picture,
         ]);
 
-        return $result->rowCount > 0;
+        return $result->rowCount() > 0;
     }
 
     /**
@@ -161,8 +162,8 @@ class BookManager extends AbstractEntityManager
      */
     public function getUserBooks($userId): array
     {
-        $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'sellerId', user.pseudo as 'sellerPseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id ORDER BY add_date DESC";
-        $result = $this->db->query($sql);
+        $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'seller_id', user.pseudo as 'seller_pseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id WHERE user.id =:userId ORDER BY add_date DESC";
+        $result = $this->db->query($sql, ['userId' => $userId]);
         $books = [];
 
         while ($book = $result->fetch()) {
@@ -170,5 +171,81 @@ class BookManager extends AbstractEntityManager
         }
 
         return $books;
+    }
+
+    /**
+     * Suppression du livre de la bibliothèque de l'utilisateur.
+     *
+     * @param $userId Identifiant de l'utilisateur
+     * @param $bookId Identifiant du livre à supprimer
+     *
+     * @return true si la suppression s'est bien déroulée, sinon false
+     */
+    public function deleteBookFromLibrary($userId, $bookId): bool
+    {
+        $sql = 'DELETE FROM library WHERE user_id=:userId AND book_id=:bookId';
+        $result = $this->db->query($sql, [
+            'userId' => $userId,
+            'bookId' => $bookId,
+        ]);
+
+        return $result->rowCount() > 0;
+    }
+
+    /**
+     * Suppression du livre de la base.
+     *
+     * @param $bookId Identifiant du livre à supprimer
+     *
+     * @return true si la suppression s'est bien déroulée, sinon false
+     */
+    public function deleteBook($bookId): bool
+    {
+        $sql = 'DELETE FROM book WHERE id=:bookId';
+        $result = $this->db->query($sql, [
+            'bookId' => $bookId,
+        ]);
+
+        return $result->rowCount() > 0;
+    }
+
+    /**
+     * Renvoie le nombre de livre de la bibliothèque de l'utilisateur.
+     *
+     * @param $userId identifiant de l'utilisateur
+     *
+     * @return int nombre de livres présents dans la bibliothèque de l'utilisateur
+     */
+    public function getUserBookNumber($userId): int
+    {
+        $sql = 'SELECT COUNT(*) FROM user RIGHT JOIN library ON user.id = library.user_id WHERE user.id=:userId';
+        $result = $this->db->query($sql, [
+            'userId' => $userId,
+        ]);
+
+        return $result->fetchColumn();
+    }
+
+    /**
+     * Met à jour les donnée du livre.
+     *
+     * @param $bookId            identifiant du livre à modifier
+     * @param $title             nouveau titre
+     * @param $author            nouvel auteur
+     * @param $description       nouvelle description
+     * @param $availabilityValue nouvelle disponibilité
+     */
+    public function updateBook($bookId, $title, $author, $description, $availabilityValue)
+    {
+        $sql = 'UPDATE book SET title=:title, author:author, description:=description, availability=:availabilityWHERE id=:bookId';
+        $result = $this->db->query($sql, [
+            'title' => $title,
+            'author' => $author,
+            'description' => $description,
+            'availability' => $availabilityValue,
+            'bookId', $bookId,
+        ]);
+
+        return $result->rowCount() > 0;
     }
 }

@@ -145,4 +145,134 @@ class BookController
 
         Utils::redirect('showAccount&userId='.$userId);
     }
+
+    /**
+     * Affichage la page de mise à jour d'un livre.
+     */
+    public function showUpdateBook(): void
+    {
+        $bookId = htmlspecialchars(Utils::request('bookId'));
+
+        $bookManager = new BookManager();
+        $book = $bookManager->getBookDetail($bookId);
+
+        $view = new View('Mise à jour du livre');
+        $view->render('updateBook', [
+            'book' => $book,
+        ], 'modifyBook.css');
+    }
+
+    /**
+     * Suppression d'un livre : retrait de la bibliothèque de l'utilisateur et suppression de la ligne.
+     */
+    public function deleteBook(): void
+    {
+        $bookId = htmlspecialchars(Utils::request('bookId'));
+        $userId = htmlspecialchars(Utils::request('userId'));
+
+        if (empty($userId)) {
+            throw new Exception('Suppression du livre impossible, structure incohérente');
+        }
+
+        $userManager = new UserManager();
+        $user = $userManager->getUserById($userId);
+
+        if (!$user) {
+            throw new Exception("Suppression du livre impossible par l'utilisateur actuel");
+        }
+
+        if (empty($bookId)) {
+            throw new Exception("Pour supprimer le livre, les informations du libre et de l'utilisateur doivent être complètes");
+        }
+
+        $bookManager = new BookManager();
+        $book = $bookManager->getBookDetail($bookId);
+
+        if (!$book) {
+            throw new Exception("Le livre n'est pas connu");
+        }
+
+        $result = $bookManager->deleteBookFromLibrary($userId, $bookId);
+
+        if (!$result) {
+            throw new Exception("Une erreur est survenue lors de la suppression du livre de la bibliothèque de l'utilisateur");
+        }
+
+        $result = $bookManager->deleteBook($bookId);
+        if (!$result) {
+            throw new Exception('Une erreur est survenue lors de la suppression du livre');
+        }
+
+        Utils::redirect('showAccount&userId='.$userId);
+    }
+
+    /**
+     * Met à jour le livre concerné.
+     */
+    public function updateBook(): void
+    {
+        $bookId = htmlspecialchars(Utils::request('bookId'));
+        $userId = htmlspecialchars(Utils::request('userId'));
+        $title = htmlspecialchars(Utils::request('title'));
+        $author = htmlspecialchars(Utils::request('author'));
+        $description = htmlspecialchars(Utils::request('description'));
+        $availability = htmlspecialchars(Utils::request('availability'));
+        $image = htmlspecialchars(Utils::request('image'));
+
+        if (empty($bookId)) {
+            throw new Exception('Modification du livre impossible, référence au livre manquante');
+        }
+
+        $bookManager = new BookManager();
+        $book = $bookManager->getBookDetail($bookId);
+
+        if ($book) {
+            throw new Exception('Modification du livre impossible, référence au livre non trouvée');
+        }
+
+        if (empty($userId)) {
+            throw new Exception('Modification du livre impossible, structure incohérente');
+        }
+
+        $userManager = new UserManager();
+
+        if (empty($title) || empty($author) || empty($description) || empty($availability)) {
+            throw new Exception('Pour enregistrer le livre, les informations suivantes doivent être complétées : titre, auteur, description, disponibilité');
+        }
+
+        // vérifier si un même livre avec un même auteur n'existe pas déjà
+
+        switch ($availability) {
+            case 'available':
+                $availabilityValue = 1;
+
+                break;
+
+            case 'unavailable':
+                $availabilityValue = 0;
+
+                break;
+
+            default:
+                $availabilityValue = 0;
+
+                break;
+        }
+
+        $bookManager->updateBook($book->getId(), $title, $author, $description, $availabilityValue);
+
+        /*
+        $bookPicture = BOOK_PICTURES.$book->getId();
+        if (!isset($_FILES['image'])) {
+            throw new Exception("L'image n'a pas pu être téléchargée.");
+        }
+
+        if (!move_uploaded_file($_FILES['image']['tmp_name'], $bookPicture)) {
+            throw new Exception("L'image du livre n'a pas été téléchargée");
+        }
+
+        $bookManager->updatePicture($bookId, $bookPicture);
+         */
+        Utils::redirect('showAccount&userId='.$userId);
+    }
 }

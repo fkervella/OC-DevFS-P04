@@ -21,9 +21,17 @@
             <p>Bibliothèque</p>
             <div class="librarySize">
                 <img id="icon" src='img/iconeBibliotheque.svg' alt='icone bibliothèque'>
-                4 livres
+                <?php
+                    if (0 === $bookNumber) {
+                        echo 'Pas encore de livre';
+                    } elseif (1 === $bookNumber) {
+                        echo '1 livre';
+                    } else {
+                        echo $bookNumber.' livres';
+                    }
+?>
             </div>
-            <a href="index.php?action=addBook">
+            <a href="index.php?action=showAddBook">
                 <div class="button">
                     Ajouter un livre
                 </div>
@@ -40,7 +48,7 @@
                 <input type="password" name="password" class="password" id="password">
                 <label for="pseudo">Pseudo</label>
                 <input type="text" name="pseudo" class="pseudo" id="pseudo" value="<?php echo $pseudo; ?>">
-                <input type="hidden" name="userId" value="<?php echo $userId; ?>">
+                <input type="hidden" name="userId" value="<?php echo $_SESSION['userId']; ?>">
                 <input type="submit" class="button-reverse" value="Enregistrer">
             </form>
 
@@ -73,11 +81,11 @@ foreach ($books as $book) { ?>
     ++$counter;
     ?>">
             <div class="grid-row-cell hImage">
-            <img src="<?php 
+            <img src="<?php
                             if (empty($book->getPicture())) {
                                 echo 'img/imageTest.png';
                             } else {
-                                echo$book->getPicture();
+                                echo $book->getPicture();
                             } ?>" alt="couverture livre <?php echo $book->getTitle(); ?>">
             </div>
             <div class="grid-row-cell hTitle">
@@ -99,8 +107,8 @@ foreach ($books as $book) { ?>
                 <?php }?>
             </div>
             <div class="grid-row-cell hActions">
-            <a href="index.php?action=modifyBook&bookId=<?php echo $book->getId(); ?>" class="modifyBook">Editer</a>
-            <a href="index.php?action=deleteBook&bookId=<?php echo $book->getId(); ?>" class="deleteBookFromLibrary">Supprimer</a>
+            <a href="index.php?action=showUpdateBook&bookId=<?php echo $book->getId(); ?>" class="modifyBook">Editer</a>
+            <a href="index.php?action=deleteBook&bookId=<?php echo $book->getId(); ?>&userId=<?php echo $book->getSellerId(); ?>" class="deleteBookFromLibrary">Supprimer</a>
             </div>
         </div>
         <?php } ?>

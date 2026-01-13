@@ -61,6 +61,7 @@ class UserController
 
         // Récupération des livres de l'utilisateur
         $bookManager = new BookManager();
+        $bookNumber = $bookManager->getUserBookNumber($userId);
         $books = $bookManager->getUserBooks($userId);
 
         $view = new View('Mon compte');
@@ -71,6 +72,7 @@ class UserController
             'userId' => $userId,
             'ecart' => $ecart,
             'books' => $books,
+            'bookNumber' => $bookNumber,
         ], 'account.css');
     }
 
