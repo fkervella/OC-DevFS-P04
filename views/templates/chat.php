@@ -56,7 +56,11 @@
                     <?php } ?>
                     <div class="messageDate"><?php echo $message->getDatetime(); ?>
                     </div>
-                        <div class="messageText sentMessage"><?php echo $message->getMessage(); ?>
+                        <div class="messageText <?php   if ($message->getSenderID() === $userId) 
+                                                            echo "sentMessage";
+                                                        else
+                                                            echo "receivedMessage";
+                                                ?>"><?php echo $message->getMessage(); ?>
                     </div>
                 </div>
                 <?php } ?>
