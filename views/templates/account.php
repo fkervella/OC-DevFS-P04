@@ -75,7 +75,7 @@
                         echo 'oddRow';
                     }
 
-            if ($counter === sizeof($books) - 1) {
+            if ($counter === sizeof($books)) {
                 echo ' lastRow';
             }
 
