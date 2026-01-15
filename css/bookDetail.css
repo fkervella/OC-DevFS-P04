@@ -1,3 +1,7 @@
+body {
+    min-height: 100vh;    
+}
+
 .content {
     display: flex;
     flex-direction:row;
@@ -6,10 +10,14 @@
 .content .column1 {
     width: 50%;
     background-color: var(--background-color);
+    display: flex;
+    justify-content: right;
 }
 
 .content .column1 img {
-    width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 
 .content .column2 {
