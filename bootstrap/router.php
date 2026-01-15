@@ -130,6 +130,18 @@ class Router
 
                     break;
 
+                case 'showNewMessage':
+                    $messageController = new MessageController();
+                    $messageController->showNewMessage();
+
+                    break;
+
+                case 'sendMessage':
+                    $messageController = new MessageController();
+                    $messageController->sendMessage();
+
+                    break;
+
                 default:
                     throw new Exception("Router : La page {$action} demandée n'existe pas.");
             }

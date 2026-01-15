@@ -9,65 +9,66 @@
     <div class="column1">
         <h1>Messagerie</h1>
         <div class="chats">
-            <div class="chat selectedChat">
-                <img src="img/user.jpg" alt="">
-                <div class="userName">Alexlecture
-                </div>
-                <div class="lastMessageDate">15:43
-                </div>
-                <p class="lastMessage">Lorem ipsum
-                </p>
-            </div>
-            <div class="chat">
-                <img src="img/user.jpg" alt="">
-                <div class="userName">Nathalire
-                </div>
-                <div class="lastMessageDate">20:08
-                </div>
-                <p class="lastMessage">Lorem ipsum
-                </p>
-            </div>
-            <div class="chat">
-                <img src="img/user.jpg" alt="">
-                <div class="userName">Sas634
-                </div>
-                <div class="lastMessageDate">15:08
-                </div>
-                <p class="lastMessage">Lorem ipsum
-                </p>
-            </div>
+            <?php foreach ($chats as $chat) { ?>
 
+            <a href="index.php?action=showChat&bookId=<?php echo $bookId; ?>&chatId=<?php echo $chat->getId(); ?>">
+                <div class="chat <?php
+                                    if (!is_null($currentChat) && $currentChat->getId() === $chat->getId()) {
+                                        echo 'selectedChat';
+                                    }
+                ?>">
+                <img src="<?php echo $chat->getOtherUserAvatar(); ?>" alt="<?php echo $chat->getOtherUserPseudo(); ?>">
+                    <div class="userName"><?php echo $chat->getOtherUserPseudo(); ?>
+                    </div>
+                    <div class="lastMessageDate"><?php echo $chat->getLastMessageDate(); ?>
+                    </div>
+                    <p class="lastMessage"><?php echo $chat->getLastMessage(); ?>
+                    </p>
+                </div>
+            </a>
+            <?php } ?>
         </div>
     </div>
     <div class="column2">
-        <div class="back">Retour
-        </div>
-        <div class="user">
-            <img src="img/user.jpg" alt="">
-            <div class="userNameMessage">Alexlecture
+        <?php if (!is_null($currentChat)) { ?>
+            <div class="back">Retour
             </div>
-        </div>
-        <div class="messages">
-            <div class="message rightAlign">
-                <div class="userAvatar">
-                </div>
-                <div class="messageDate">21.08 15:44
-                </div>
-                <div class="messageText sentMessage">Lorem ipsum
+            <div class="user">
+            <img src="<?php echo $currentChat->getOtherUserAvatar(); ?>" alt="avatar de <?php echo $currentChat->getOtherUserPseudo(); ?>">
+                <div class="userNameMessage"><?php echo $currentChat->getOtherUserPseudo(); ?>
                 </div>
             </div>
-            <div class="message leftAlign">
-                <img class="userAvatar" src="img/user.jpg" alt="avatar">
-                <div class="messageDate">21.08 15:48
+            <?php if (isset($messages)) { ?>
+            <div class="messages">
+                <?php foreach ($messages as $message) { ?>
+                <div class="message <?php
+                       if ($message->getSenderID() === $userId) {
+                           echo 'rightAlign';
+                       } else {
+                           echo 'leftAlign';
+                       }
+                    ?>">
+                    <?php if ($message->getSenderID() === $userId) { ?>
+                    <div class="userAvatar">
+                    </div>
+                    <?php } else { ?>
+                    <img class="userAvatar" src="<?php echo $currentChat->getOtherUserAvatar(); ?>" alt="avatar de <?php echo $currentChat->getOtherUserPseudo(); ?>">
+                    <?php } ?>
+                    <div class="messageDate"><?php echo $message->getDatetime(); ?>
+                    </div>
+                        <div class="messageText sentMessage"><?php echo $message->getMessage(); ?>
+                    </div>
                 </div>
-                <div class="messageText receivedMessage">Lorem ipsum 2
-                </div>
+                <?php } ?>
             </div>
-        </div>
-        <form class="newMessage">
-            <label for="newMessageText">Message: </label>
-            <input type="text" class="newMessageText" name="newMessageText" id="newMessageText" value="Tapez votre message ici">
-            <input type="submit" class="button" value="Envoyer"> 
-        </form>
+            <?php } ?>
+            <form class="newMessage" action="index.php?action=sendMessage" method="post">
+                <label for="newMessageText">Message: </label>
+                <input type="text" class="newMessageText" name="newMessageText" id="newMessageText" value="Tapez votre message ici">
+                <input type="hidden" name="chatId" value="<?php echo $currentChat->getId(); ?>">
+                <input type="hidden" name="bookId" value="<?php echo $bookId; ?>">
+                <input type="submit" class="button" value="Envoyer"> 
+            </form>
+        <?php } ?>
     </div>
 </div>

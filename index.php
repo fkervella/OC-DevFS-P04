@@ -90,6 +90,16 @@ try {
 
             break;
 
+        case 'showNewMessage':
+            Router::showNewMessage();
+
+            break;
+
+        case 'sendMessage':
+            Router::sendMessage();
+
+            break;
+
         default:
             throw new Exception("La page demandée {$action} n'existe pas.");
 
