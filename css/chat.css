@@ -116,6 +116,9 @@ h1 {
 
 .messages {
     flex: 1;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
 }
 .message {
     display: grid;
