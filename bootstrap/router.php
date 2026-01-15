@@ -8,7 +8,7 @@ require_once 'views/view.php';
 class Router
 {
     /**
-     * Fonction principale du routeur : appelle la page concernée en fonction des paramètres.
+     * \brief Fonction principale du routeur : appelle la page concernée en fonction des paramètres.
      *
      * @param $action    action demandée
      * @param $arguments arguments associés à cette action
@@ -36,14 +36,8 @@ class Router
                     break;
 
                 case 'showBookDetail' :
-                    $bookId = Utils::request('bookId', -1);
-
-                    if (-1 === $bookId) {
-                        throw new Exception('Le numéro du livre indiqué est invalide : -1');
-                    }
-
                     $bookController = new BookController();
-                    $bookController->showBookDetail($bookId);
+                    $bookController->showBookDetail();
 
                     break;
 
@@ -84,13 +78,8 @@ class Router
                     break;
 
                 case 'showChat':
-                    $userId = Utils::request('userId', 1);
-                    if (-1 === $userId) {
-                        throw new Exception("l'identifiant indiqué pour l'utilisateur n'est pas valide : {$userId}");
-                    }
-
                     $messageController = new MessageController();
-                    $messageController->showChat($userId);
+                    $messageController->showChat();
 
                     break;
 

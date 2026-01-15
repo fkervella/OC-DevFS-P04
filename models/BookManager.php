@@ -35,6 +35,12 @@ class BookManager extends AbstractEntityManager
      */
     public function getSearchedBooks(?int $limit = 1, ?array $keyWordsArray = []): ?array
     {
+        /**
+         * 1. Constitution de la partie recherche de la requête à partie des mots clés en entrée
+         * 2. Constitution de la requête complète.
+         */
+
+        // 1.
         $initial = 1;
         $search = '';
         foreach ($keyWordsArray as $keyWord) {
@@ -48,6 +54,7 @@ class BookManager extends AbstractEntityManager
             }
         }
 
+        // 2.
         if ('' === $search) {
             $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'seller_id', user.pseudo as 'seller_pseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id ORDER BY add_date DESC LIMIT {$limit}";
         } else {

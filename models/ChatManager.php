@@ -15,6 +15,13 @@ class ChatManager extends AbstractEntityManager
      */
     public function getChatByUserId($userId): ?array
     {
+        /**
+         * 1. Récupération des conversations de l'utilisateur
+         * 2. Pour chaque conversation, récupération des données du dernier message
+         * 3. Pour chaque conversation, récupération des données de l'autre utilisateur de la conversation.
+         */
+
+        // 1.
         $sql = 'SELECT * FROM chat WHERE user_id_1=:userId OR user_id_2=:userId';
         $result = $this->db->query($sql, [
             'userId' => $userId,
@@ -23,6 +30,7 @@ class ChatManager extends AbstractEntityManager
         $chats = [];
 
         while ($chatDb = $result->fetch()) {
+            // 2.
             $chat = new Chat($chatDb);
             if ($this->getChatMessageNumber($chat->getId()) > 0) {
                 $message = $this->getLastChatMessage($chat->getId());
@@ -31,6 +39,7 @@ class ChatManager extends AbstractEntityManager
                 $chat->setLastMessageDate($message->getDatetime());
             }
 
+            // 3.
             $otherUserId = $this->findOtherUserId($userId, $chat);
 
             $userManager = new UserManager();
@@ -78,6 +87,12 @@ class ChatManager extends AbstractEntityManager
 
     public function getChatById($chatId, $userId): ?Chat
     {
+        /**
+         * 1. Récupération des données de la conversation
+         * 2. Récupération des données de l'autre utilisateur de la conversation.
+         */
+
+        // 1.
         $sql = 'SELECT * FROM chat WHERE id=:chatId';
         $result = $this->db->query($sql, [
             'chatId' => $chatId,
@@ -85,6 +100,7 @@ class ChatManager extends AbstractEntityManager
 
         $chatDb = $result->fetch();
         if ($chatDb) {
+            // 2.
             $chat = new Chat($chatDb);
             $otherUserId = $this->findOtherUserId($userId, $chat);
 
@@ -144,6 +160,11 @@ class ChatManager extends AbstractEntityManager
 
     private function findOtherUserId($userId, Chat $chat): int
     {
+        /*
+         * 1. Récupération des données de conversation
+         * 2. Récupération des données de l'autre utilisateur de la conversation
+         */
+        // 1.
         if ($this->getChatMessageNumber($chat->getId()) > 0) {
             $message = $this->getLastChatMessage($chat->getId());
             $chat->setLastMessage($message->getMessage());
@@ -151,6 +172,7 @@ class ChatManager extends AbstractEntityManager
             $chat->setLastMessageDate($message->getDatetime());
         }
 
+        // 2.
         if ($chat->getUserId1() === $userId) {
             $otherUserId = $chat->getUserId2();
         } else {

@@ -23,15 +23,12 @@ class UserController
         $view->render('login', [], 'login.css');
     }
 
-    /**
-     * Déconnecte l'utilisateur courant.
-     */
+    // Déconnecte l'utilisateur courant.
     public function logOut(): void
     {
         unset($_SESSION['user'], $_SESSION['userId']);
 
-        $view = new View('Accueil');
-        $view->render('welcome', [], 'welcome.css');
+        Utils::redirect('showHome');
     }
 
     /**
@@ -39,12 +36,22 @@ class UserController
      */
     public function showAccount(): void
     {
+        /*
+         * 1. Filtrage des données d'entrée
+         * 2. Récupération des données de l'utilisateur
+         * 3. Calcul pour déterminer depuis quand l'utilisateur est enregistré
+         * 4. Récupération des livres de l'utilisateur
+         * 5. Affichage de la page Mon compte
+         */
+
+        // 1.
         if (!isset($_SESSION['userId'])) {
             Utils::redirect('showHome');
         }
 
         $userId = $_SESSION['userId'];
 
+        // 2.
         $userManager = new UserManager();
         $user = $userManager->getUserById($userId);
 
@@ -52,18 +59,19 @@ class UserController
         $login = htmlspecialchars($user->getLogin());
         $avatar = htmlspecialchars($user->getAvatar());
 
-        // Calcul pour déterminer depuis quand l'utilisateur est enregistré
+        // 3.
         $creationDate = new DateTime($user->getCreationDate());
         $nowDate = new DateTime();
 
         $interval = $creationDate->diff($nowDate);
         $ecart = $interval->format('%a jours');
 
-        // Récupération des livres de l'utilisateur
+        // 4.
         $bookManager = new BookManager();
         $bookNumber = $bookManager->getUserBookNumber($userId);
         $books = $bookManager->getUserBooks($userId);
 
+        // 5.
         $view = new View('Mon compte');
         $view->render('account', [
             'pseudo' => $pseudo,
@@ -81,34 +89,41 @@ class UserController
      */
     public function connectUser(): void
     {
-        // Récupération des données du formulaire
+        /**
+         * 1. Filtrage de données d'entrée
+         * 2. Vérification que l'utilisateur existe
+         * 3. Vérification que le mot de passe soit correct
+         * 4. Connexion de l'utilisateur
+         * 5. Redirection vers la page du compte utilisateur.
+         */
+
+        // 1.
         $login = Utils::request('login');
         $password = Utils::request('password');
 
-        // Vérification que les données soient valides
         if (empty($login) || empty($password)) {
             throw new Exception("L'adresse email et le mot de passe doivent être saisis.");
         }
 
-        // Vérification que l'utilisateur existe
+        // 2.
         $userManager = new UserManager();
         $user = $userManager->getUserByLogin($login);
         if (!$user) {
             throw new Exception("L'utilisateur indiqué n'est pas enregistré");
         }
 
-        // Vérification que le mot de passe soit correct
+        // 3.
         if (!password_verify($password, $user->getPassword())) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
 
             throw new Exception("Le mot de passe est incorrect : {$hash}");
         }
 
-        // Connexion de l'utilisateur
+        // 4.
         $_SESSION['user'] = $user;
         $_SESSION['userId'] = $user->getId();
 
-        // Redirection vers la page du compte utilisateur
+        // 5.
         Utils::redirect('showAccount');
     }
 
@@ -117,31 +132,43 @@ class UserController
      */
     public function registerUser(): void
     {
-        // Récupération des données du formulaire
+        /**
+         * 1. Filtrage des données d'entrée
+         * 2. Validation des données saisies
+         * 3. Vérification que l'utilisateur n'existe pas
+         * 4. Hashage du mot de pasae
+         * 5. Enregistrement des données de l'utilisateur en base
+         * 6. Redirection vers la page de connexion.
+         */
+
+        // 1.
         $pseudo = htmlspecialchars(Utils::request('pseudo'));
         $login = htmlspecialchars(Utils::request('login'));
         $password = htmlspecialchars(Utils::request('password'));
 
-        // Vérification que les données soient valides
         if (empty($pseudo) || empty($login) || empty($password)) {
             throw new Exception("Le pseudo, l'adresse mail et le mot de passe doivent être saisis.");
         }
 
-        // Validation des données saisies
+        // 2.
         if (!filter_var($login, FILTER_VALIDATE_EMAIL)) {
             throw new Exception("L'adresse mail saisie n'est pas valide");
         }
 
-        // Vérification que l'utilisateur n'existe pas
+        // 3.
         $userManager = new UserManager();
         $user = $userManager->getUserByLogin($login);
         if ($user) {
             throw new Exception("L'utilisateur existe déjà");
         }
 
+        // 4.
         $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        // 5.
         $userManager->registerUser($pseudo, $login, $hash);
 
+        // 6.
         Utils::redirect('showLogIn');
     }
 
@@ -150,28 +177,35 @@ class UserController
      */
     public function updateUser(): void
     {
+        /*
+         * 1. Filtrage des données d'entrée
+         * 2. Validation des données saisies
+         * 3. Vérification que l'utilisateur existe
+         * 4. Vérification qu'un utilisateur avec la même adresse mail n'existe pas
+         * 5. Hashage du mot de passe
+         * 6. Enregistrement des informations utilisateur en base
+         * 7. Redirection vers la page Mon compte
+         */
         if (!isset($_SESSION['userId'])) {
             Utils::redirect('showHome');
         }
 
         $userId = $_SESSION['userId'];
 
-        // Récupération des données du formulaire
         $pseudo = htmlspecialchars(Utils::request('pseudo'));
         $login = htmlspecialchars(Utils::request('login'));
         $password = htmlspecialchars(Utils::request('password'));
 
-        // Vérification que les données soient valides
         if (empty($pseudo) || empty($login) || empty($password)) {
             throw new Exception("Le pseudo, l'adresse mail et le mot de passe doivent être saisis.");
         }
 
-        // Validation des données saisies
+        // 2.
         if (!filter_var($login, FILTER_VALIDATE_EMAIL)) {
             throw new Exception("L'adresse mail saisie n'est pas valide");
         }
 
-        // Vérification que l'utilisateur existe
+        // 3.
         $userManager = new UserManager();
         $user = $userManager->getUserById($userId);
         if (!$user) {
@@ -179,7 +213,7 @@ class UserController
         }
 
         if ($login !== $user->getLogin()) {
-            // Vérification qu'un utilisateur avec la même adresse mail n'existe pas
+            // 4.
             $userManager = new UserManager();
             $user = $userManager->getUserByLogin($login);
             if ($user) {
@@ -187,9 +221,13 @@ class UserController
             }
         }
 
+        // 5.
         $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        // 6.
         $userManager->updateUser($userId, $pseudo, $login, $hash);
 
+        // 7.
         Utils::redirect('showAccount');
     }
 }

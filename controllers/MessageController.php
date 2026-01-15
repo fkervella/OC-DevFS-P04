@@ -10,37 +10,51 @@ class MessageController
      */
     public function showChat(): void
     {
+        /*
+         * 1. Filtrage des données d'entrée
+         * 2. Récupération des données des conversations de l'utilisateur
+         * 3. Récupération des données de la conversation sélectionnée
+         * 4. Récupération des messages de la conversation sélectionnée
+         * 5. Affichage de la page Messagerie avec les données récupérées
+         */
+
+        // 1.
         if (!isset($_SESSION['userId'])) {
             Utils::redirect('showHome');
         }
 
         $userId = $_SESSION['userId'];
         $chatId = htmlspecialchars(Utils::request('chatId'));
-        $bookId = htmlspecialchars(Utils::request('bookId'));
+        /*$bookId = htmlspecialchars(Utils::request('bookId'));
 
-        $bookManager = new BookManager();
-        $book = $bookManager->getBookById($bookId);
-        $sellerId = $book->getSellerId();
+        if(isset($bookId))
+        {
+           $bookManager = new BookManager();
+           $book = $bookManager->getBookById($bookId);
+           $sellerId = $book->getSellerId();
+        }*/
 
+        // 2.
         $chatManager = new ChatManager();
-
         $chats = $chatManager->getChatByUserId($userId);
 
         $messages = null;
-        if (is_null($chatId)) {
-            $currentChat = null;
-        } else {
+        $currentChat = null;
+        if (!is_null($chatId)) {
+            // 3.
             $currentChat = $chatManager->getChatById($chatId, $userId);
 
-            if ($chatManager->getChatMessageNumber($chatId) >0 ) {
+            // 4.
+            if ($chatManager->getChatMessageNumber($chatId) > 0) {
                 $messages = $chatManager->getChatMessages($chatId);
             }
         }
 
+        // 5.
         $view = new View('Messagerie');
         $view->render('chat', [
             'userId' => $userId,
-            'bookId' => $bookId,
+            // 'bookId' => $bookId,
             'chats' => $chats,
             'currentChat' => $currentChat,
             'messages' => $messages,
@@ -52,6 +66,16 @@ class MessageController
      */
     public function showNewMessage()
     {
+        /*
+         * 1. Filtrage des données d'entrée
+         * 2. Si une conversation entre l'utilisateur connecté et le vendeur n'existe pas, création de la conversation
+         * 3. Récupération des données des conversations de l'utilisateur
+         * 4. Récupération des données de la conversation sélectionnée
+         * 5. Récupération des messages de la conversation sélectionnée
+         * 6. Affichage de la page Messagerie avec les données récupérées
+         */
+
+        // 1.
         if (!isset($_SESSION['userId'])) {
             Utils::redirect('showHome');
         }
@@ -64,25 +88,28 @@ class MessageController
         $book = $bookManager->getBookById($bookId);
         $sellerId = $book->getSellerId();
 
+        // 2.
         $chatManager = new ChatManager();
-
         if (!$chatManager->existsChat($userId, $sellerId)) {
             $chatManager->createChat($userId, $sellerId);
         }
 
+        // 3.
         $chats = $chatManager->getChatByUserId($userId);
 
         $messages = null;
-        if (is_null($chatId)) {
-            $currentChat = null;
-        } else {
+        $currentChat = null;
+        if (!is_null($chatId)) {
+            // 4.
             $currentChat = $chatManager->getChatById($chatId, $userId);
 
+            // 5.
             if ($chatManager->getChatMessageNumber($chatId) > 0) {
                 $messages = $chatManager->getChatMessages($chatId);
             }
         }
 
+        // 6.
         $view = new View('Messagerie');
         $view->render('chat', [
             'userId' => $userId,
@@ -95,6 +122,11 @@ class MessageController
 
     public function sendMessage(): void
     {
+        /*
+         * 1. Filtrage des données d'entrée
+         * 2. Ajout d'un message dans la conversation
+         * 3. Redirection vers la page messagerie
+         */
         if (!isset($_SESSION['userId'])) {
             Utils::redirect('showHome');
         }
@@ -104,9 +136,11 @@ class MessageController
         $bookId = htmlspecialchars(Utils::request('bookId'));
         $messageText = htmlspecialchars(Utils::request('newMessageText'));
 
+        // 2.
         $chatManager = new ChatManager();
         $chatManager->addMessage($chatId, $userId, $messageText);
 
+        // 3.
         Utils::redirect("showChat&bookId={$bookId}&chatId={$chatId}");
     }
 }

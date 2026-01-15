@@ -11,7 +11,7 @@
         <div class="chats">
             <?php foreach ($chats as $chat) { ?>
 
-            <a href="index.php?action=showChat&bookId=<?php echo $bookId; ?>&chatId=<?php echo $chat->getId(); ?>">
+            <a href="index.php?action=showChat&chatId=<?php echo $chat->getId(); ?>">
                 <div class="chat <?php
                                     if (!is_null($currentChat) && $currentChat->getId() === $chat->getId()) {
                                         echo 'selectedChat';
@@ -66,7 +66,6 @@
                 <label for="newMessageText">Message: </label>
                 <input type="text" class="newMessageText" name="newMessageText" id="newMessageText" value="Tapez votre message ici">
                 <input type="hidden" name="chatId" value="<?php echo $currentChat->getId(); ?>">
-                <input type="hidden" name="bookId" value="<?php echo $bookId; ?>">
                 <input type="submit" class="button" value="Envoyer"> 
             </form>
         <?php } ?>

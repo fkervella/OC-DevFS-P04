@@ -10,9 +10,16 @@ class BookController
      */
     public function showHome(): void
     {
+        /**
+         * 1. Récupération des données des 4 derniers livres en base
+         * 2. Affichage de la page Home si les données ont bien été récupérées.
+         */
+
+        // 1.
         $bookManager = new BookManager();
         $books = $bookManager->getLastAddedBooks(4);
 
+        // 2.
         if ($books) {
             $view = new View('Accueil');
             $view->render('welcome', [
@@ -28,12 +35,21 @@ class BookController
      */
     public function showBookExchange(): void
     {
+        /**
+         * 1. Filtrage des données d'entrée
+         * 2. Recherche des livres correspondant aux mots recherchés de recherche dans la base
+         * 3. Affichage de la page avec les livres s'il y a des livres qui correspondent aux mots recherchés.
+         */
+
+        // 1.
         $keyWords = htmlspecialchars(Utils::request('searchWords'));
         $keyWordsArray = explode(' ', $keyWords);
 
+        // 2.
         $bookManager = new BookManager();
         $books = $bookManager->getSearchedBooks(16, $keyWordsArray);
 
+        // 3.
         if ($books) {
             $view = new View("Nos livres à l'échange");
             $view->render('bookExchange', [
@@ -45,19 +61,33 @@ class BookController
     }
 
     /**
-     * Affiche les données du livre.
-     *
-     * @param mixed $bookId
+     * Affiche les données d'un livre.
      */
-    public function showBookDetail($bookId): void
+    public function showBookDetail(): void
     {
+        /**
+         * 1. Filtrage des données d'entrée
+         * 2. Récupération des données du livre*
+         * 3. Récupération des données du vendeur du livre
+         * 4. Affichage des données du livre si les données sont conformes.
+         */
+
+        // 1.
+        $bookId = Utils::request('bookId', -1);
+        if (-1 === $bookId) {
+            throw new Exception('Le numéro du livre indiqué est invalide : -1');
+        }
+
+        // 2.
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($bookId);
 
+        // 3.
         $userManager = new UserManager();
         $user = $userManager->getUserById($book->getSellerId());
 
-        if ($book) {
+        // 4.
+        if ($book && $user) {
             $view = new View($book->getTitle());
             $view->render('bookDetail', [
                 'book' => $book,
@@ -73,10 +103,17 @@ class BookController
      */
     public function showAddBook(): void
     {
+        /*
+         * 1. Fitrage des données d'entrée
+         * 2. Affichage de la page
+         */
+
+        // 1.
         if (!isset($_SESSION['userId'])) {
             Utils::redirect('showHome');
         }
 
+        // 2.
         $view = new View("Ajout d'un livre");
         $view->render('addBook', [], 'addBook.css');
     }
@@ -86,6 +123,17 @@ class BookController
      */
     public function registerBook(): void
     {
+        /*
+         * 1. Filtrage des données d'entrée
+         * 2. Traduction de la valeur de la disponibilité
+         * 3. Enregistrement du livre
+         * 4. Vérification que le livre a bien été enregisté et récupèration de son identifiant
+         * 5. Ajout du livre dans la bibliothèque de l'utilisateur
+         * 6. Téléchargement de l'image de l'utilisateur et enregistrement de son chemin avec les données du livre
+         * 7. Redirection vers la page Mon compte
+         */
+
+        // 1.
         if (!isset($_SESSION['userId'])) {
             Utils::redirect('showHome');
         }
@@ -113,7 +161,7 @@ class BookController
         }
 
         // vérifier si un même livre avec un même auteur n'existe pas déjà
-
+        // 2.
         switch ($availability) {
             case 'available':
                 $availabilityValue = 1;
@@ -131,10 +179,11 @@ class BookController
                 break;
         }
 
+        // 3.
         $bookManager = new BookManager();
         $bookManager->registerBook($title, $author, $description, $availabilityValue);
 
-        // récupérer l'id du livre enregistré
+        // 4.
         $book = $bookManager->getBookByInfo($title, $author, $description, $availabilityValue);
 
         if (!$book) {
@@ -143,9 +192,11 @@ class BookController
 
         $bookId = $book->getId();
 
+        // 5.
         $libraryManager = new LibraryManager();
         $libraryManager->addBook($userId, $bookId);
 
+        // 6.
         $bookPicture = BOOK_PICTURES.$bookId;
         if (!isset($_FILES['image'])) {
             throw new Exception("L'image n'a pas pu être téléchargée.");
@@ -157,6 +208,7 @@ class BookController
 
         $bookManager->updatePicture($bookId, $bookPicture);
 
+        // 7.
         Utils::redirect('showAccount');
     }
 
@@ -165,15 +217,24 @@ class BookController
      */
     public function showUpdateBook(): void
     {
+        /*
+         * 1. Filtrage des données d'entrée
+         * 2. Récupération des données du livre
+         * 3. Affichage de la page de mise à jour du livre
+         */
+
+        // 1.
         if (!isset($_SESSION['userId'])) {
             Utils::redirect('showHome');
         }
 
         $bookId = htmlspecialchars(Utils::request('bookId'));
 
+        // 2.
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($bookId);
 
+        // 3.
         $view = new View('Mise à jour du livre');
         $view->render('updateBook', [
             'book' => $book,
@@ -185,6 +246,15 @@ class BookController
      */
     public function deleteBook(): void
     {
+        /*
+         * 1. Filtrage des données d'entrée
+         * 2. Vérification de l'existence du vendeur du livre
+         * 3. Vérification de l'existence du livre
+         * 4. Suppression du livre
+         * 5. Redirection vers la page Mon compte
+         */
+
+        // 1.
         if (!isset($_SESSION['userId'])) {
             Utils::redirect('showHome');
         }
@@ -196,6 +266,7 @@ class BookController
             throw new Exception('Suppression du livre impossible, structure incohérente');
         }
 
+        // 2.
         $userManager = new UserManager();
         $user = $userManager->getUserById($userId);
 
@@ -207,6 +278,7 @@ class BookController
             throw new Exception("Pour supprimer le livre, les informations du libre et de l'utilisateur doivent être complètes");
         }
 
+        // 3.
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($bookId);
 
@@ -220,11 +292,13 @@ class BookController
             throw new Exception("Une erreur est survenue lors de la suppression du livre de la bibliothèque de l'utilisateur");
         }
 
+        // 4.
         $result = $bookManager->deleteBook($bookId);
         if (!$result) {
             throw new Exception('Une erreur est survenue lors de la suppression du livre');
         }
 
+        // 5.
         Utils::redirect('showAccount');
     }
 
@@ -233,6 +307,14 @@ class BookController
      */
     public function updateBook(): void
     {
+        /*
+         * 1. Filtrage des données d'entrée
+         * 2. Vérification de l'existence du livre
+         * 3. Traduction de la disponibilité de texte en nombre
+         * 4. Mise à jour des données du livre
+         * 5. Mise à jour de l'image du livre
+         * 6. Redirection vers la page Mon compte
+         */
         if (!isset($_SESSION['userId'])) {
             Utils::redirect('showHome');
         }
@@ -249,6 +331,7 @@ class BookController
             throw new Exception('Modification du livre impossible, référence au livre manquante');
         }
 
+        // 2.
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($bookId);
 
@@ -267,7 +350,7 @@ class BookController
         }
 
         // vérifier si un même livre avec un même auteur n'existe pas déjà
-
+        // 3.
         switch ($availability) {
             case 'available':
                 $availabilityValue = 1;
@@ -285,20 +368,24 @@ class BookController
                 break;
         }
 
+        // 4.
         $bookManager->updateBook($book->getId(), $title, $author, $description, $availabilityValue);
 
+        // 5.
         /*
         $bookPicture = BOOK_PICTURES.$book->getId();
         if (!isset($_FILES['image'])) {
-            throw new Exception("L'image n'a pas pu être téléchargée.");
+           throw new Exception("L'image n'a pas pu être téléchargée.");
         }
 
         if (!move_uploaded_file($_FILES['image']['tmp_name'], $bookPicture)) {
-            throw new Exception("L'image du livre n'a pas été téléchargée");
+           throw new Exception("L'image du livre n'a pas été téléchargée");
         }
 
         $bookManager->updatePicture($bookId, $bookPicture);
-         */
+        */
+
+        // 6.
         Utils::redirect('showAccount');
     }
 }
