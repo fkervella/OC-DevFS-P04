@@ -177,9 +177,9 @@ class Book extends AbstractEntity
     /**
      * Setter pour l'identifiant du vendeur du livre.
      */
-    public function setSellerId(?int $userId): void
+    public function setSellerId(?int $sellerId): void
     {
-        $this->sellerId = $userId;
+        $this->sellerId = $sellerId;
     }
 
     /**

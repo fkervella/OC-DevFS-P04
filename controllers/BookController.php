@@ -52,11 +52,17 @@ class BookController
     public function showBookDetail($bookId): void
     {
         $bookManager = new BookManager();
-        $book = $bookManager->getBookDetail($bookId);
+        $book = $bookManager->getBookById($bookId);
+
+        $userManager = new UserManager();
+        $user = $userManager->getUserById($book->getSellerId());
 
         if ($book) {
             $view = new View($book->getTitle());
-            $view->render('bookDetail', [], 'bookDetail.css');
+            $view->render('bookDetail', [
+                'book' => $book,
+                'user' => $user,
+            ], 'bookDetail.css');
         } else {
             throw new Exception('Les données du livre sont incomplètes.');
         }
@@ -166,7 +172,7 @@ class BookController
         $bookId = htmlspecialchars(Utils::request('bookId'));
 
         $bookManager = new BookManager();
-        $book = $bookManager->getBookDetail($bookId);
+        $book = $bookManager->getBookById($bookId);
 
         $view = new View('Mise à jour du livre');
         $view->render('updateBook', [
@@ -202,7 +208,7 @@ class BookController
         }
 
         $bookManager = new BookManager();
-        $book = $bookManager->getBookDetail($bookId);
+        $book = $bookManager->getBookById($bookId);
 
         if (!$book) {
             throw new Exception("Le livre n'est pas connu");
@@ -244,7 +250,7 @@ class BookController
         }
 
         $bookManager = new BookManager();
-        $book = $bookManager->getBookDetail($bookId);
+        $book = $bookManager->getBookById($bookId);
 
         if ($book) {
             throw new Exception('Modification du livre impossible, référence au livre non trouvée');
