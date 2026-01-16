@@ -47,7 +47,7 @@ class UserManager extends AbstractEntityManager
      * @param $login  adresse mail de l'utilisateur
      * @param $hash   mot de passe hashé de l'utilisateur
      *
-     * @return true si l'ajout a réussi, sinon false
+     * @return bool renvoie true si l'ajout a réussi, sinon false
      */
     public function registerUser($pseudo, $login, $hash): bool
     {
@@ -70,7 +70,7 @@ class UserManager extends AbstractEntityManager
      * @param $login  nouvelle adresse mail de l'utilisateur
      * @param $hash   nouveau mot de passe hashé de l'utilisateur
      *
-     * @return true si la mise à jour a réussi, sinon false
+     * @return bool renvoie true si la mise à jour a réussi, sinon false
      */
     public function updateUser($userId, $pseudo, $login, $hash): bool
     {
@@ -91,7 +91,7 @@ class UserManager extends AbstractEntityManager
      * @param       $userId identifiant de l'utilisateur à mettre à jour
      * @param mixed $avatar
      *
-     * @return true si la mise à jour a réussi, sinon false
+     * @return bool renvoie true si la mise à jour a réussi, sinon false
      */
     public function updateAvatar($userId, $avatar): bool
     {

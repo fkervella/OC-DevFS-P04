@@ -252,7 +252,7 @@ class ChatManager extends AbstractEntityManager
      * @param mixed $userId identifiant du premier utilisateur de la conversation
      * @param Chat  $chat   données de la conversation
      *
-     * @return int|string identifiant de l'utilisateur ou null si non trouvé
+     * @return int identifiant de l'utilisateur ou null si non trouvé
      */
     private function findOtherUserId($userId, Chat $chat): int
     {

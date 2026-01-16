@@ -394,7 +394,7 @@ class BookController
     {
         $bookId = htmlspecialchars(Utils::request('id'));
 
-        if (!isset($bookId)) {
+        if (empty($bookId)) {
             Utils::redirect('showHome');
         }
 

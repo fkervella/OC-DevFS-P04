@@ -10,7 +10,7 @@ class BookManager extends AbstractEntityManager
      *
      * @param mixed $limit
      *
-     * @return array: tableau d'objets Book
+     * @return array tableau d'objets Book
      */
     public function getLastAddedBooks($limit): ?array
     {
@@ -28,8 +28,8 @@ class BookManager extends AbstractEntityManager
     /**
      * Récupère les livres disponibles pour échange selon les mots clés indiqués.
      *
-     * @param mixed $limit         : nombre maximum de livres renvoyés
-     * @param       $keyWordsArray mots clés recherchés
+     * @param int   $limit         : nombre maximum de livres renvoyés
+     * @param array $keyWordsArray mots clés recherchés
      *
      * @return array : tableau d'objets Book
      */
@@ -99,7 +99,7 @@ class BookManager extends AbstractEntityManager
      * @param       $description  Description du livre
      * @param mixed $availability
      *
-     * @return true si l'ajout a réussi, sinon false
+     * @return bool renvoie true si l'ajout a réussi, sinon false
      */
     public function registerBook($title, $author, $description, $availability): bool
     {
@@ -120,7 +120,7 @@ class BookManager extends AbstractEntityManager
      * @param $bookId  identifiant du livre
      * @param $picture chemin de l'image
      *
-     * @return true si la mise à jour a réussi, sinon false
+     * @return bool renvoie true si la mise à jour a réussi, sinon false
      */
     public function updatePicture($bookId, $picture): bool
     {
@@ -186,7 +186,7 @@ class BookManager extends AbstractEntityManager
      * @param $userId Identifiant de l'utilisateur
      * @param $bookId Identifiant du livre à supprimer
      *
-     * @return true si la suppression s'est bien déroulée, sinon false
+     * @return bool renvoie true si la suppression s'est bien déroulée, sinon false
      */
     public function deleteBookFromLibrary($userId, $bookId): bool
     {
@@ -204,7 +204,7 @@ class BookManager extends AbstractEntityManager
      *
      * @param $bookId Identifiant du livre à supprimer
      *
-     * @return true si la suppression s'est bien déroulée, sinon false
+     * @return bool renvoie true si la suppression s'est bien déroulée, sinon false
      */
     public function deleteBook($bookId): bool
     {

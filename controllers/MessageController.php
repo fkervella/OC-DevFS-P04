@@ -41,7 +41,7 @@ class MessageController
 
         $messages = null;
         $currentChat = null;
-        if (!is_null($chatId)) {
+        if (!empty($chatId)) {
             // 3.
             $currentChat = $chatManager->getChatById($chatId, $userId);
 
@@ -102,7 +102,7 @@ class MessageController
 
         $messages = null;
         $currentChat = null;
-        if (!is_null($chatId)) {
+        if (!empty($chatId)) {
             // 4.
             $currentChat = $chatManager->getChatById($chatId, $userId);
 

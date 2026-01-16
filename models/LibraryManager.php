@@ -11,7 +11,7 @@ class LibraryManager extends AbstractEntityManager
      * @param $userId identifiant de l'utilisatuer
      * @param $bookId identifiant du livre
      *
-     * @return true si l'ajout a réussi, sinon false
+     * @return bool renvoie true si l'ajout a réussi, sinon false
      */
     public function addBook($userId, $bookId): bool
     {

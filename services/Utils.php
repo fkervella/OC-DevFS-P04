@@ -73,7 +73,7 @@ class Utils
      *
      * @param $number nombre à évaluer
      *
-     * @return true si le nombre est pair, sinon false
+     * @return bool renvoie true si le nombre est pair, sinon false
      */
     public static function isEven(int $number): bool
     {

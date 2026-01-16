@@ -14,7 +14,7 @@ class Chat extends AbstractEntity
     private string $otherUserAvatar = '';
     private string $lastMessage = '';
     private string $lastMessageDate;
-    private bool $lastMessageRead = false;
+    private int $lastMessageRead = 0;
 
     /**
      * Setter pour l'id du chat.
@@ -59,7 +59,7 @@ class Chat extends AbstractEntity
     /**
      * Getter pour l'identifiant de l'utilisateur 2.
      */
-    public function getUserId2(): string
+    public function getUserId2(): int
     {
         return $this->idUser2;
     }
@@ -139,7 +139,7 @@ class Chat extends AbstractEntity
     /**
      * Setter pour l'état lu dernier message du chat.
      */
-    public function setLastMessageRead(bool $lastMessageRead): void
+    public function setLastMessageRead(int $lastMessageRead): void
     {
         $this->lastMessageRead = $lastMessageRead;
     }
