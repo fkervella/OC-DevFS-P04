@@ -48,12 +48,12 @@ class MessageController
             // 4.
             if ($chatManager->getChatMessageNumber($chatId) > 0) {
                 $messages = $chatManager->getChatMessages($chatId);
-                //5.
+                // 5.
                 $chatManager->setViewedMessages($messages, $userId);
             }
         }
 
-        //6.
+        // 6.
         $view = new View('Messagerie');
         $view->render('chat', [
             'userId' => $userId,

@@ -26,11 +26,11 @@
         <img src="<?php echo $user->getAvatar(); ?>" alt="avatar de <?php echo $user->getPseudo(); ?>">
             <p><?php echo $user->getPseudo(); ?></p>
         </div>
-        <?php if($user->getId() !== $_SESSION['userId']) :?>
+        <?php if ($user->getId() !== $_SESSION['userId']) { ?>
         <a href="index.php?action=showNewMessage&bookId=<?php echo $book->getId(); ?>">
             <div class="button">Envoyer un message
             </div>
         </a>
-        <?php endif; ?>
+        <?php } ?>
     </div>
 </div>
