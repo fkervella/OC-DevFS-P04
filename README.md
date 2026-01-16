@@ -148,8 +148,6 @@ page account : js pour affichage en responsive
 
 Toutes les pages : travailler sur la variation de la taille d'écran
 
-page account : modification de l'avatar de l'utilisateur
-
 addBook : rendre plus beau le bouton de sélection de l'image du livre
 
 Messagerie : afficher correctement le fond de couleur des messages
@@ -165,3 +163,5 @@ Spécifier les types de données des fonctions
 bookExchange : Faire fonctionner la recherche de livre
 
 page publique profil utilisateur
+
+page account : ajouter un lien vers la page book detail depuis l'image, le titre, l'auteur et la description du livre

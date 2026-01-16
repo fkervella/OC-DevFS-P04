@@ -93,4 +93,24 @@ class UserManager extends AbstractEntityManager
     {
         return isset($_SESSION['user']);
     }
+    
+    /**
+     * \brief Met à jour l'avatar d'un utilisateur dans la base de données.
+     *
+     * @param $userId identifiant de l'utilisateur à mettre à jour
+     * @param $avata  avatar l'utilisateur
+     *
+     * @return true si la mise à jour a réussi, sinon false
+     */
+    public function updateAvatar($userId, $avatar): bool
+    {
+        $sql = 'UPDATE user SET avatar=:avatar WHERE id=:userId';
+        $result = $this->db->query($sql, [
+            'avatar' => $avatar,
+            'userId' => $userId,
+        ]);
+
+        return $result->rowCount() > 0;
+    }
+
 }

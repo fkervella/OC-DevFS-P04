@@ -83,7 +83,8 @@ class UserController
             'ecart' => $ecart,
             'books' => $books,
             'bookNumber' => $bookNumber,
-        ], 'account.css');
+        ], 'account.css',
+         'script.js');
     }
 
     /**
@@ -231,5 +232,32 @@ class UserController
 
         // 7.
         Utils::redirect('showAccount');
+    }
+
+    /*
+     * Mise à jour de l'avatar de l'utilisateur
+     */
+    public function uploadAvatar() :void
+    {
+        if (!isset($_SESSION['userId'])) {
+            Utils::redirect('showHome');
+        }
+
+        $userId = $_SESSION['userId'];
+
+        $userAvatar = USER_AVATARS.$userId;
+        if (!isset($_FILES['image'])) {
+            throw new Exception("L'image n'a pas pu être téléchargée.");
+        }
+
+        if (!move_uploaded_file($_FILES['image']['tmp_name'], $userAvatar)) {
+            throw new Exception("L'image du livre n'a pas été téléchargée");
+        }
+
+        $userManager = new UserManager();
+        $userManager->updateAvatar($userId, $userAvatar);
+        
+        Utils::redirect('showAccount');
+
     }
 }

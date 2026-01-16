@@ -26,6 +26,7 @@ class Router
         'showChat' => [MessageController::class],
         'showNewMessage' => [MessageController::class],
         'sendMessage' => [MessageController::class],
+        'uploadAvatar' => [UserController::class],
     ];
 
     /**
