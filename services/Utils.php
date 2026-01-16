@@ -123,6 +123,7 @@ class Utils
             return null;
         }
     }
+
     /**
      * retourne le code js à intégrer en attribut d'un bouton.
      * pour ouvrir une popup "confirm" et n'effectuer l'action que si l'utilisateur a bien cliqué sur "ok".

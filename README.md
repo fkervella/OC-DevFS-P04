@@ -140,14 +140,9 @@ Fichier index.php : routeur
 
 Dossier services pour les classes de fonctionnalités génériques
 
-
-Ajouter l'état Lu/Non lu des messages
-
 ## Dette technique
 
 Menu en responsive lors de l'appui sur le burger menu
-
-Convertir la date d'ajout de livre dans les fonctions setAddDate et getAddDate de la classe Book
 
 page account : js pour affichage en responsive
 
@@ -155,11 +150,7 @@ Toutes les pages : travailler sur la variation de la taille d'écran
 
 page account : modification de l'avatar de l'utilisateur
 
-registerBook : vérifier qu'un livre avec le même titre et le même auteur n'existe pas déjà
-
 addBook : rendre plus beau le bouton de sélection de l'image du livre
-
-Nos livres à l'échange : JS : lors du clic sur la recherche, effacer le contenu si c'est le texte pas défaut qui est saisi
 
 UpdateBook : réussir la prise en compte de la valeur précédente d'image pour la mise à jour (doit fonctionner sans modifier l'image, ce qui n'est pas le cas aujourd'hui)
 
@@ -168,3 +159,10 @@ Messagerie : afficher correctement le fond de couleur des messages
 Messagerie : aligner correctement les messages
 
 Toutes pages : faire une passe sur les couleurs de fond qui ne sont pas homogènes entre les pages et par rapport à la maquette
+
+Vérifier la validation des données d'entrée dans les controllers
+
+Spécifier les types de données des fonctions
+
+bookExchange : Faire fonctionner la recherche de livre
+

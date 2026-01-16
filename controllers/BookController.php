@@ -126,11 +126,12 @@ class BookController
         /*
          * 1. Filtrage des données d'entrée
          * 2. Traduction de la valeur de la disponibilité
-         * 3. Enregistrement du livre
-         * 4. Vérification que le livre a bien été enregisté et récupèration de son identifiant
-         * 5. Ajout du livre dans la bibliothèque de l'utilisateur
-         * 6. Téléchargement de l'image de l'utilisateur et enregistrement de son chemin avec les données du livre
-         * 7. Redirection vers la page Mon compte
+         * 3. Vérification que le livre n'exsite pas déjà
+         * 4. Enregistrement du livre
+         * 5. Vérification que le livre a bien été enregisté et récupèration de son identifiant
+         * 6. Ajout du livre dans la bibliothèque de l'utilisateur
+         * 7. Téléchargement de l'image de l'utilisateur et enregistrement de son chemin avec les données du livre
+         * 8. Redirection vers la page Mon compte
          */
 
         // 1.
@@ -181,9 +182,15 @@ class BookController
 
         // 3.
         $bookManager = new BookManager();
-        $bookManager->registerBook($title, $author, $description, $availabilityValue);
+
+        if ($bookManager->existsBook($title, $author)) {
+            throw new Exception('Un livre avec le même titre et le même auteur est déjà enregistré');
+        }
 
         // 4.
+        $bookManager->registerBook($title, $author, $description, $availabilityValue);
+
+        // 5.
         $book = $bookManager->getBookByInfo($title, $author, $description, $availabilityValue);
 
         if (!$book) {
@@ -192,11 +199,11 @@ class BookController
 
         $bookId = $book->getId();
 
-        // 5.
+        // 6.
         $libraryManager = new LibraryManager();
         $libraryManager->addBook($userId, $bookId);
 
-        // 6.
+        // 7.
         $bookPicture = BOOK_PICTURES.$bookId;
         if (!isset($_FILES['image'])) {
             throw new Exception("L'image n'a pas pu être téléchargée.");
@@ -208,7 +215,7 @@ class BookController
 
         $bookManager->updatePicture($bookId, $bookPicture);
 
-        // 7.
+        // 8.
         Utils::redirect('showAccount');
     }
 

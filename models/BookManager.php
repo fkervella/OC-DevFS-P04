@@ -255,4 +255,23 @@ class BookManager extends AbstractEntityManager
 
         return $result->rowCount() > 0;
     }
+
+    /**
+     * Détermine si un livre existe dans la base de données.
+     *
+     * @param $title  nom du livre
+     * @param $author auteur du livre
+     *
+     * @return renvoie true si le livre est trouvé et false sinon
+     */
+    public function existsBook($title, $author): bool
+    {
+        $sql = 'SELECT COUNT(*) FROM book WHERE title=:title AND author=:author';
+        $result = $this->db->query($sql, [
+            'title' => $title,
+            'author' => $author,
+        ]);
+
+        return $result->rowCount() > 0;
+    }
 }
