@@ -18,7 +18,8 @@
     --background-unavailable: #C56D6D;
     --background-row-table: #EDF2F6;
     --background-received-message: white;
-    --background-sent-message: #EDF2F6:
+    --background-sent-message: #EDF2F6;
+    --strong-grey-text-color: #292929;
 }
 
 body {

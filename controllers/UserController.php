@@ -75,16 +75,20 @@ class UserController
 
         // 5.
         $view = new View('Mon compte');
-        $view->render('account', [
-            'pseudo' => $pseudo,
-            'login' => $login,
-            'avatar' => $avatar,
-            'userId' => $userId,
-            'ecart' => $ecart,
-            'books' => $books,
-            'bookNumber' => $bookNumber,
-        ], 'account.css',
-         'script.js');
+        $view->render(
+            'account',
+            [
+                'pseudo' => $pseudo,
+                'login' => $login,
+                'avatar' => $avatar,
+                'userId' => $userId,
+                'ecart' => $ecart,
+                'books' => $books,
+                'bookNumber' => $bookNumber,
+            ],
+            'account.css',
+            'account.js'
+        );
     }
 
     /**
@@ -234,10 +238,8 @@ class UserController
         Utils::redirect('showAccount');
     }
 
-    /*
-     * Mise à jour de l'avatar de l'utilisateur
-     */
-    public function uploadAvatar() :void
+    // Mise à jour de l'avatar de l'utilisateur
+    public function uploadAvatar(): void
     {
         if (!isset($_SESSION['userId'])) {
             Utils::redirect('showHome');
@@ -247,17 +249,16 @@ class UserController
 
         $userAvatar = USER_AVATARS.$userId;
         if (!isset($_FILES['image'])) {
-            throw new Exception("L'image n'a pas pu être téléchargée.");
+            throw new Exception("L'avatar n'a pas pu être téléchargée.");
         }
 
         if (!move_uploaded_file($_FILES['image']['tmp_name'], $userAvatar)) {
-            throw new Exception("L'image du livre n'a pas été téléchargée");
+            throw new Exception("L'avatar n'a pas été téléchargée");
         }
 
         $userManager = new UserManager();
         $userManager->updateAvatar($userId, $userAvatar);
-        
-        Utils::redirect('showAccount');
 
+        Utils::redirect('showAccount');
     }
 }

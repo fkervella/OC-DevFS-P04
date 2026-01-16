@@ -245,7 +245,7 @@ class BookController
         $view = new View('Mise à jour du livre');
         $view->render('updateBook', [
             'book' => $book,
-        ], 'modifyBook.css');
+        ], 'updateBook.css', 'updateBook.js');
     }
 
     /**
@@ -388,5 +388,28 @@ class BookController
 
         // 6.
         Utils::redirect('showAccount');
+    }
+
+    public function uploadBookPicture()
+    {
+        $bookId = htmlspecialchars(Utils::request('id'));
+
+        if (!isset($bookId)) {
+            Utils::redirect('showHome');
+        }
+
+        $bookPicture = BOOK_PICTURES.$bookId;
+        if (!isset($_FILES['image']) && $_FILES['image']['size'] > 0) {
+            throw new Exception("L'image n'a pas pu être téléchargée.");
+        }
+
+        if (!move_uploaded_file($_FILES['image']['tmp_name'], $bookPicture)) {
+            throw new Exception("L'image du livre n'a pas été téléchargée");
+        }
+
+        $bookManager = new BookManager();
+        $bookManager->updatePicture($bookId, $bookPicture);
+
+        Utils::redirect('showUpdateBook', ['bookId' => $bookId]);
     }
 }

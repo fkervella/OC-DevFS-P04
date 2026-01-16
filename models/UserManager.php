@@ -85,20 +85,11 @@ class UserManager extends AbstractEntityManager
         return $result->rowCount() > 0;
     }
 
-    /*
-     * \brief Vérifie si l'utilisateur est connecté
-     * @return état de connexion de l'utilisateur (1 : connecté / 0 : non connecté)
-     */
-    private function checkIfUserIsConnected(): bool
-    {
-        return isset($_SESSION['user']);
-    }
-    
     /**
      * \brief Met à jour l'avatar d'un utilisateur dans la base de données.
      *
-     * @param $userId identifiant de l'utilisateur à mettre à jour
-     * @param $avata  avatar l'utilisateur
+     * @param       $userId identifiant de l'utilisateur à mettre à jour
+     * @param mixed $avatar
      *
      * @return true si la mise à jour a réussi, sinon false
      */
@@ -113,4 +104,12 @@ class UserManager extends AbstractEntityManager
         return $result->rowCount() > 0;
     }
 
+    /*
+     * \brief Vérifie si l'utilisateur est connecté
+     * @return état de connexion de l'utilisateur (1 : connecté / 0 : non connecté)
+     */
+    private function checkIfUserIsConnected(): bool
+    {
+        return isset($_SESSION['user']);
+    }
 }

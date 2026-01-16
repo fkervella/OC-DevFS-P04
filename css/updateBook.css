@@ -1,0 +1,87 @@
+.page 
+{
+    margin: 0px 150px 0px 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.back 
+{
+    font-family: 'inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--grey-text-color);
+    margin: 20px 0px 5px 0px;
+}
+
+h1 {
+    font-family: 'Playfair Display', sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin: 5px 0px 10px 0px;
+}
+
+.updatePicture {
+    font-family: 'inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--strong-grey-text-color);
+    text-align: right;
+}
+
+.content 
+{
+    margin: 0px 0px 0px 0px;
+    background-color: white;
+    width: 100%;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.content .column1 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    padding: 0px 40px 0px 40px;
+}
+
+.content .column1 img {
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.content .column2 {
+    width: 50%;
+    padding: 0px 40px 0px 40px;
+}
+
+form 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    margin: auto;
+}
+
+#image 
+{
+    width: 100%;
+    margin: 0px 0px 20px 0px;
+}
+
+.button 
+{
+    margin: 30px 0px 0px 0px;
+}
+
+textarea, .title, .author, .description, .availability
+{
+    width: auto;
+}
+
+#bookPicture
+{
+    display: none; 
+}

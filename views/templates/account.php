@@ -10,7 +10,7 @@
 <div class="content">
     <div class="row1">
         <div class="column1">
-        <img id="avatar" src='<?php echo $avatar."?t=".time(); ?>' alt='avatar <?php echo $pseudo; ?>'>
+        <img id="avatar" src='<?php echo $avatar.'?t='.time(); ?>' alt='avatar <?php echo $pseudo; ?>'>
         <input type="file" id="userAvatarFile" accept="image/png, image/jpeg, image/svg">
             <a onclick="document.getElementById('userAvatarFile').click()">modifier</a>
             <div class="pseudo">
@@ -87,7 +87,7 @@
                                 if (empty($book->getPicture())) {
                                     echo 'img/imageTest.png';
                                 } else {
-                                    echo $book->getPicture()."?t=".time();
+                                    echo $book->getPicture().'?t='.time();
                                 } ?>" alt="couverture livre <?php echo $book->getTitle(); ?>">
                 </div>
                 <div class="grid-row-cell hTitle">

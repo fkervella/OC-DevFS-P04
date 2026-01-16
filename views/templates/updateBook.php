@@ -4,10 +4,18 @@
  * Template pour affiche la page d'ajout de livre.
  */
 ?>
+<div class="page">
+<p class="back">< Retour</p>
+<h1>Modifier les informations</h1>
 
 <div class="content">
+    <div class="column1">
+        <label>Photo</label>
+        <img src="<?php echo $book->getPicture(); ?>" alt="image du livre <?php echo $book->getTitle(); ?>">
+        <input type="file" id="bookPicture" accept="image/png, image/jpeg, image/svg">
+        <a class="updatePicture" onclick="document.getElementById('bookPicture').click()">Modifier la photo</a>
+    </div>
     <div class="column2">
-    <h1>Modifier le livre <?php echo $book->getTitle(); ?></h1>
         <form method="post" action="index.php?action=updateBook" enctype="multipart/form-data">
             <label for="title">Titre</label>
             <input type="text" name="title" id="title" class="title" value="<?php echo $book->getTitle(); ?>">
@@ -24,10 +32,9 @@
                     echo 'selected';
                 } ?>>Non disponible</option>
             </select>
-            <label for="image">Image</label>
-            <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/svg">
-            <input type="submit" class="button" value="Enregistrer le livre">
-            <input type="hidden" name="bookId" value="<?php echo $book->getId(); ?>">
+            <input type="submit" class="button" value="Valider">
+            <input type="hidden" name="bookId" id="bookId" value="<?php echo $book->getId(); ?>">
         </form>
     </div>
+</div>
 </div>

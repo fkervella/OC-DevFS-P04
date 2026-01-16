@@ -25,7 +25,7 @@
                 <img src="<?php if (empty($book->getPicture())) {
                     echo 'img/imageTest.png';
                 } else {
-                    echo $book->getPicture()."?t=".time();
+                    echo $book->getPicture().'?t='.time();
                 }
             ?>" alt="image1">
                 <div class="title">

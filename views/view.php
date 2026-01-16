@@ -26,10 +26,9 @@ class View
      * @param string $viewName : nom de la vue demandée par le controller
      * @param array  $params   : paramètres que le controller a envoyé à la vue
      * @param string $style    : style complémentaire à utiliser dans la vue
-     *
      * @param string $script   : script à ajouter à la vue
      */
-    public function render(string $viewName, array $params = [], ?string $style = '', ?string $script=''): void
+    public function render(string $viewName, array $params = [], ?string $style = '', ?string $script = ''): void
     {
         // vue envoyée
         $viewPath = $this->buildViewPath($viewName);

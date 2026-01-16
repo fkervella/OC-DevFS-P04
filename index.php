@@ -13,3 +13,4 @@ try {
 } catch (Exception $error) {
     Router::showErrorPage('Index : '.$error->getMessage());
 }
+ 

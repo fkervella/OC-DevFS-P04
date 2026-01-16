@@ -27,6 +27,7 @@ class Router
         'showNewMessage' => [MessageController::class],
         'sendMessage' => [MessageController::class],
         'uploadAvatar' => [UserController::class],
+        'uploadBookPicture' => [BookController::class],
     ];
 
     /**
