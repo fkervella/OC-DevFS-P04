@@ -10,7 +10,7 @@
 <div class="content">
     <div class="row1">
         <div class="column1">
-        <img id="avatar" src='<?php echo $avatar; ?>' alt='avatar <?php echo $pseudo; ?>'>
+        <img id="avatar" src='<?php echo $avatar."?t=".time(); ?>' alt='avatar <?php echo $pseudo; ?>'>
             <a href="">modifier</a>
             <div class="pseudo">
                 <?php echo $pseudo; ?>
@@ -86,7 +86,7 @@
                                 if (empty($book->getPicture())) {
                                     echo 'img/imageTest.png';
                                 } else {
-                                    echo $book->getPicture();
+                                    echo $book->getPicture()."?t=".time();
                                 } ?>" alt="couverture livre <?php echo $book->getTitle(); ?>">
                 </div>
                 <div class="grid-row-cell hTitle">

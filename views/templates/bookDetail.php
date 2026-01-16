@@ -9,7 +9,7 @@
 </div>
 <div class="content">
     <div class="column1">
-    <img src="<?php echo $book->getPicture(); ?>" alt="image du livre <?php echo $book->getTitle(); ?>">
+    <img src="<?php echo $book->getPicture()."?t=".time(); ?>" alt="image du livre <?php echo $book->getTitle(); ?>">
     </div>
     <div class="column2">
     <div class="title"><?php echo $book->getTitle(); ?>
@@ -23,7 +23,7 @@
         </div>
         <p class="sectionTitle">Propriétaire</p>
         <div class="userIcon">
-        <img src="<?php echo $user->getAvatar(); ?>" alt="avatar de <?php echo $user->getPseudo(); ?>">
+        <img src="<?php echo $user->getAvatar()."?t=".time(); ?>" alt="avatar de <?php echo $user->getPseudo(); ?>">
             <p><?php echo $user->getPseudo(); ?></p>
         </div>
         <?php if ($user->getId() !== $_SESSION['userId']) { ?>
