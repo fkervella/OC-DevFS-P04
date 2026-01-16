@@ -40,6 +40,12 @@ class View
         $view = $viewName;
         $additionalStyle = $style;
         $userConnected = isset($_SESSION['user']);
+
+        $notViewedMessagesNumber = null;
+        if ($userConnected) {
+            $chatManager = new ChatManager();
+            $notViewedMessagesNumber = $chatManager->getNotViewedMessagesNumber($_SESSION['userId']);
+        }
         ob_start();
 
         require MAIN_VIEW_PATH;

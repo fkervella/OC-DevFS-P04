@@ -91,6 +91,24 @@ nav .burgerMenu {
     top: 6px;
 }
 
+.menu a{
+    display:flex;
+    flex-direction: row;
+}
+
+.messageNumber {
+    background-color:black;
+    padding : 3px 5px 3px 5px;
+    margin: 0px 5px 0px 5px;
+    border-radius: 10px;
+    height: 15px;
+    color: white;
+    width: fit-content;
+    font-family: 'inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+}
+
 .button {
     padding: 15px 40px 15px 40px;
     background-color: var(--button-green-background-color);
@@ -311,9 +329,6 @@ select {
     header {
         margin:15px 0px 15px 0px;
         padding: 0px 20px 0px 15px;    
-    }
-
-    nav {
     }
 
     nav .menu {

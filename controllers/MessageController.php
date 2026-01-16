@@ -15,7 +15,8 @@ class MessageController
          * 2. Récupération des données des conversations de l'utilisateur
          * 3. Récupération des données de la conversation sélectionnée
          * 4. Récupération des messages de la conversation sélectionnée
-         * 5. Affichage de la page Messagerie avec les données récupérées
+         * 5. Envoi au messages reçus l'état 'vu'
+         * 6. Affichage de la page Messagerie avec les données récupérées
          */
 
         // 1.
@@ -47,10 +48,12 @@ class MessageController
             // 4.
             if ($chatManager->getChatMessageNumber($chatId) > 0) {
                 $messages = $chatManager->getChatMessages($chatId);
+                //5.
+                $chatManager->setViewedMessages($messages, $userId);
             }
         }
 
-        // 5.
+        //6.
         $view = new View('Messagerie');
         $view->render('chat', [
             'userId' => $userId,

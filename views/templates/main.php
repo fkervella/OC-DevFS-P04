@@ -45,7 +45,7 @@
                     <?php if ($userConnected) { ?>
                         <a href='index.php?action=showChat' <?php if ('chat' === $viewName) {
                             echo 'class="activePage"';
-                        } ?>><img class="headerIcon" src="img/iconeMessagerie.svg" alt="icone Messagerie">Messagerie</a>
+                        } ?>><img class="headerIcon" src="img/iconeMessagerie.svg" alt="icone Messagerie">Messagerie <div class="messageNumber"><?php echo $notViewedMessagesNumber; ?></div></a>
                             <a href='index.php?action=showAccount' <?php if ('account' === $viewName) {
                                 echo 'class="activePage"';
                             } ?>><img class="headerIcon" src="img/iconeMonCompte.svg" alt="icone mon compte">Mon compte</a>
