@@ -23,7 +23,9 @@ class UserController
         $view->render('login', [], 'login.css');
     }
 
-    // Déconnecte l'utilisateur courant.
+    /**
+     *  Déconnecte l'utilisateur courant.
+     */
     public function logOut(): void
     {
         unset($_SESSION['user'], $_SESSION['userId']);

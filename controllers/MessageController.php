@@ -123,6 +123,10 @@ class MessageController
         ], 'chat.css');
     }
 
+    /**
+     * Enregistre un nouveau message dans une conversation
+     * @return void
+     */
     public function sendMessage(): void
     {
         /*
