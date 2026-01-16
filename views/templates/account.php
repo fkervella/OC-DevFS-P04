@@ -109,7 +109,7 @@
                 </div>
                 <div class="grid-row-cell hActions">
                 <a href="index.php?action=showUpdateBook&bookId=<?php echo $book->getId(); ?>" class="modifyBook">Editer</a>
-                <a href="index.php?action=deleteBook&bookId=<?php echo $book->getId(); ?>" class="deleteBookFromLibrary">Supprimer</a>
+                <a href="index.php?action=deleteBook&bookId=<?php echo $book->getId(); ?>" class="deleteBookFromLibrary" <?php echo Utils::askConfirmation('Etes-vous sûr de vouloir supprimer ce livre ?'); ?>>Supprimer</a>
                 </div>
             </div>
             <?php } ?>

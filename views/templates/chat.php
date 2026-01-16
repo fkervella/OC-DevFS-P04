@@ -20,7 +20,7 @@
                 <img src="<?php echo $chat->getOtherUserAvatar(); ?>" alt="<?php echo $chat->getOtherUserPseudo(); ?>">
                     <div class="userName"><?php echo $chat->getOtherUserPseudo(); ?>
                     </div>
-                    <div class="lastMessageDate"><?php echo $chat->getLastMessageDate(); ?>
+                    <div class="lastMessageDate"><?php echo Utils::getDateHourMinute($chat->getLastMessageDate()); ?>
                     </div>
                     <p class="lastMessage"><?php echo $chat->getLastMessage(); ?>
                     </p>
@@ -54,7 +54,7 @@
                     <?php } else { ?>
                     <img class="userAvatar" src="<?php echo $currentChat->getOtherUserAvatar(); ?>" alt="avatar de <?php echo $currentChat->getOtherUserPseudo(); ?>">
                     <?php } ?>
-                    <div class="messageDate"><?php echo $message->getDatetime(); ?>
+                    <div class="messageDate"><?php echo Utils::getDateDayMonthYearHourMinute($message->getDatetime()); ?>
                     </div>
                         <div class="messageText <?php if ($message->getSenderID() === $userId) {
                             echo 'sentMessage';

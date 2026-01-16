@@ -124,8 +124,7 @@ class MessageController
     }
 
     /**
-     * Enregistre un nouveau message dans une conversation
-     * @return void
+     * Enregistre un nouveau message dans une conversation.
      */
     public function sendMessage(): void
     {

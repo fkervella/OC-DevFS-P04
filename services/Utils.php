@@ -83,4 +83,56 @@ class Utils
 
         return false;
     }
+
+    /**
+     * Cette méthode extrait les heures minutes et secondes d'une date.
+     *
+     * @param string $inputDate date au format chaine de carectère
+     */
+    public static function getDateHourMinute(string $inputDate): ?string
+    {
+        try {
+            preg_match('/\d{4}-\d{2}-\d{2}\s(\d{2}):(\d{2}):(\d{2})/', $inputDate, $matches);
+
+            if (4 === count($matches)) {
+                return $matches[1].':'.$matches[2];
+            }
+
+            return null;
+        } catch (Exception $e) {
+            return null;
+        }
+    }
+
+    /**
+     * Cette méthode extrait les heures minutes et secondes d'une date.
+     *
+     * @param string $inputDate date au format chaine de carectère
+     */
+    public static function getDateDayMonthYearHourMinute(string $inputDate): ?string
+    {
+        try {
+            preg_match('/(\d{4})-(\d{2})-(\d{2})\s(\d{2}):(\d{2}):(\d{2})/', $inputDate, $matches);
+
+            if (7 === count($matches)) {
+                return $matches[3].'-'.$matches[2].'-'.$matches[1].' '.$matches[4].':'.$matches[5];
+            }
+
+            return null;
+        } catch (Exception $e) {
+            return null;
+        }
+    }
+    /**
+     * retourne le code js à intégrer en attribut d'un bouton.
+     * pour ouvrir une popup "confirm" et n'effectuer l'action que si l'utilisateur a bien cliqué sur "ok".
+     *
+     * @param string $message message à afficher dans la popup
+     *
+     * @return string code js dans le bouton
+     */
+    public static function askConfirmation(string $message): string
+    {
+        return "onClick=\"return confirm('{$message}');\"";
+    }
 }
