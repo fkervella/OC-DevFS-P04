@@ -164,4 +164,4 @@ bookExchange : Faire fonctionner la recherche de livre
 
 page publique profil utilisateur
 
-page account : ajouter un lien vers la page book detail depuis l'image, le titre, l'auteur et la description du livre
+Changement d'avatar / d'image de livre, faire en sorte que la page se rafraichisse correctement

@@ -82,22 +82,23 @@
 
             ++$counter;
             ?>">
-                <div class="grid-row-cell hImage">
+                <div class="grid-row-cell hImage"><a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>">
                 <img src="<?php
                                 if (empty($book->getPicture())) {
                                     echo 'img/imageTest.png';
                                 } else {
                                     echo $book->getPicture().'?t='.time();
                                 } ?>" alt="couverture livre <?php echo $book->getTitle(); ?>">
+                </a>
                 </div>
                 <div class="grid-row-cell hTitle">
-                <p class="bookTitle"><?php echo $book->getTitle(); ?></p>
+                <p class="bookTitle"><a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>"><?php echo $book->getTitle(); ?></a></p>
                 </div>
                 <div class="grid-row-cell hAuthor">
-                <p class="bookAuthor"><?php echo $book->getAuthor(); ?></p>
+                <p class="bookAuthor"><a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>"><?php echo $book->getAuthor(); ?></a></p>
                 </div>
                 <div class="grid-row-cell hDescription">
-                <p class="bookDescription"><?php echo $book->getDescription(); ?></p>
+                <p class="bookDescription"><a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>"><?php echo $book->getDescription(); ?></a></p>
                 </div>
                 <div class="grid-row-cell hAvailability">
                     <?php if (1 === $book->getAvailability()) { ?>
