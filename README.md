@@ -147,8 +147,6 @@ Ajouter l'état Lu/Non lu des messages
 
 Menu en responsive lors de l'appui sur le burger menu
 
-Afficher dans le header le nombre de messages non lus
-
 Convertir la date d'ajout de livre dans les fonctions setAddDate et getAddDate de la classe Book
 
 page account : js pour affichage en responsive
@@ -164,3 +162,9 @@ addBook : rendre plus beau le bouton de sélection de l'image du livre
 Nos livres à l'échange : JS : lors du clic sur la recherche, effacer le contenu si c'est le texte pas défaut qui est saisi
 
 UpdateBook : réussir la prise en compte de la valeur précédente d'image pour la mise à jour (doit fonctionner sans modifier l'image, ce qui n'est pas le cas aujourd'hui)
+
+Messagerie : afficher correctement le fond de couleur des messages
+
+Messagerie : aligner correctement les messages
+
+Toutes pages : faire une passe sur les couleurs de fond qui ne sont pas homogènes entre les pages et par rapport à la maquette
