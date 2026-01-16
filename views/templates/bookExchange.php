@@ -12,7 +12,7 @@
         <img src='img/chercher.png' alt='recherche'>
         <form method="get" action="index.php?action=showBookExhange">
             <label for="searchWords">Recherche :</label>
-            <input type="text" class="searchWords" name="searchWords" id="searchWords" value="Rechercher un livre">
+            <input type="text" class="searchWords" name="searchWords" id="searchWords" placeholder="Rechercher un livre">
         </form>
     </div>
 </div>

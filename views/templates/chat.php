@@ -68,7 +68,7 @@
             <?php } ?>
             <form class="newMessage" action="index.php?action=sendMessage" method="post">
                 <label for="newMessageText">Message: </label>
-                <input type="text" class="newMessageText" name="newMessageText" id="newMessageText" value="Tapez votre message ici">
+                <input type="text" class="newMessageText" name="newMessageText" id="newMessageText" placeholder="Tapez votre message ici">
                 <input type="hidden" name="chatId" value="<?php echo $currentChat->getId(); ?>">
                 <input type="submit" class="button" value="Envoyer"> 
             </form>
