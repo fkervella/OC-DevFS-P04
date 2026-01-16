@@ -14,7 +14,7 @@ class BookManager extends AbstractEntityManager
      */
     public function getLastAddedBooks($limit): ?array
     {
-        $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'seller_id', user.pseudo as 'seller_pseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id ORDER BY add_date DESC LIMIT {$limit}";
+        $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'seller_id', user.pseudo as 'seller_pseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id WHERE book.availability=1 ORDER BY add_date DESC LIMIT {$limit}";
         $result = $this->db->query($sql);
         $books = [];
 
@@ -46,19 +46,19 @@ class BookManager extends AbstractEntityManager
         foreach ($keyWordsArray as $keyWord) {
             if ('' !== $keyWord) {
                 if (1 === $initial) {
-                    $search = "WHERE title like %{$keyWord}% ";
+                    $search = "WHERE book.availability=1 AND book.title like %{$keyWord}% ";
                     $initial = 0;
                 } else {
-                    $search .= "AND title like %{$keyWord}% ";
+                    $search .= "AND book.title like %{$keyWord}% ";
                 }
             }
         }
 
         // 2.
         if ('' === $search) {
-            $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'seller_id', user.pseudo as 'seller_pseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id ORDER BY add_date DESC LIMIT {$limit}";
+            $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'seller_id', user.pseudo as 'seller_pseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id WHERE book.availability=1  ORDER BY add_date DESC LIMIT {$limit}";
         } else {
-            $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'seller_id', user.pseudo as 'seller_pseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id WHERE {$search} ORDER BY add_date DESC LIMIT {$limit}";
+            $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'seller_id', user.pseudo as 'seller_pseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id {$search} ORDER BY add_date DESC LIMIT {$limit}";
         }
 
         $result = $this->db->query($sql);
@@ -244,13 +244,13 @@ class BookManager extends AbstractEntityManager
      */
     public function updateBook($bookId, $title, $author, $description, $availabilityValue)
     {
-        $sql = 'UPDATE book SET title=:title, author:author, description:=description, availability=:availabilityWHERE id=:bookId';
+        $sql = 'UPDATE book SET title = :title, author = :author, description = :description, availability = :availability WHERE id = :bookId';
         $result = $this->db->query($sql, [
             'title' => $title,
             'author' => $author,
             'description' => $description,
             'availability' => $availabilityValue,
-            'bookId', $bookId,
+            'bookId' => $bookId,
         ]);
 
         return $result->rowCount() > 0;
@@ -262,7 +262,7 @@ class BookManager extends AbstractEntityManager
      * @param $title  nom du livre
      * @param $author auteur du livre
      *
-     * @return renvoie true si le livre est trouvé et false sinon
+     * @return bool renvoie true si le livre est trouvé et false sinon
      */
     public function existsBook($title, $author): bool
     {

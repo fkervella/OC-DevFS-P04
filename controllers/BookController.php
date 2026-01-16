@@ -332,7 +332,6 @@ class BookController
         $author = htmlspecialchars(Utils::request('author'));
         $description = htmlspecialchars(Utils::request('description'));
         $availability = htmlspecialchars(Utils::request('availability'));
-        $image = htmlspecialchars(Utils::request('image'));
 
         if (empty($bookId)) {
             throw new Exception('Modification du livre impossible, référence au livre manquante');
@@ -342,7 +341,7 @@ class BookController
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($bookId);
 
-        if ($book) {
+        if (!$book) {
             throw new Exception('Modification du livre impossible, référence au livre non trouvée');
         }
 
@@ -379,18 +378,13 @@ class BookController
         $bookManager->updateBook($book->getId(), $title, $author, $description, $availabilityValue);
 
         // 5.
-        /*
-        $bookPicture = BOOK_PICTURES.$book->getId();
-        if (!isset($_FILES['image'])) {
-           throw new Exception("L'image n'a pas pu être téléchargée.");
-        }
+        if (isset($_FILES['image']) && $_FILES['image']['size'] > 0) {
+            $bookPicture = BOOK_PICTURES.$book->getId();
 
-        if (!move_uploaded_file($_FILES['image']['tmp_name'], $bookPicture)) {
-           throw new Exception("L'image du livre n'a pas été téléchargée");
+            if (!move_uploaded_file($_FILES['image']['tmp_name'], $bookPicture)) {
+                throw new Exception("L'image du livre n'a pas été téléchargée");
+            }
         }
-
-        $bookManager->updatePicture($bookId, $bookPicture);
-        */
 
         // 6.
         Utils::redirect('showAccount');

@@ -17,15 +17,16 @@
             <textarea name="description" id="description" class="description"><?php echo $book->getDescription(); ?></textarea>
             <label for="availability">Disponibilité</label>
             <select name="availability" id="availability" class="availability">
-            <option value="available <?php if (1 === $book->getAvailability()) {
+            <option value="available" <?php if (1 === $book->getAvailability()) {
                 echo 'selected';
-            } ?>">Disponible</option>
-                <option value="unavailable">Non disponible</option>
+            } ?>>Disponible</option>
+                <option value="unavailable" <?php if (0 === $book->getAvailability()) {
+                    echo 'selected';
+                } ?>>Non disponible</option>
             </select>
             <label for="image">Image</label>
             <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/svg">
             <input type="submit" class="button" value="Enregistrer le livre">
-            <input type="hidden" name="userId" value="<?php echo $_SESSION['userId']; ?>">
             <input type="hidden" name="bookId" value="<?php echo $book->getId(); ?>">
         </form>
     </div>

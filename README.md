@@ -152,8 +152,6 @@ page account : modification de l'avatar de l'utilisateur
 
 addBook : rendre plus beau le bouton de sélection de l'image du livre
 
-UpdateBook : réussir la prise en compte de la valeur précédente d'image pour la mise à jour (doit fonctionner sans modifier l'image, ce qui n'est pas le cas aujourd'hui)
-
 Messagerie : afficher correctement le fond de couleur des messages
 
 Messagerie : aligner correctement les messages
@@ -166,3 +164,4 @@ Spécifier les types de données des fonctions
 
 bookExchange : Faire fonctionner la recherche de livre
 
+page publique profil utilisateur
