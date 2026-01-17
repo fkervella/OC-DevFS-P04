@@ -50,45 +50,90 @@ class UserController
         if (!isset($_SESSION['userId'])) {
             Utils::redirect('showHome');
         }
-
         $userId = intval(htmlspecialchars($_SESSION['userId']));
 
-        // 2.
-        $userManager = new UserManager();
-        $user = $userManager->getUserById($userId);
+        // Cet identifiant correspond au cas de la consultation de la page publique du compte utilisateur
+        $publicUser = intval(htmlspecialchars(Utils::request('userId')));
 
-        $pseudo = htmlspecialchars($user->getPseudo());
-        $login = htmlspecialchars($user->getLogin());
-        $avatar = htmlspecialchars($user->getAvatar());
+        if (empty($publicUser)) {
+            // Cas de l'affichage du compte utilisateur pour lui-même
 
-        // 3.
-        $creationDate = new DateTime($user->getCreationDate());
-        $nowDate = new DateTime();
+            // 2.
+            $userManager = new UserManager();
+            $user = $userManager->getUserById($userId);
 
-        $interval = $creationDate->diff($nowDate);
-        $ecart = $interval->format('%a jours');
+            $pseudo = htmlspecialchars($user->getPseudo());
+            $login = htmlspecialchars($user->getLogin());
+            $avatar = htmlspecialchars($user->getAvatar());
 
-        // 4.
-        $bookManager = new BookManager();
-        $bookNumber = $bookManager->getUserBookNumber($userId);
-        $books = $bookManager->getUserBooks($userId);
+            // 3.
+            $creationDate = new DateTime($user->getCreationDate());
+            $nowDate = new DateTime();
 
-        // 5.
-        $view = new View('Mon compte');
-        $view->render(
-            'account',
-            [
-                'pseudo' => $pseudo,
-                'login' => $login,
-                'avatar' => $avatar,
-                'userId' => $userId,
-                'ecart' => $ecart,
-                'books' => $books,
-                'bookNumber' => $bookNumber,
-            ],
-            'account.css',
-            'account.js'
-        );
+            $interval = $creationDate->diff($nowDate);
+            $ecart = $interval->format('%a jours');
+
+            // 4.
+            $bookManager = new BookManager();
+            $bookNumber = $bookManager->getUserBookNumber($userId);
+            $books = $bookManager->getUserBooks($userId);
+
+            // 5.
+            $view = new View('Mon compte');
+            $view->render(
+                'account',
+                [
+                    'pseudo' => $pseudo,
+                    'login' => $login,
+                    'avatar' => $avatar,
+                    'userId' => $userId,
+                    'ecart' => $ecart,
+                    'books' => $books,
+                    'bookNumber' => $bookNumber,
+                ],
+                'account.css',
+                'account.js'
+            );
+        } else {
+            // 2.
+            $userManager = new UserManager();
+            $user = $userManager->getUserById($publicUser);
+
+            $pseudo = htmlspecialchars($user->getPseudo());
+            $login = htmlspecialchars($user->getLogin());
+            $avatar = htmlspecialchars($user->getAvatar());
+
+            // 3.
+            $creationDate = new DateTime($user->getCreationDate());
+            $nowDate = new DateTime();
+
+            $interval = $creationDate->diff($nowDate);
+            $ecart = $interval->format('%a jours');
+
+            // 4.
+            $bookManager = new BookManager();
+            $bookNumber = $bookManager->getUserBookNumber($publicUser);
+            $books = $bookManager->getUserBooks($publicUser);
+
+            // 5.
+
+            // Cas de l'affichage du compte public d'un utilisateur
+            $view = new View('Page '.$pseudo);
+            $view->render(
+                'publicAccount',
+                [
+                    'pseudo' => $pseudo,
+                    'login' => $login,
+                    'avatar' => $avatar,
+                    'userId' => $publicUser,
+                    'ecart' => $ecart,
+                    'books' => $books,
+                    'bookNumber' => $bookNumber,
+                ],
+                'publicAccount.css',
+                ''
+            );
+        }
     }
 
     /**

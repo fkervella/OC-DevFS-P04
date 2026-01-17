@@ -1,0 +1,346 @@
+.page {
+    margin: 0px 150px 0px 150px;
+    padding: 40px 0px 0px 0px;
+}
+
+.page h1{
+    font-family: 'Playfair Display', sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.row1 {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.column1 {
+    width: 34%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 20px;
+    align-items: center;
+    padding: 30px 0px 30px 0px;
+    box-sizing: border-box;
+}
+
+.column2 {
+    width: 66%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px 0px 0px 0px;
+    box-sizing: border-box;
+    height: fit-content;
+}
+
+.column1 #avatar {
+    width: 135px;
+    height: auto;
+    border-radius: 80px;
+    margin: 10px 10px 10px 10px;
+}
+
+.column1 #userAvatarFile {
+    display: none;
+}
+
+.column1 a{
+    text-decoration: none;
+    font-family: 'inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--grey-text-color);
+}
+
+.column1 .pseudo {
+    font-family: 'Playfair Display', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 80px 0px 0px 0px;
+}
+
+.column1 .memberSince {
+    font-family: 'inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--grey-text-color);
+    margin: 10px 0px 10px 0px;
+}
+
+.column1 p {
+    font-family: 'inter', sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 20px 0px 10px 0px;
+}
+
+.column1 .librarySize {
+    font-family: 'inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0px 0px 20px 0px;
+}
+
+.librarySize #icon {
+    height: 13px;
+    width: auto;
+    padding: 0px 5px 0px 5px;
+}
+
+.column2 .title {
+    font-family: 'inter', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 10px 0px 20px 0px;
+}
+
+.personalInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-reverse {
+    margin: 30px 0px 0px 0px;
+    width: fit-content;
+}
+
+.row2 {
+    width: 100%;
+    display: table;
+    border-radius: 16px;
+}
+
+.grid-header-cell {
+    font-family: 'inter', sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.bookTitle, .bookAuthor {
+    font-family: 'inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.bookDescription {
+    font-family: 'inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: italic;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.modifyBook {
+    font-family: 'inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #292929;
+    text-decoration: underline;
+    padding: 0px 20px 0px 0px;
+}
+
+.deleteBookFromLibrary {
+    font-family: 'inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #CB2D2D;
+    text-decoration: underline;
+}
+
+.grid-header, .grid-row{
+    display: grid;
+    background-color: white;
+    padding: 0px 50px 0px 50px;
+    box-sizing: border-box;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 1fr;
+    justify-content: left;
+}
+
+.grid-header {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.lastRow {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.grid-header-cell, .grid-row-cell {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.evenRow {
+    background-color: var(--background-row-table);
+}
+
+.grid-row-cell {
+    text-align: left;
+}
+
+.hImage{
+    justify-content: center;
+    display: flex;
+}
+
+.hImage img {
+    max-width: 78px;
+    max-height: 78px;
+    object-fit: contain;
+    width: auto;
+    height: auto;
+}
+
+.hAvailability {
+    margin: auto;
+}
+
+@media all and (max-width :800px) {
+    .page {
+        margin: 0px 20px 0px 20px;
+        padding: 0px 0px 0px 0px;
+    }
+    
+    .content {
+        flex-direction: column;
+        margin: 0px 0px 20px 0px;
+    }
+    
+    .row1 {
+        flex-direction: column;
+    }
+    
+    .column1 {
+        width: 100%;
+    }
+    
+    .column2 {
+        width: 100%;
+        gap: 20px;
+        background-color: var(--backgroun-color);
+    }
+    
+    .button-reverse {
+        width: 100%;
+        padding: 15px 40px 15px 40px;
+
+    }
+    
+   .row2 {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .bookTitle, .bookAuthor {
+        font-size: 14px;
+    }
+    
+    .bookDescription {
+        font-size: 14px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        margin: 0;
+    }
+   
+    .available {
+       font-size: 9px;
+    }
+
+    .modifyBook, .deleteBookFromLibrary {
+        font-size: 16px;
+    }
+    
+    .grid-header, .grid-row{
+        border-radius: 20px;
+        padding: 40px 40px 40px 40px;
+        grid-template-columns: 100px auto;
+        grid-template-rows: 30px 20px 50px 70px ;
+        gap: 0px;
+        border-radius: 20px;
+    }
+    
+    .hImage { 
+        grid-column: 1;
+        grid-row: 1 / 3;
+    }
+   
+    .hTitle { 
+        grid-column: 2;
+        grid-row: 1;
+        padding: 10px 0px 0px 0px;
+        margin: 0;
+    }
+
+    .hTitle p {
+        margin: 0;
+    }
+    
+    .hAuthor { 
+        grid-column: 2;
+        grid-row: 2;
+        padding: 0px 0px 0px 0px;
+        margin: 0;
+    }
+
+    .hAuthor p{
+        margin: 0;
+    }
+
+    .hDescription { 
+        grid-column: 1 / 3;
+        grid-row: 4;
+    }
+
+    .hAvailability {
+        grid-column: 2;
+        grid-row: 3;
+        margin: 0;
+        padding: 15px 0px 10px 0px;
+    }
+
+    .hActions { 
+        grid-column: 1 / 3;
+        grid-row: 5;
+    }
+
+    .hDescription {
+        grid-column: 1 / span 2;
+    }
+
+    .grid-header {
+        display: none;
+    }
+    
+    .evenRow {
+        background-color: white;
+    }
+    
+    .hImage img {
+        width: 78px;
+        height: auto;
+    }
+}

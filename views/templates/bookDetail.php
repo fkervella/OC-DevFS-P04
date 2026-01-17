@@ -22,10 +22,12 @@
             <?php echo Utils::format($book->getDescription()); ?>
         </div>
         <p class="sectionTitle">Propriétaire</p>
-        <div class="userIcon">
-        <img src="<?php echo $user->getAvatar().'?t='.time(); ?>" alt="avatar de <?php echo $user->getPseudo(); ?>">
-            <p><?php echo $user->getPseudo(); ?></p>
-        </div>
+        <a href="index.php?action=showAccount&userId=<?php echo $user->getId(); ?>">
+            <div class="userIcon">
+            <img src="<?php echo $user->getAvatar().'?t='.time(); ?>" alt="avatar de <?php echo $user->getPseudo(); ?>">
+                <p><?php echo $user->getPseudo(); ?></p>
+            </div>
+        </a>
         <?php if (isset($_SESSION['userId']) && $user->getId() !== $_SESSION['userId']) { ?>
         <a href="index.php?action=showNewMessage&bookId=<?php echo $book->getId(); ?>">
             <div class="button">Envoyer un message
