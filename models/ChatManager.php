@@ -224,6 +224,25 @@ class ChatManager extends AbstractEntityManager
     }
 
     /**
+     * \brief Récupère la conversation entre 2 utilisateurs.
+     *
+     * @param int $user1 premier utilisateur de la conversation
+     * @param int $user2 deuxième utilisateur de la conversation
+     *
+     * @return int renvoie l'identifiant de la conversation existe, sinon null
+     */
+    public function getChatIdByUserId(int $user1, int $user2): int
+    {
+        $sql = 'SELECT id FROM chat WHERE (user_id_1=:user1 AND user_id_2=:user2) OR (user_id_1=:user2 AND user_id_2=:user1)';
+        $result = $this->db->query($sql, [
+            'user1' => $user1,
+            'user2' => $user2,
+        ]);
+
+        return intval($result->fetchColumn());
+    }
+
+    /**
      * \brief Récupère le dernier message d'une conversation.
      *
      * @param int $chatId identifiant de la conversation
@@ -277,24 +296,4 @@ class ChatManager extends AbstractEntityManager
 
         return $otherUserId;
     }
-    
-    /**
-     * \brief Récupère la conversation entre 2 utilisateurs.
-     *
-     * @param int $user1 premier utilisateur de la conversation
-     * @param int $user2 deuxième utilisateur de la conversation
-     *
-     * @return int renvoie l'identifiant de la conversation existe, sinon null
-     */
-    public function getChatIdByUserId(int $user1, int $user2): int
-    {
-        $sql = 'SELECT id FROM chat WHERE (user_id_1=:user1 AND user_id_2=:user2) OR (user_id_1=:user2 AND user_id_2=:user1)';
-        $result = $this->db->query($sql, [
-            'user1' => $user1,
-            'user2' => $user2,
-        ]);
-
-        return intval($result->fetchColumn());
-    }
-
 }

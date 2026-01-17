@@ -85,18 +85,15 @@ class MessageController
 
         $userId = intval(htmlspecialchars($_SESSION['userId']));
 
-        if (!empty(Utils::request('chatId') && !empty(Utils::request('bookId'))))
-        {
-            //Cas d'une nouvelle conversation demandée depuis la page d'un livre
+        if (!empty(Utils::request('chatId') && !empty(Utils::request('bookId')))) {
+            // Cas d'une nouvelle conversation demandée depuis la page d'un livre
             $chatId = intval(htmlspecialchars(Utils::request('chatId')));
             $bookId = intval(htmlspecialchars(Utils::request('bookId')));
-    
+
             $bookManager = new BookManager();
             $book = $bookManager->getBookById($bookId);
             $sellerId = $book->getSellerId();
-        }
-        else 
-        {
+        } else {
             // Cas d'une nouvelle conversation demadnée depuis la page compte publique de l'utilisateur
             $sellerId = intval(htmlspecialchars(Utils::request('userId')));
         }
@@ -104,23 +101,23 @@ class MessageController
         // 2.
         $chatManager = new ChatManager();
         if (!$chatManager->existsChat($userId, $sellerId)) {
-             $chatManager->createChat($userId, $sellerId);
-        }
-        else
+            $chatManager->createChat($userId, $sellerId);
+        } else {
             $chatId = $chatManager->getChatIdByUserId($userId, $sellerId);
+        }
 
         // 3.
         $chats = $chatManager->getChatByUserId($userId);
-    
+
         $messages = null;
         $currentChat = null;
         if (!empty($chatId)) {
             // 4.
             $currentChat = $chatManager->getChatById($chatId, $userId);
- 
+
             // 5.
             if ($chatManager->getChatMessageNumber($chatId) > 0) {
-                 $messages = $chatManager->getChatMessages($chatId);
+                $messages = $chatManager->getChatMessages($chatId);
             }
         }
 
