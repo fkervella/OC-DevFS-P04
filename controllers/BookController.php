@@ -73,7 +73,7 @@ class BookController
          */
 
         // 1.
-        $bookId = Utils::request('bookId', -1);
+        $bookId = intval(htmlspecialchars(Utils::request('bookId', -1)));
         if (-1 === $bookId) {
             throw new Exception('Le numéro du livre indiqué est invalide : -1');
         }
@@ -144,7 +144,7 @@ class BookController
             Utils::redirect('showHome');
         }
 
-        $userId = $_SESSION['userId'];
+        $userId = intval(htmlspecialchars($_SESSION['userId']));
         $title = htmlspecialchars(Utils::request('title'));
         $author = htmlspecialchars(Utils::request('author'));
         $description = htmlspecialchars(Utils::request('description'));
@@ -272,7 +272,7 @@ class BookController
         }
 
         $bookId = intval(htmlspecialchars(Utils::request('bookId')));
-        $userId = $_SESSION['userId'];
+        $userId = intval(htmlspecialchars($_SESSION['userId']));
 
         if (empty($userId)) {
             throw new Exception('Suppression du livre impossible, structure incohérente');
@@ -332,7 +332,7 @@ class BookController
         }
 
         $bookId = intval(htmlspecialchars(Utils::request('bookId')));
-        $userId = $_SESSION['userId'];
+        $userId = intval(htmlspecialchars($_SESSION['userId']));
         $title = htmlspecialchars(Utils::request('title'));
         $author = htmlspecialchars(Utils::request('author'));
         $description = htmlspecialchars(Utils::request('description'));

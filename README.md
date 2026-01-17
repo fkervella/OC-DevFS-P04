@@ -156,8 +156,6 @@ Messagerie : aligner correctement les messages
 
 Toutes pages : faire une passe sur les couleurs de fond qui ne sont pas homogènes entre les pages et par rapport à la maquette
 
-Vérifier la validation des données d'entrée dans les controllers
-
 bookExchange : Faire fonctionner la recherche de livre
 
 page publique profil utilisateur

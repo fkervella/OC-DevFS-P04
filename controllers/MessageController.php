@@ -24,7 +24,7 @@ class MessageController
             Utils::redirect('showHome');
         }
 
-        $userId = $_SESSION['userId'];
+        $userId = intval(htmlspecialchars($_SESSION['userId']));
         $chatId = intval(htmlspecialchars(Utils::request('chatId')));
         /*$bookId = htmlspecialchars(Utils::request('bookId'));
 
@@ -83,7 +83,7 @@ class MessageController
             Utils::redirect('showHome');
         }
 
-        $userId = $_SESSION['userId'];
+        $userId = intval(htmlspecialchars($_SESSION['userId']));
         $chatId = intval(htmlspecialchars(Utils::request('chatId')));
         $bookId = intval(htmlspecialchars(Utils::request('bookId')));
 
@@ -137,7 +137,7 @@ class MessageController
             Utils::redirect('showHome');
         }
 
-        $userId = $_SESSION['userId'];
+        $userId = intval(htmlspecialchars($_SESSION['userId']));
         $chatId = intval(htmlspecialchars(Utils::request('chatId')));
         $bookId = intval(htmlspecialchars(Utils::request('bookId')));
         $messageText = htmlspecialchars(Utils::request('newMessageText'));

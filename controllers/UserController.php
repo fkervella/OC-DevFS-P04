@@ -51,7 +51,7 @@ class UserController
             Utils::redirect('showHome');
         }
 
-        $userId = $_SESSION['userId'];
+        $userId = intval(htmlspecialchars($_SESSION['userId']));
 
         // 2.
         $userManager = new UserManager();
