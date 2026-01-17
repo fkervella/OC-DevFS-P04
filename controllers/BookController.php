@@ -83,8 +83,13 @@ class BookController
         $book = $bookManager->getBookById($bookId);
 
         // 3.
+        $sellerId = $book->getSellerId();
+        if (is_null($sellerId)) {
+            throw new Exception('Les informations du vendeur livre n\'ont pas été trouvées');
+        }
+
         $userManager = new UserManager();
-        $user = $userManager->getUserById($book->getSellerId());
+        $user = $userManager->getUserById($sellerId);
 
         // 4.
         if ($book && $user) {
@@ -235,7 +240,7 @@ class BookController
             Utils::redirect('showHome');
         }
 
-        $bookId = htmlspecialchars(Utils::request('bookId'));
+        $bookId = intval(htmlspecialchars(Utils::request('bookId')));
 
         // 2.
         $bookManager = new BookManager();
@@ -266,7 +271,7 @@ class BookController
             Utils::redirect('showHome');
         }
 
-        $bookId = htmlspecialchars(Utils::request('bookId'));
+        $bookId = intval(htmlspecialchars(Utils::request('bookId')));
         $userId = $_SESSION['userId'];
 
         if (empty($userId)) {
@@ -326,7 +331,7 @@ class BookController
             Utils::redirect('showHome');
         }
 
-        $bookId = htmlspecialchars(Utils::request('bookId'));
+        $bookId = intval(htmlspecialchars(Utils::request('bookId')));
         $userId = $_SESSION['userId'];
         $title = htmlspecialchars(Utils::request('title'));
         $author = htmlspecialchars(Utils::request('author'));
@@ -390,9 +395,9 @@ class BookController
         Utils::redirect('showAccount');
     }
 
-    public function uploadBookPicture()
+    public function uploadBookPicture(): void
     {
-        $bookId = htmlspecialchars(Utils::request('id'));
+        $bookId = intval(htmlspecialchars(Utils::request('id')));
 
         if (empty($bookId)) {
             Utils::redirect('showHome');

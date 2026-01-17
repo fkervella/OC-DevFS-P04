@@ -8,12 +8,12 @@ class LibraryManager extends AbstractEntityManager
     /**
      * Ajoute un livre à la bibliothèque d'un utilisateur.
      *
-     * @param $userId identifiant de l'utilisatuer
-     * @param $bookId identifiant du livre
+     * @param int $userId identifiant de l'utilisatuer
+     * @param int $bookId identifiant du livre
      *
      * @return bool renvoie true si l'ajout a réussi, sinon false
      */
-    public function addBook($userId, $bookId): bool
+    public function addBook(int $userId, int $bookId): bool
     {
         $sql = 'INSERT INTO library (user_id, book_id) VALUES(:userId, :bookId)';
         $result = $this->db->query($sql, [

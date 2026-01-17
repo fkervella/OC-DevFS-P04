@@ -14,6 +14,8 @@ class User extends AbstractEntity
 
     /**
      * Setter pour l'id.
+     *
+     * @param int $id identifiant de l'utilisateur
      */
     public function setId(int $id): void
     {
@@ -22,6 +24,8 @@ class User extends AbstractEntity
 
     /**
      * Getter pour le userId.
+     *
+     * @return int identifiant de l'utilisateur
      */
     public function getId(): int
     {
@@ -30,6 +34,8 @@ class User extends AbstractEntity
 
     /**
      * Setter pour le login.
+     *
+     * @param string $login login de l'utilisateur
      */
     public function setLogin(string $login): void
     {
@@ -38,6 +44,8 @@ class User extends AbstractEntity
 
     /**
      * Getter pour le login.
+     *
+     * @return string login de l'utilisateur
      */
     public function getLogin(): string
     {
@@ -46,6 +54,8 @@ class User extends AbstractEntity
 
     /**
      * Setter pour le password.
+     *
+     * @param string $password mot de passe de l'utilisateur
      */
     public function setPassword(string $password): void
     {
@@ -54,6 +64,8 @@ class User extends AbstractEntity
 
     /**
      * Getter pour le password.
+     *
+     * @return string mot de passe de l'utilisateur
      */
     public function getPassword(): string
     {
@@ -62,6 +74,8 @@ class User extends AbstractEntity
 
     /**
      * Setter pour le pseudo.
+     *
+     * @param string $pseudo pseudo de l'utilisateur
      */
     public function setPseudo(string $pseudo): void
     {
@@ -70,6 +84,8 @@ class User extends AbstractEntity
 
     /**
      * Getter pour le pseudo.
+     *
+     * @return string pseudo de l'utilisateur
      */
     public function getPseudo(): string
     {
@@ -78,6 +94,8 @@ class User extends AbstractEntity
 
     /**
      * Setter pour le creationDate.
+     *
+     * @param string $creationDate date d'enregistrement de l'utilisateur
      */
     public function setCreationDate(string $creationDate): void
     {
@@ -86,6 +104,8 @@ class User extends AbstractEntity
 
     /**
      * Getter pour le creationDate.
+     *
+     * @return string date d'enregistrement de l'utilisateur
      */
     public function getCreationDate(): string
     {
@@ -94,6 +114,8 @@ class User extends AbstractEntity
 
     /**
      * Setter pour l'avatar.
+     *
+     * @param string $avatar chemin vers l'avatar de l'utilisateur
      */
     public function setAvatar(string $avatar): void
     {
@@ -102,6 +124,8 @@ class User extends AbstractEntity
 
     /**
      * Getter pour l'avatar.
+     *
+     * @return string chemin vers l'avatar de l'utilisateur
      */
     public function getAvatar(): string
     {

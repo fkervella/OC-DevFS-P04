@@ -9,11 +9,11 @@ class ChatManager extends AbstractEntityManager
     /**
      * \brief Renvoie les conversations d'un utilisateur par son identifiant.
      *
-     * @param mixed $userId
+     * @param int $userId identifiant de l'utilisateur
      *
      * @return array : conversations de l'utilisateur
      */
-    public function getChatByUserId($userId): ?array
+    public function getChatByUserId(int $userId): ?array
     {
         /**
          * 1. Récupération des conversations de l'utilisateur
@@ -56,12 +56,12 @@ class ChatManager extends AbstractEntityManager
     /**
      * \brief créé une nouvelle conversation entre 2 utilisateurs.
      *
-     * @param mixed $user1 premier utilisateur de la conversation
-     * @param mixed $user2 deuxième utilisateur de la conversation
+     * @param int $user1 premier utilisateur de la conversation
+     * @param int $user2 deuxième utilisateur de la conversation
      *
      * @return bool renvoie true si la création a réussi, sinon false
      */
-    public function createChat($user1, $user2): bool
+    public function createChat(int $user1, int $user2): bool
     {
         $sql = 'INSERT INTO chat (user_id_1, user_id_2) VALUES (:userId1, :userId2)';
         $result = $this->db->query($sql, [
@@ -75,12 +75,12 @@ class ChatManager extends AbstractEntityManager
     /**
      * \brief Vérifie si une conversation existe entre 2 utilisateurs.
      *
-     * @param mixed $user1 premier utilisateur de la conversation
-     * @param mixed $user2 deuxième utilisateur de la conversation
+     * @param int $user1 premier utilisateur de la conversation
+     * @param int $user2 deuxième utilisateur de la conversation
      *
      * @return bool renvoie true si la conversation existe, sinon false
      */
-    public function existsChat($user1, $user2): bool
+    public function existsChat(int $user1, int $user2): bool
     {
         $sql = 'SELECT COUNT(*) FROM chat WHERE (user_id_1=:user1 AND user_id_2=:user2) OR (user_id_1=:user2 AND user_id_2=:user1)';
         $result = $this->db->query($sql, [
@@ -94,29 +94,29 @@ class ChatManager extends AbstractEntityManager
     /**
      * \brief Récupère le nombre de messages dans une conversation.
      *
-     * @param mixed $chatId identifiant de la conversation
+     * @param int $chatId identifiant de la conversation
      *
      * @return int nombre de messages dans la conversation
      */
-    public function getChatMessageNumber($chatId): int
+    public function getChatMessageNumber(int $chatId): int
     {
         $sql = 'SELECT COUNT(*) FROM message WHERE chat_id=:chatId';
         $result = $this->db->query($sql, [
             'chatId' => $chatId,
         ]);
 
-        return $result->fetchColumn();
+        return intval($result->fetchColumn());
     }
 
     /**
      * \brief Récupération des données de la conversation à partir de son identifiant de conversation et de l'identifiant de l'utilisateur.
      *
-     * @param mixed $chatId identifiant de la conversation
-     * @param mixed $userId identifiant de l'utilisateur
+     * @param int $chatId identifiant de la conversation
+     * @param int $userId identifiant de l'utilisateur
      *
      * @return null|Chat données de la conversation
      */
-    public function getChatById($chatId, $userId): ?Chat
+    public function getChatById(int $chatId, int $userId): ?Chat
     {
         /**
          * 1. Récupération des données de la conversation
@@ -150,11 +150,11 @@ class ChatManager extends AbstractEntityManager
     /**
      * \brief Récupération des messafes d'une conversation.
      *
-     * @param mixed $chatId identifiant de la conversation
+     * @param int $chatId identifiant de la conversation
      *
-     * @return Message[] table des messages de la conversation
+     * @return array Message table des messages de la conversation
      */
-    public function getChatMessages($chatId): array
+    public function getChatMessages(int $chatId): array
     {
         $sql = 'SELECT * FROM message WHERE chat_id=:chatId';
         $result = $this->db->query($sql, [
@@ -171,13 +171,13 @@ class ChatManager extends AbstractEntityManager
     /**
      * \brief Ajoute un message à une conversation.
      *
-     * @param mixed $chatId     identifiant de la conversation
-     * @param mixed $userId     identifiant de l'utilisateur émetteur du message
-     * @param mixed $newMessage test du message
+     * @param int    $chatId     identifiant de la conversation
+     * @param int    $userId     identifiant de l'utilisateur émetteur du message
+     * @param string $newMessage texte du message
      *
-     * @return bool renvoie vrai si l'ajour du message a réussi, sinon false
+     * @return bool renvoie vrai si l'ajout du message a réussi, sinon false
      */
-    public function addMessage($chatId, $userId, $newMessage): bool
+    public function addMessage(int $chatId, int $userId, string $newMessage): bool
     {
         $sql = 'INSERT INTO message (chat_id, sender_id, datetime, message, viewed) VALUES(:chatId, :senderId, NOW(), :message, 0)';
         $result = $this->db->query($sql, [
@@ -192,27 +192,27 @@ class ChatManager extends AbstractEntityManager
     /**
      * \brief Récupère le nombre de messages non vus par un utilisateur dans toute ses conversations.
      *
-     * @param mixed $userId identifiant de l'utilisateur
+     * @param int $userId identifiant de l'utilisateur
      *
      * @return int nombre de messages non lus
      */
-    public function getNotViewedMessagesNumber($userId): int
+    public function getNotViewedMessagesNumber(int $userId): int
     {
         $sql = 'SELECT COUNT(*) FROM chat LEFT JOIN message ON chat.id=message.chat_id WHERE (chat.user_id_1=:userId OR chat.user_id_2=:userId) AND message.viewed=0 AND message.sender_id!=:userId';
         $result = $this->db->query($sql, [
             'userId' => $userId,
         ]);
 
-        return $result->fetchColumn();
+        return intval($result->fetchColumn());
     }
 
     /**
      * \brief Enregistre l'état 'vu' des messages passés en paramètre.
      *
      * @param array $messages tableau des messages à passer à l'état 'vu'
-     * @param mixed $userId   identifiant de l'utilisateur
+     * @param int   $userId   identifiant de l'utilisateur
      */
-    public function setViewedMessages(array $messages, $userId): void
+    public function setViewedMessages(array $messages, int $userId): void
     {
         foreach ($messages as $message) {
             $sql = 'UPDATE message SET viewed=1 WHERE id=:messageId AND sender_id!=:userId';
@@ -226,11 +226,11 @@ class ChatManager extends AbstractEntityManager
     /**
      * \brief Récupère le dernier message d'une conversation.
      *
-     * @param mixed $chatId identifiant de la conversation
+     * @param int $chatId identifiant de la conversation
      *
      * @return null|Message données du message ou null si non trouvé
      */
-    private function getLastChatMessage($chatId): ?Message
+    private function getLastChatMessage(int $chatId): ?Message
     {
         $sql = 'SELECT * FROM message WHERE chat_id=:chatId ORDER BY datetime DESC LIMIT 1';
         $result = $this->db->query($sql, [
@@ -249,12 +249,12 @@ class ChatManager extends AbstractEntityManager
     /**
      * \brief Trouve l'identifiant de l'autre utilisateur de la conversation.
      *
-     * @param mixed $userId identifiant du premier utilisateur de la conversation
-     * @param Chat  $chat   données de la conversation
+     * @param int  $userId identifiant du premier utilisateur de la conversation
+     * @param Chat $chat   données de la conversation
      *
      * @return int identifiant de l'utilisateur ou null si non trouvé
      */
-    private function findOtherUserId($userId, Chat $chat): int
+    private function findOtherUserId(int $userId, Chat $chat): int
     {
         /*
          * 1. Récupération des données de conversation

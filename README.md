@@ -158,10 +158,10 @@ Toutes pages : faire une passe sur les couleurs de fond qui ne sont pas homogèn
 
 Vérifier la validation des données d'entrée dans les controllers
 
-Spécifier les types de données des fonctions
-
 bookExchange : Faire fonctionner la recherche de livre
 
 page publique profil utilisateur
 
 Changement d'avatar / d'image de livre, faire en sorte que la page se rafraichisse correctement
+
+Vérification pages W3C validator et WCAG

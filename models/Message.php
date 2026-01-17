@@ -15,6 +15,8 @@ class Message extends AbstractEntity
 
     /**
      * Setter pour l'id du message.
+     *
+     * @param int $id identifiant du message
      */
     public function setId(int $id): void
     {
@@ -23,6 +25,8 @@ class Message extends AbstractEntity
 
     /**
      * Getter de l'id du message.
+     *
+     * @return int identifiant du message
      */
     public function getId(): int
     {
@@ -31,6 +35,8 @@ class Message extends AbstractEntity
 
     /**
      * Setter pour l'identifiant de la conversation du message.
+     *
+     * @param int $chatId identifiant de la conversation
      */
     public function setChatId(int $chatId): void
     {
@@ -39,6 +45,8 @@ class Message extends AbstractEntity
 
     /**
      * Getter de l'identifiant de la conversation du message.
+     *
+     * @return int identifiant de la conversation
      */
     public function getChatId(): int
     {
@@ -46,7 +54,9 @@ class Message extends AbstractEntity
     }
 
     /**
-     * Setter pour l'identifiatn de l'émetteur du message.
+     * Setter pour l'identifiant de l'émetteur du message.
+     *
+     * @param int $senderId identifiant de l'émetteur du message
      */
     public function setSenderId(int $senderId): void
     {
@@ -55,6 +65,8 @@ class Message extends AbstractEntity
 
     /**
      * Getter de l'identifiant de l'émetteur du message.
+     *
+     * @return int identifiant de l'émetteur du message
      */
     public function getSenderId(): int
     {
@@ -63,6 +75,8 @@ class Message extends AbstractEntity
 
     /**
      * Setter pour l'horodatage du message.
+     *
+     * @param string $messageDatetime horodatage du message
      */
     public function setDatetime(string $messageDatetime): void
     {
@@ -71,6 +85,8 @@ class Message extends AbstractEntity
 
     /**
      * Getter de l'horodatage du message.
+     *
+     * @return string horodoatage du message
      */
     public function getDatetime(): string
     {
@@ -79,6 +95,8 @@ class Message extends AbstractEntity
 
     /**
      * Setter pour le texte du message.
+     *
+     * @param string $message texte du message
      */
     public function setMessage(string $message): void
     {
@@ -87,6 +105,8 @@ class Message extends AbstractEntity
 
     /**
      * Getter de le texte du message.
+     *
+     * @return string texte du message
      */
     public function getMessage(): string
     {
@@ -95,6 +115,8 @@ class Message extends AbstractEntity
 
     /**
      * Setter pour l'état de visualisation du message.
+     *
+     * @param int $viewed état de visualisation du message
      */
     public function setViewed(int $viewed): void
     {
@@ -103,6 +125,8 @@ class Message extends AbstractEntity
 
     /**
      * Getter de l'état de visualisation du message.
+     *
+     * @return int état de visualisation du message
      */
     public function getViewed(): int
     {

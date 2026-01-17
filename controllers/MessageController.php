@@ -25,7 +25,7 @@ class MessageController
         }
 
         $userId = $_SESSION['userId'];
-        $chatId = htmlspecialchars(Utils::request('chatId'));
+        $chatId = intval(htmlspecialchars(Utils::request('chatId')));
         /*$bookId = htmlspecialchars(Utils::request('bookId'));
 
         if(isset($bookId))
@@ -67,7 +67,7 @@ class MessageController
     /**
      * Affiche la page de chat vers un utilisateur et initie la conversation avec cet utilisateur si elle n'existe pas.
      */
-    public function showNewMessage()
+    public function showNewMessage(): void
     {
         /*
          * 1. Filtrage des données d'entrée
@@ -84,8 +84,8 @@ class MessageController
         }
 
         $userId = $_SESSION['userId'];
-        $chatId = htmlspecialchars(Utils::request('chatId'));
-        $bookId = htmlspecialchars(Utils::request('bookId'));
+        $chatId = intval(htmlspecialchars(Utils::request('chatId')));
+        $bookId = intval(htmlspecialchars(Utils::request('bookId')));
 
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($bookId);
@@ -138,8 +138,8 @@ class MessageController
         }
 
         $userId = $_SESSION['userId'];
-        $chatId = htmlspecialchars(Utils::request('chatId'));
-        $bookId = htmlspecialchars(Utils::request('bookId'));
+        $chatId = intval(htmlspecialchars(Utils::request('chatId')));
+        $bookId = intval(htmlspecialchars(Utils::request('bookId')));
         $messageText = htmlspecialchars(Utils::request('newMessageText'));
 
         // 2.

@@ -9,6 +9,8 @@ class UserManager extends AbstractEntityManager
     /**
      * \brief Récupère un user par son login.
      *
+     * @param string $login login de l'utilisateur recherché
+     *
      * @return User demandé ou null si non trouvé
      */
     public function getUserByLogin(string $login): ?User
@@ -24,11 +26,13 @@ class UserManager extends AbstractEntityManager
     }
 
     /**
-     * \brief Récupère un User par son id.
+     * \brief Récupère un User par son identifiant.
+     *
+     * @param int $userId identifiant de l'utilisateur
      *
      * @return User demandé ou null si non trouvé
      */
-    public function getUserById(int|string $userId): ?User
+    public function getUserById(int $userId): ?User
     {
         $sql = 'SELECT * FROM user WHERE id=:userId';
         $result = $this->db->query($sql, ['userId' => $userId]);
@@ -43,13 +47,13 @@ class UserManager extends AbstractEntityManager
     /**
      * \brief Enregistre l'utilisateur dans la base de données.
      *
-     * @param $pseudo pseudo de l'utilisateur
-     * @param $login  adresse mail de l'utilisateur
-     * @param $hash   mot de passe hashé de l'utilisateur
+     * @param string $pseudo pseudo de l'utilisateur
+     * @param string $login  adresse mail de l'utilisateur
+     * @param string $hash   mot de passe hashé de l'utilisateur
      *
      * @return bool renvoie true si l'ajout a réussi, sinon false
      */
-    public function registerUser($pseudo, $login, $hash): bool
+    public function registerUser(string $pseudo, string $login, string $hash): bool
     {
         $sql = 'INSERT INTO user (pseudo, login, password, creation_date, avatar) VALUES (:pseudo, :login, :password, NOW(), :avatar)';
         $result = $this->db->query($sql, [
@@ -65,14 +69,14 @@ class UserManager extends AbstractEntityManager
     /**
      * \brief Met à jour les informations personnelles d'un utilisateur dans la base de données.
      *
-     * @param $userId identifiant de l'utilisateur à mettre à jour
-     * @param $pseudo nouveau pseudo de l'utilisateur
-     * @param $login  nouvelle adresse mail de l'utilisateur
-     * @param $hash   nouveau mot de passe hashé de l'utilisateur
+     * @param int    $userId identifiant de l'utilisateur à mettre à jour
+     * @param string $pseudo nouveau pseudo de l'utilisateur
+     * @param string $login  nouvelle adresse mail de l'utilisateur
+     * @param string $hash   nouveau mot de passe hashé de l'utilisateur
      *
      * @return bool renvoie true si la mise à jour a réussi, sinon false
      */
-    public function updateUser($userId, $pseudo, $login, $hash): bool
+    public function updateUser(int $userId, string $pseudo, string $login, string $hash): bool
     {
         $sql = 'UPDATE user SET pseudo=:pseudo, login=:login, password=:password WHERE id=:userId';
         $result = $this->db->query($sql, [
@@ -88,12 +92,11 @@ class UserManager extends AbstractEntityManager
     /**
      * \brief Met à jour l'avatar d'un utilisateur dans la base de données.
      *
-     * @param       $userId identifiant de l'utilisateur à mettre à jour
-     * @param mixed $avatar
+     * @param int $userId identifiant de l'utilisateur à mettre à jour
      *
      * @return bool renvoie true si la mise à jour a réussi, sinon false
      */
-    public function updateAvatar($userId, $avatar): bool
+    public function updateAvatar(int $userId, string $avatar): bool
     {
         $sql = 'UPDATE user SET avatar=:avatar WHERE id=:userId';
         $result = $this->db->query($sql, [
@@ -106,7 +109,7 @@ class UserManager extends AbstractEntityManager
 
     /*
      * \brief Vérifie si l'utilisateur est connecté
-     * @return état de connexion de l'utilisateur (1 : connecté / 0 : non connecté)
+     * @return bool état de connexion de l'utilisateur (1 : connecté / 0 : non connecté)
      */
     private function checkIfUserIsConnected(): bool
     {

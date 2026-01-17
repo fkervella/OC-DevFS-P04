@@ -8,7 +8,7 @@ abstract class AbstractEntityManager
     /**
      * db variable contenant l'instance de la base de données.
      */
-    protected $db;
+    protected DBManager $db;
 
     /**
      * Constructeur de la classe.

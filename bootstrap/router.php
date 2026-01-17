@@ -33,10 +33,10 @@ class Router
     /**
      * \brief Fonction principale du routeur : appelle la page concernée en fonction des paramètres.
      *
-     * @param $action    action demandée
-     * @param $arguments arguments associés à cette action
+     * @param string $action    action demandée
+     * @param array  $arguments arguments associés à cette action
      */
-    public static function __callStatic($action, $arguments)
+    public static function __callStatic(string $action, array $arguments)
     {
         try {
             $controller = new self::$routes[$action][0]();

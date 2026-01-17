@@ -8,11 +8,11 @@ class BookManager extends AbstractEntityManager
     /**
      * Récupère les derniers livres ajoutés.
      *
-     * @param mixed $limit
+     * @param int $limit nombre max de livres retournés
      *
      * @return array tableau d'objets Book
      */
-    public function getLastAddedBooks($limit): ?array
+    public function getLastAddedBooks(int $limit): ?array
     {
         $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'seller_id', user.pseudo as 'seller_pseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id WHERE book.availability=1 ORDER BY add_date DESC LIMIT {$limit}";
         $result = $this->db->query($sql);
@@ -74,7 +74,7 @@ class BookManager extends AbstractEntityManager
     /**
      * Renvoie les données du livre passé en paramètre.
      *
-     * @param $bookId : identifiant du livre dont les données sont à renvoyée
+     * @param int $bookId : identifiant du livre dont les données sont à renvoyée
      *
      * @return Book : données du livre demandé
      */
@@ -94,14 +94,13 @@ class BookManager extends AbstractEntityManager
     /**
      * Enregistre un livre.
      *
-     * @param       $title        Titre du livre
-     * @param       $author       Auteur du livre
-     * @param       $description  Description du livre
-     * @param mixed $availability
+     * @param string $title       Titre du livre
+     * @param string $author      Auteur du livre
+     * @param string $description Description du livre
      *
      * @return bool renvoie true si l'ajout a réussi, sinon false
      */
-    public function registerBook($title, $author, $description, $availability): bool
+    public function registerBook(string $title, string $author, string $description, int $availability): bool
     {
         $sql = 'INSERT INTO book(title, author, description, availability, add_date) VALUES(:title, :author, :description, :availability, NOW())';
         $result = $this->db->query($sql, [
@@ -122,7 +121,7 @@ class BookManager extends AbstractEntityManager
      *
      * @return bool renvoie true si la mise à jour a réussi, sinon false
      */
-    public function updatePicture($bookId, $picture): bool
+    public function updatePicture(int $bookId, string $picture): bool
     {
         $sql = 'UPDATE book set picture=:picture WHERE id=:bookId';
         $result = $this->db->query($sql, [
@@ -136,14 +135,14 @@ class BookManager extends AbstractEntityManager
     /**
      * Récupère un Book à partir de ses informations.
      *
-     * @param       $title        titre du livre
-     * @param       $author       auteur du livre
-     * @param       $description  description du livre
-     * @param mixed $availability disponiblité du livre
+     * @param string $title        titre du livre
+     * @param string $author       auteur du livre
+     * @param string $description  description du livre
+     * @param int    $availability disponiblité du livre
      *
      * @return Book correspondant aux paramètres, sinon null
      */
-    public function getBookByInfo($title, $author, $description, $availability): ?Book
+    public function getBookByInfo(string $title, string $author, string $description, int $availability): ?Book
     {
         $sql = 'SELECT * FROM book WHERE title=:title AND author=:author AND description=:description AND availability=:availability';
         $result = $this->db->query($sql, [
@@ -163,11 +162,11 @@ class BookManager extends AbstractEntityManager
     /**
      * Renvoi un tableau de Book contenant les livres de l'utilisateur.
      *
-     * @param $userId identifiant de l'utilisateur
+     * @param int $userId identifiant de l'utilisateur
      *
      * @return array tableau de Book de l'utilisateur
      */
-    public function getUserBooks($userId): array
+    public function getUserBooks(int $userId): array
     {
         $sql = "SELECT book.id AS 'id', book.picture AS 'picture', book.title AS 'title', book.author AS 'author', book.description AS 'description', book.availability AS 'availability', book.add_date AS 'add_date', user.id as 'seller_id', user.pseudo as 'seller_pseudo' FROM book LEFT JOIN library ON book.id = library.book_id LEFT JOIN user ON library.user_id = user.id WHERE user.id =:userId ORDER BY add_date DESC";
         $result = $this->db->query($sql, ['userId' => $userId]);
@@ -183,12 +182,12 @@ class BookManager extends AbstractEntityManager
     /**
      * Suppression du livre de la bibliothèque de l'utilisateur.
      *
-     * @param $userId Identifiant de l'utilisateur
-     * @param $bookId Identifiant du livre à supprimer
+     * @param int $userId Identifiant de l'utilisateur
+     * @param int $bookId Identifiant du livre à supprimer
      *
      * @return bool renvoie true si la suppression s'est bien déroulée, sinon false
      */
-    public function deleteBookFromLibrary($userId, $bookId): bool
+    public function deleteBookFromLibrary(int $userId, int $bookId): bool
     {
         $sql = 'DELETE FROM library WHERE user_id=:userId AND book_id=:bookId';
         $result = $this->db->query($sql, [
@@ -202,11 +201,11 @@ class BookManager extends AbstractEntityManager
     /**
      * Suppression du livre de la base.
      *
-     * @param $bookId Identifiant du livre à supprimer
+     * @param int $bookId Identifiant du livre à supprimer
      *
      * @return bool renvoie true si la suppression s'est bien déroulée, sinon false
      */
-    public function deleteBook($bookId): bool
+    public function deleteBook(int $bookId): bool
     {
         $sql = 'DELETE FROM book WHERE id=:bookId';
         $result = $this->db->query($sql, [
@@ -219,30 +218,32 @@ class BookManager extends AbstractEntityManager
     /**
      * Renvoie le nombre de livre de la bibliothèque de l'utilisateur.
      *
-     * @param $userId identifiant de l'utilisateur
+     * @param int $userId identifiant de l'utilisateur
      *
      * @return int nombre de livres présents dans la bibliothèque de l'utilisateur
      */
-    public function getUserBookNumber($userId): int
+    public function getUserBookNumber(int $userId): int
     {
         $sql = 'SELECT COUNT(*) FROM user RIGHT JOIN library ON user.id = library.user_id WHERE user.id=:userId';
         $result = $this->db->query($sql, [
             'userId' => $userId,
         ]);
 
-        return $result->fetchColumn();
+        return intval($result->fetchColumn());
     }
 
     /**
-     * Met à jour les donnée du livre.
+     * Met à jour les données du livre.
      *
-     * @param $bookId            identifiant du livre à modifier
-     * @param $title             nouveau titre
-     * @param $author            nouvel auteur
-     * @param $description       nouvelle description
-     * @param $availabilityValue nouvelle disponibilité
+     * @param int    $bookId            identifiant du livre à modifier
+     * @param string $title             nouveau titre
+     * @param string $author            nouvel auteur
+     * @param string $description       nouvelle description
+     * @param int    $availabilityValue nouvelle disponibilité
+     *
+     * @return bool renvoie true si la mise à réussi, sinon false
      */
-    public function updateBook($bookId, $title, $author, $description, $availabilityValue)
+    public function updateBook(int $bookId, string $title, string $author, string $description, int $availabilityValue): bool
     {
         $sql = 'UPDATE book SET title = :title, author = :author, description = :description, availability = :availability WHERE id = :bookId';
         $result = $this->db->query($sql, [
@@ -259,12 +260,12 @@ class BookManager extends AbstractEntityManager
     /**
      * Détermine si un livre existe dans la base de données.
      *
-     * @param $title  nom du livre
-     * @param $author auteur du livre
+     * @param string $title  nom du livre
+     * @param string $author auteur du livre
      *
      * @return bool renvoie true si le livre est trouvé et false sinon
      */
-    public function existsBook($title, $author): bool
+    public function existsBook(string $title, string $author): bool
     {
         $sql = 'SELECT COUNT(*) FROM book WHERE title=:title AND author=:author';
         $result = $this->db->query($sql, [

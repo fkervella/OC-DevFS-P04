@@ -12,7 +12,7 @@ class DBManager
     private static $instance;
 
     // Objet PDO de connexion à la base de données
-    private $db;
+    private PDO $db;
 
     /**
      * Constructeur de la classe DBManager.
@@ -31,6 +31,8 @@ class DBManager
 
     /**
      * Récupération de l'instance de la classe DBManager.
+     *
+     * @return DBManager instance de la classe DBManager
      */
     public static function getInstance(): DBManager
     {
@@ -43,6 +45,8 @@ class DBManager
 
     /**
      * Récupération de l'objet PDO permettant de se connecter à la base de données.
+     *
+     * @return PDO objet PDO pour se connecter à la base de données
      */
     public function getPDO(): PDO
     {

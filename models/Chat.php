@@ -18,6 +18,8 @@ class Chat extends AbstractEntity
 
     /**
      * Setter pour l'id du chat.
+     *
+     * @param int $id identifiant de la conversation
      */
     public function setId(int $id): void
     {
@@ -26,6 +28,8 @@ class Chat extends AbstractEntity
 
     /**
      * Getter pour l'id du chat.
+     *
+     * @return int identifiant de la conversation
      */
     public function getId(): int
     {
@@ -34,6 +38,8 @@ class Chat extends AbstractEntity
 
     /**
      * Setter pour l'id de l'utilisateur 1.
+     *
+     * @param int $idUser1 identifiant d'une des 2 personnes de la conversation
      */
     public function setUserId1(int $idUser1): void
     {
@@ -42,6 +48,8 @@ class Chat extends AbstractEntity
 
     /**
      * Getter pour l'id de l'utilisateur 1.
+     *
+     * @return int identifiant d'une des 2 personnes de la conversation
      */
     public function getUserId1(): int
     {
@@ -50,6 +58,8 @@ class Chat extends AbstractEntity
 
     /**
      * Setter pour l'id de l'utilisateur 2.
+     *
+     * @param int $idUser2 identifiant d'une des 2 personnes de la conversation
      */
     public function setUserId2(int $idUser2): void
     {
@@ -58,6 +68,8 @@ class Chat extends AbstractEntity
 
     /**
      * Getter pour l'identifiant de l'utilisateur 2.
+     *
+     * @return int identifiant d'une des 2 personnes de la conversation
      */
     public function getUserId2(): int
     {
@@ -66,6 +78,8 @@ class Chat extends AbstractEntity
 
     /**
      * Setter pour le pseudo de l'autre utilisateur du chat.
+     *
+     * @param string $otherUserPseudo pseudo de l'autre utilisateur de la conversation
      */
     public function setOtherUserPseudo(string $otherUserPseudo): void
     {
@@ -74,6 +88,8 @@ class Chat extends AbstractEntity
 
     /**
      * Getter pour le pseudo de l'autre utilisateur du chat.
+     *
+     * @return string pseudo de l'autre utilisateur de la conversation
      */
     public function getOtherUserPseudo(): string
     {
@@ -82,6 +98,8 @@ class Chat extends AbstractEntity
 
     /**
      * Setter pour l'avatar de l'autre utilisateur du chat.
+     *
+     * @param string $otherUserAvatar chemin vers l'avatar de l'autre utilisateu de la conversation
      */
     public function setOtherUserAvatar(string $otherUserAvatar): void
     {
@@ -90,6 +108,8 @@ class Chat extends AbstractEntity
 
     /**
      * Getter pour l'avatar de l'autre utilisateur du chat.
+     *
+     * @return string chemin vers l'avatar de l'autre utilisateur de la conversation
      */
     public function getOtherUserAvatar(): string
     {
@@ -98,6 +118,8 @@ class Chat extends AbstractEntity
 
     /**
      * Setter pour le dernier message du chat.
+     *
+     * @param string $lastMessage dernier message de la conversation
      */
     public function setLastMessage(string $lastMessage): void
     {
@@ -106,6 +128,8 @@ class Chat extends AbstractEntity
 
     /**
      * Getter pour le dernier message du chat.
+     *
+     * @return string dernier message de la conversation
      */
     public function getLastMessage(): ?string
     {
@@ -118,6 +142,8 @@ class Chat extends AbstractEntity
 
     /**
      * Setter pour la date du dernier message du chat.
+     *
+     * @param string $lastMessageDate horodatage du dernier message de la conversation
      */
     public function setLastMessageDate(string $lastMessageDate): void
     {
@@ -126,6 +152,8 @@ class Chat extends AbstractEntity
 
     /**
      * Getter pour la date du dernier message du chat.
+     *
+     * @return string horodatage du dernier message de la conversation
      */
     public function getLastMessageDate(): ?string
     {
@@ -138,6 +166,8 @@ class Chat extends AbstractEntity
 
     /**
      * Setter pour l'état lu dernier message du chat.
+     *
+     * @param int $lastMessageRead état lu du dernier message de la conversation
      */
     public function setLastMessageRead(int $lastMessageRead): void
     {
@@ -146,6 +176,8 @@ class Chat extends AbstractEntity
 
     /**
      * Getter pour l''état lu du dernier message du chat.
+     *
+     * @return int état lu du dernier message de la conversation
      */
     public function getLastMessageRead(): ?int
     {

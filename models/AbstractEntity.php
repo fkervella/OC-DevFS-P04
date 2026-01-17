@@ -15,6 +15,8 @@ abstract class AbstractEntity
     /**
      * Constructeur de la class.
      * Si un tableau associatif est passé en paramètre, on hydrate l'entité.
+     *
+     * @param array $data tableau associatif pour hydrater l'entité
      */
     public function __construct(array $data = [])
     {
@@ -28,6 +30,8 @@ abstract class AbstractEntity
      * Permet de transfromer les données d'un tableau associatif.
      * Les noms de champs de la table doivent correspondre aux noms des attributs de l'entité.
      * Les underscore sont transformés en camCase (ex: date_creation devient setDateCreation.
+     *
+     * @param array data tableau associatif pour hydrater l'entité
      */
     protected function hydrate(array $data): void
     {

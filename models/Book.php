@@ -20,6 +20,8 @@ class Book extends AbstractEntity
 
     /**
      * Setter pour l'id de l'utilisateur.
+     *
+     * @param int $idUser identifiant de l'utilisateur propriétaire
      */
     public function setIdUser(int $idUser): void
     {
@@ -28,6 +30,8 @@ class Book extends AbstractEntity
 
     /**
      * Getter pour l'id de l'utilisateur.
+     *
+     * @return int identifiant de l'utilisateur propriétaire
      */
     public function getIdUser(): int
     {
@@ -35,7 +39,7 @@ class Book extends AbstractEntity
     }
 
     /**
-     * Setter pour l'id de l'utilisateur.
+     * Setter pour l'id du livre.
      */
     public function setId(int $id): void
     {
@@ -44,6 +48,8 @@ class Book extends AbstractEntity
 
     /**
      * Getter pour l'id de l'utilisateur.
+     *
+     * @return int identifiant du livre
      */
     public function getId(): int
     {
@@ -52,6 +58,8 @@ class Book extends AbstractEntity
 
     /**
      * Setter pour le titre du livre.
+     *
+     * @param string $title titre du livre
      */
     public function setTitle(string $title): void
     {
@@ -60,6 +68,8 @@ class Book extends AbstractEntity
 
     /**
      * Getter pour le titre du livre.
+     *
+     * @return string titre du livre
      */
     public function getTitle(): string
     {
@@ -68,6 +78,8 @@ class Book extends AbstractEntity
 
     /**
      * Setter pour le nom de l'auteur du livre.
+     *
+     * @param string $author nom de l'auteur du livre
      */
     public function setAuthor(string $author): void
     {
@@ -76,6 +88,8 @@ class Book extends AbstractEntity
 
     /**
      * Getter pour le nom de l'auteur du livre.
+     *
+     * @return string nom de l'auteur du livre
      */
     public function getAuthor(): string
     {
@@ -84,6 +98,8 @@ class Book extends AbstractEntity
 
     /**
      * Setter pour l'image du livre.
+     *
+     * @param string $picture chemin vers l'image du livre
      */
     public function setPicture(?string $picture): void
     {
@@ -96,6 +112,8 @@ class Book extends AbstractEntity
 
     /**
      * Getter pour l'image du livre.
+     *
+     * @return string chemin vers l'image du livre
      */
     public function getPicture(): ?string
     {
@@ -108,6 +126,8 @@ class Book extends AbstractEntity
 
     /**
      * Setter pour la description du livre.
+     *
+     * @param string $description description du livre
      */
     public function setDescription(string $description): void
     {
@@ -116,6 +136,8 @@ class Book extends AbstractEntity
 
     /**
      * Getter pour la description du livre.
+     *
+     * @return string description du livre
      */
     public function getDescription(): string
     {
@@ -124,6 +146,8 @@ class Book extends AbstractEntity
 
     /**
      * Setter pour la disponibilité du livre.
+     *
+     * @param int $availability disponibilité du livre
      */
     public function setAvailability(int $availability): void
     {
@@ -132,6 +156,8 @@ class Book extends AbstractEntity
 
     /**
      * Getter pour la disponibilité du livre.
+     *
+     * @return int disponibilité du livre
      */
     public function getAvailability(): int
     {
@@ -140,6 +166,8 @@ class Book extends AbstractEntity
 
     /**
      * Setter pour la date d'ajout du livre.
+     *
+     * @param string $date date d'ajout du livre
      */
     public function setAddDate(string $date): void
     {
@@ -148,6 +176,8 @@ class Book extends AbstractEntity
 
     /**
      * Getter pour la date d'ajout du livre.
+     *
+     * @return string date d'ajout du livre
      */
     public function getAddDate(): string
     {
@@ -156,6 +186,8 @@ class Book extends AbstractEntity
 
     /**
      * Setter pour le pseudo du vendeur du livre.
+     *
+     * @param null|string $pseudo pseudo du vendeur du livre
      */
     public function setSellerPseudo(?string $pseudo): void
     {
@@ -168,6 +200,8 @@ class Book extends AbstractEntity
 
     /**
      * Getter pour le pseudo du vendeur du livre.
+     *
+     * @return string pseudo du vendeur du livre
      */
     public function getSellerPseudo(): string
     {
@@ -176,6 +210,8 @@ class Book extends AbstractEntity
 
     /**
      * Setter pour l'identifiant du vendeur du livre.
+     *
+     * @param null|int $sellerId identifiant du vendeur du livre
      */
     public function setSellerId(?int $sellerId): void
     {
@@ -184,6 +220,8 @@ class Book extends AbstractEntity
 
     /**
      * Getter pour l'identifiant du vendeur du livre.
+     *
+     * @return int identifiant du vendeur du livre
      */
     public function getSellerId(): int
     {
