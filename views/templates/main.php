@@ -30,11 +30,12 @@ if (isset($viewScript) && !empty($viewScript)) {
     echo "<script type=\"module\" src=\"./script/{$viewScript}\"></script>";
 }
 ?>
+        <script type="module" src="./script/menu.js"></script>
     </head>
 
     <body>
         <header>
-            <nav>
+            <nav class="screenMenu">
                 <div class="logo">
                     <a href='index.php'><img src='img/logo.svg' alt='Tomtroc logo'></a>
                 </div>
@@ -62,9 +63,41 @@ if (isset($viewScript) && !empty($viewScript)) {
                     <?php } ?>
 
                 </div>
-                <div class="burgerMenu">
-                    <a href='index.php'><img src='img/iconMenu.svg' alt='icône menu'></a>
+            </nav>
+            <nav class="responsiveMenu" id="responsiveMenu">
+                <div class="bar">
+                    <div class="logo">
+                        <a href='index.php'><img src='img/logo.svg' alt='Tomtroc logo'></a>
+                    </div>
+     
+                    <div class="burgerMenu" id="burgerMenu">
+                        <img src='img/iconMenu.svg' alt='icône menu'>
+                    </div>
                 </div>
+
+                <ul class="menuContent" id="menuContent">
+                    <li>
+                        <a href='index.php?action=showHome'>Accueil</a>
+                    </li>
+                    <li>
+                        <a href='index.php?action=showBookExchange'>Nos livres à l'échange</a>
+                    </li>
+                    <?php if ($userConnected) { ?>
+                        <li>
+                            <a href='index.php?action=showChat'>Messagerie <div class="messageNumber"><?php echo $notViewedMessagesNumber; ?></div></a>
+                        </li>
+                        <li>
+                            <a href='index.php?action=showAccount'>Mon compte</a>
+                        </li>
+                        <li>
+                            <a href='index.php?action=showLogOut'>Déconnexion</a>
+                        </li>
+                    <?php } else { ?>
+                        <li>
+                            <a href='index.php?action=showLogIn'>Connexion</a>
+                        </li>
+                    <?php } ?>
+                </ul>
             </nav>
         </header>
 

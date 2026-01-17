@@ -142,7 +142,7 @@ Dossier services pour les classes de fonctionnalités génériques
 
 ## Dette technique
 
-Menu en responsive lors de l'appui sur le burger menu
+1. Menu en responsive lors de l'appui sur le burger menu
 
 page account : js pour affichage en responsive
 
@@ -152,14 +152,16 @@ addBook : rendre plus beau le bouton de sélection de l'image du livre
 
 Messagerie : afficher correctement le fond de couleur des messages
 
-Messagerie : aligner correctement les messages
+5. Messagerie : aligner correctement les messages
 
 Toutes pages : faire une passe sur les couleurs de fond qui ne sont pas homogènes entre les pages et par rapport à la maquette
 
-bookExchange : Faire fonctionner la recherche de livre
+3. bookExchange : Faire fonctionner la recherche de livre
 
-page publique profil utilisateur
+2. page publique profil utilisateur
 
-Changement d'avatar / d'image de livre, faire en sorte que la page se rafraichisse correctement
+4. Changement d'avatar / d'image de livre, faire en sorte que la page se rafraichisse correctement
 
 Vérification pages W3C validator et WCAG
+
+pages de mentions légales et politique de confidentialité

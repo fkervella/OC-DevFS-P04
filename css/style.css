@@ -40,6 +40,10 @@ header {
     margin: 10px 150px 10px 150px;
 }
 
+.responsiveMenu {
+    display: none;
+}
+
 footer {
 
     font-family: 'inter', sans-serif;
@@ -57,20 +61,21 @@ a {
     color: inherit;
 }
 
-nav {
+.screenMenu {
     display: flex;
     justify-content: space-between;
 }
 
-nav .menu {
+.screenMenu .menu {
     display: flex;
     align-items: center;
     column-gap: 60px;
 }
 
-nav .burgerMenu {
+.burgerMenu {
     display: none;
     align-items: center;
+    margin: 0px 20px 0px 0px;
 }
 
 .logoFooter a {
@@ -108,6 +113,7 @@ nav .burgerMenu {
     font-family: 'inter', sans-serif;
     font-size: 11px;
     font-weight: 700;
+    display: inline;
 }
 
 .button {
@@ -328,16 +334,47 @@ select {
 @media all and (max-width :800px) {
 
     header {
-        margin:15px 0px 15px 0px;
-        padding: 0px 20px 0px 15px;    
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;    
     }
 
-    nav .menu {
+    .screenMenu {
         display: none;
     }
 
-    nav .burgerMenu {
+    .responsiveMenu .burgerMenu {
         display: flex;
+    }
+
+    .bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .responsiveMenu {
+        display: block;
+    }
+
+    .logo {
+        margin:0px 0px 0px 15px;
+    }
+
+    .menuContent {
+        display: none;
+        flex-direction: column;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .menuContent li {
+        width: 100%;
+        background-color: white;
+        text-align: center;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     footer {
