@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 15, 2026 at 12:42 AM
+-- Generation Time: Jan 18, 2026 at 07:51 PM
 -- Server version: 11.8.3-MariaDB-0+deb13u1 from Debian
 -- PHP Version: 8.4.16
 
@@ -37,16 +37,6 @@ CREATE TABLE `book` (
   `add_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
---
--- Dumping data for table `book`
---
-
-INSERT INTO `book` (`id`, `picture`, `title`, `author`, `description`, `availability`, `add_date`) VALUES
-(20, './img/books/20', 'second livre', 'moi', 'la suite de mon oeuvre', 1, '2026-01-11 14:40:13'),
-(21, NULL, 'Un livre', 'Un seul', 'Mon préféré', 1, '2026-01-12 22:17:31'),
-(27, './img/books/27', 'test', 'test1', 'test3', 1, '2026-01-13 21:58:56'),
-(28, './img/books/28', 'ytry', 'yertyter', 'yertyeye', 1, '2026-01-13 21:59:16');
-
 -- --------------------------------------------------------
 
 --
@@ -59,13 +49,6 @@ CREATE TABLE `chat` (
   `user_id_2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
---
--- Dumping data for table `chat`
---
-
-INSERT INTO `chat` (`id`, `user_id_1`, `user_id_2`) VALUES
-(1, 2, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -76,16 +59,6 @@ CREATE TABLE `library` (
   `user_id` int(11) NOT NULL,
   `book_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
-
---
--- Dumping data for table `library`
---
-
-INSERT INTO `library` (`user_id`, `book_id`) VALUES
-(1, 20),
-(1, 21),
-(2, 27),
-(2, 28);
 
 -- --------------------------------------------------------
 
@@ -102,15 +75,6 @@ CREATE TABLE `message` (
   `viewed` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
---
--- Dumping data for table `message`
---
-
-INSERT INTO `message` (`id`, `chat_id`, `sender_id`, `datetime`, `message`, `viewed`) VALUES
-(1, 1, 2, '2026-01-15 00:52:10', 'Ceci est un test', 0),
-(2, 1, 2, '2026-01-15 00:52:36', 'Ceci est un test', 0),
-(3, 1, 2, '2026-01-15 01:41:33', 'Tapez votre message ici', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -125,14 +89,6 @@ CREATE TABLE `user` (
   `creation_date` datetime NOT NULL,
   `avatar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `pseudo`, `login`, `password`, `creation_date`, `avatar`) VALUES
-(1, 'user', 'user@a.a', '$2y$12$Wm9Hc7EdNKvokZUGrusOx.D61pi3X0ncsfs3HBzdz.gaznNYgePWq', '2026-01-03 14:25:17', 'img/user.jpg'),
-(2, 'francois', 'francois@a.a', '$2y$12$eAxJ9gHR.sif.0jOgGP5ZeLOqX/E.uqaP74hetXBqeOGDAgtEpCve', '2026-01-10 11:33:09', 'img/user.jpg');
 
 --
 -- Indexes for dumped tables
@@ -180,25 +136,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
