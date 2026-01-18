@@ -273,6 +273,6 @@ class BookManager extends AbstractEntityManager
             'author' => $author,
         ]);
 
-        return $result->rowCount() > 0;
+        return $result->fetchColumn() > 0;
     }
 }
