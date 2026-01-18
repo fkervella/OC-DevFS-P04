@@ -10,7 +10,7 @@
     <h1>Nos livres à l'échange</h1>
     <div class='search'>
         <img src='img/chercher.png' alt='recherche'>
-        <form method="get" action="index.php?action=showBookExhange">
+        <form method="get" id="searchForm">
             <label for="searchWords">Recherche :</label>
             <input type="text" class="searchWords" name="searchWords" id="searchWords" placeholder="Rechercher un livre">
         </form>

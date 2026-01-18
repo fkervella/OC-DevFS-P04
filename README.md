@@ -142,8 +142,6 @@ Dossier services pour les classes de fonctionnalités génériques
 
 ## Dette technique
 
-1. Menu en responsive lors de l'appui sur le burger menu
-
 page account : js pour affichage en responsive
 
 Toutes les pages : travailler sur la variation de la taille d'écran
@@ -155,10 +153,6 @@ Messagerie : afficher correctement le fond de couleur des messages
 5. Messagerie : aligner correctement les messages
 
 Toutes pages : faire une passe sur les couleurs de fond qui ne sont pas homogènes entre les pages et par rapport à la maquette
-
-3. bookExchange : Faire fonctionner la recherche de livre
-
-2. page publique profil utilisateur
 
 4. Changement d'avatar / d'image de livre, faire en sorte que la page se rafraichisse correctement
 

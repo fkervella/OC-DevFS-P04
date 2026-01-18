@@ -54,7 +54,7 @@ class BookController
             $view = new View("Nos livres à l'échange");
             $view->render('bookExchange', [
                 'books' => $books,
-            ], 'bookExchange.css');
+            ], 'bookExchange.css', 'bookExchange.js');
         } else {
             throw new Exception("Les données des livres à l'échange sont incomplètes");
         }

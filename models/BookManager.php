@@ -46,10 +46,10 @@ class BookManager extends AbstractEntityManager
         foreach ($keyWordsArray as $keyWord) {
             if ('' !== $keyWord) {
                 if (1 === $initial) {
-                    $search = "WHERE book.availability=1 AND book.title like %{$keyWord}% ";
+                    $search = "WHERE book.availability=1 AND book.title like '%{$keyWord}%' ";
                     $initial = 0;
                 } else {
-                    $search .= "AND book.title like %{$keyWord}% ";
+                    $search .= "AND book.title like '%{$keyWord}%' ";
                 }
             }
         }
