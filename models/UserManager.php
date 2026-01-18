@@ -60,7 +60,7 @@ class UserManager extends AbstractEntityManager
             'pseudo' => $pseudo,
             'login' => $login,
             'password' => $hash,
-            'avatar' => 'img/user.png',
+            'avatar' => './img/users/default.png',
         ]);
 
         return $result->rowCount() > 0;
