@@ -107,10 +107,10 @@ if (isset($viewScript) && !empty($viewScript)) {
 
         <footer>
             <div class="box">
-                <a href='index.php'>Politique de confidentialité</a>
+                <a href='index.php?action=showConfidentiality'>Politique de confidentialité</a>
             </div>
             <div class="box">
-                <a href='index.php'>Mentions légales</a>
+                <a href='index.php?action=showLegal'>Mentions légales</a>
             </div>
             <div class="box">
                 <a href='index.php'>TomTroc©</a>

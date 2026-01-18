@@ -28,6 +28,8 @@ class Router
         'sendMessage' => [MessageController::class],
         'uploadAvatar' => [UserController::class],
         'uploadBookPicture' => [BookController::class],
+        'showLegal' => [UserController::class],
+        'showConfidentiality' => [UserController::class],
     ];
 
     /**
