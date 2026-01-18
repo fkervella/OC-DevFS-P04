@@ -12,7 +12,7 @@
         <div class="column1">
         <img id="avatar" src='<?php echo $avatar.'?t='.time(); ?>' alt='avatar <?php echo $pseudo; ?>'>
         <input type="file" id="userAvatarFile" accept="image/png, image/jpeg, image/svg">
-            <a onclick="document.getElementById('userAvatarFile').click()">modifier</a>
+            <a class="updateBookPicture" onclick="document.getElementById('userAvatarFile').click()">modifier</a>
             <div class="pseudo">
                 <?php echo $pseudo; ?>
             </div>

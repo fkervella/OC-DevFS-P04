@@ -30,6 +30,7 @@
     align-items: center;
     padding: 30px 0px 30px 0px;
     box-sizing: border-box;
+    margin: 0px 0px 20px 0px;
 }
 
 .column2 {
@@ -217,7 +218,7 @@
     margin: auto;
 }
 
-@media all and (max-width :800px) {
+@media all and (max-width :1000px) {
     .page {
         margin: 0px 20px 0px 20px;
         padding: 0px 0px 0px 0px;

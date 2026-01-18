@@ -61,7 +61,7 @@ class MessageController
             'chats' => $chats,
             'currentChat' => $currentChat,
             'messages' => $messages,
-        ], 'chat.css');
+        ], 'chat.css', 'chat.js');
     }
 
     /**
@@ -128,7 +128,7 @@ class MessageController
             'chats' => $chats,
             'currentChat' => $currentChat,
             'messages' => $messages,
-        ], 'chat.css');
+        ], 'chat.css', 'chat.js');
     }
 
     /**

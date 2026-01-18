@@ -1,3 +1,7 @@
+body {
+    max-height: 100vh;
+}
+
 .page 
 {
     margin: 0px 150px 0px 150px;
@@ -27,6 +31,8 @@ h1 {
     font-weight: 400;
     color: var(--strong-grey-text-color);
     text-align: right;
+    margin: 20px 0px 10px 0px;
+    text-decoration: underline;
 }
 
 .content 
@@ -36,6 +42,7 @@ h1 {
     width: 100%;
     border-radius: 20px;
     box-sizing: border-box;
+    margin: 0px 0px 60px 0px;
 }
 
 .content .column1 {
@@ -49,12 +56,14 @@ h1 {
 .content .column1 img {
     width: auto;
     height: auto;
+    max-height: 500px;
     object-fit: contain;
 }
 
 .content .column2 {
     width: 50%;
     padding: 0px 40px 0px 40px;
+    margin: 0px 0px 40px 0px;
 }
 
 form 
@@ -79,9 +88,35 @@ form
 textarea, .title, .author, .description, .availability
 {
     width: auto;
+    background-color: var(--background-sent-message);
 }
 
 #bookPicture
 {
     display: none; 
+}
+
+@media all and (max-width :1000px) {
+
+    .content 
+    {
+        flex-direction: column;
+    }
+    
+    .content .column1 {
+        width: auto;
+    }
+    
+    .content .column1 img {
+    }
+    
+    .content .column2 {
+        width: auto;
+    }
+    
+    textarea, .title, .author, .description, .availability
+    {
+        height: fit-content;
+        min-height: 50px;
+    }
 }

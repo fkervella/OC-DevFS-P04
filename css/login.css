@@ -1,6 +1,6 @@
 .content {
     flex-direction:row;
-    background-color: var(--background-color);
+    background-color: var(--content-background-color);
 }
 
 .content .column1 {
@@ -36,7 +36,7 @@ p a {
     text-decoration: underline;
 }
 
-@media all and (max-width :800px) {
+@media all and (max-width :1000px) {
     .content {
         flex-direction: column;
     }

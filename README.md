@@ -140,20 +140,3 @@ Fichier index.php : routeur
 
 Dossier services pour les classes de fonctionnalités génériques
 
-## Dette technique
-
-page account : js pour affichage en responsive
-
-Toutes les pages : travailler sur la variation de la taille d'écran
-
-addBook : rendre plus beau le bouton de sélection de l'image du livre
-
-Messagerie : afficher correctement le fond de couleur des messages
-
-5. Messagerie : aligner correctement les messages
-
-Toutes pages : faire une passe sur les couleurs de fond qui ne sont pas homogènes entre les pages et par rapport à la maquette
-
-Vérification pages W3C validator et WCAG
-
-pages de mentions légales et politique de confidentialité

@@ -18,6 +18,7 @@ main {
     display: flex;
     flex-direction: column;
     width: 300px;
+    background-color: var(--content-background-color);
 }
 
 h1 {
@@ -143,6 +144,7 @@ h1 {
     grid-row: 1;
     grid-column: 2;
     align-self: center;
+    text-align: right;
 }
 
 .messageText {
@@ -192,9 +194,10 @@ h1 {
     padding: 10px 30px 10px 30px;
     box-sizing: border-box;
     width: 100%;
+    max-width: none;
 }
 
-@media all and (max-width :800px) {
+@media all and (max-width :1000px) {
     
     .content {    
         margin: 0;
@@ -202,7 +205,7 @@ h1 {
     
     .column1 {
         width: 100%;
-        display: none;
+        display: flex;
     }
     
     .chats {
@@ -210,7 +213,7 @@ h1 {
     }
     
     .column2 {
-        display: flex;
+        display: none;
         padding: 10px;
     }
 

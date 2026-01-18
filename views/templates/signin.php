@@ -17,7 +17,7 @@
             <input type="password" name="password" class="password" id="password">
             <input type="submit" class="button" value="S'inscrire">
         </form>
-        <p>Déjà inscrit ? <a href="index.php?action=showLogin">Connectez-vous</a></p>
+        <p>Déjà inscrit ? <a href="index.php?action=showLogIn">Connectez-vous</a></p>
     </div>
     <div class="column2">
         <img src="img/imageSignin.jpg" alt="image inscription">

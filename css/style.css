@@ -445,7 +445,8 @@ select {
     }
 
     input {
-        width: 100%;
+        width: auto;
+        max-width: none;
     }
 
 }

@@ -6,7 +6,7 @@
 ?>
 
 <div class="content">
-    <div class="column1">
+    <div class="column1" id="column1">
         <h1>Messagerie</h1>
         <div class="chats">
             <?php foreach ($chats as $chat) { ?>
@@ -29,9 +29,9 @@
             <?php } ?>
         </div>
     </div>
-    <div class="column2">
+    <div class="column2" id="column2">
         <?php if (!is_null($currentChat)) { ?>
-            <div class="back">Retour
+            <div class="back" id="back">Retour
             </div>
             <div class="user">
             <img src="<?php echo $currentChat->getOtherUserAvatar().'?t='.time(); ?>" alt="avatar de <?php echo $currentChat->getOtherUserPseudo(); ?>">
@@ -70,7 +70,7 @@
             <form class="newMessage" action="index.php?action=sendMessage" method="post">
                 <label for="newMessageText">Message: </label>
                 <input type="text" class="newMessageText" name="newMessageText" id="newMessageText" placeholder="Tapez votre message ici">
-                <input type="hidden" name="chatId" value="<?php echo $currentChat->getId(); ?>">
+                <input type="hidden" name="chatId" id="chatId" value="<?php echo $currentChat->getId(); ?>">
                 <input type="submit" class="button" value="Envoyer"> 
             </form>
         <?php } ?>
