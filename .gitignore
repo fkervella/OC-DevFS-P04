@@ -1,8 +1,11 @@
 config/config.php
-docs
-vendor
+docs/
+vendor/
 *.lock
 *.swp
 .php-cs-fixer.*
-.vscode
-img/books
+.vscode/
+img/books/
+img/users/
+!img/users/default.png
+!img/books/default.png

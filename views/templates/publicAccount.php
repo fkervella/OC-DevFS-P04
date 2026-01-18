@@ -63,12 +63,7 @@
         ++$counter;
         ?>">
                 <div class="grid-row-cell hImage"><a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>">
-                <img src="<?php
-                            if (empty($book->getPicture())) {
-                                echo 'img/imageTest.png';
-                            } else {
-                                echo $book->getPicture().'?t='.time();
-                            } ?>" alt="couverture livre <?php echo $book->getTitle(); ?>">
+                <img src="<?php echo $book->getPicture().'?t='.time(); ?>" alt="couverture livre <?php echo $book->getTitle(); ?>">
                 </a>
                 </div>
                 <div class="grid-row-cell hTitle">

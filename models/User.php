@@ -129,6 +129,10 @@ class User extends AbstractEntity
      */
     public function getAvatar(): string
     {
+        if (empty($this->avatar) || is_null($this->avatar)) {
+            return './img/users/default.png';
+        }
+
         return $this->avatar;
     }
 }

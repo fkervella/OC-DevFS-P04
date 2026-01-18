@@ -32,12 +32,7 @@
                 <?php foreach ($books as $book) { ?>
                 <div class="bookCard">
                     <a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>">
-                    <img src="<?php if (empty($book->getPicture())) {
-                        echo 'img/imageTest.png';
-                    } else {
-                        echo $book->getPicture();
-                    }
-                    ?>" alt="image1">
+                    <img src="<?php echo $book->getPicture(); ?>" alt="image1">
                     <div class="title">
                         <?php echo $book->getTitle(); ?>
                     </div>

@@ -113,6 +113,10 @@ class Chat extends AbstractEntity
      */
     public function getOtherUserAvatar(): string
     {
+        if (empty($this->otherUserAvatar) || is_null($this->otherUserAvatar)) {
+            return './img/users/default.png';
+        }
+
         return $this->otherUserAvatar;
     }
 

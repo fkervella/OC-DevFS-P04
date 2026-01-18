@@ -117,11 +117,11 @@ class Book extends AbstractEntity
      */
     public function getPicture(): ?string
     {
-        if ('' !== $this->picture) {
-            return $this->picture;
+        if (empty($this->picture) || is_null($this->picture)) {
+            return './img/books/default.png';
         }
 
-        return null;
+        return $this->picture;
     }
 
     /**
