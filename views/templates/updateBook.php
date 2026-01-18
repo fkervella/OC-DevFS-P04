@@ -5,7 +5,7 @@
  */
 ?>
 <div class="page">
-<p class="back">< Retour</p>
+<p class="back">Retour</p>
 <h1>Modifier les informations</h1>
 
 <div class="content">
