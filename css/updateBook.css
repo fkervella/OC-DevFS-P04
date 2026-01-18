@@ -107,9 +107,6 @@ textarea, .title, .author, .description, .availability
         width: auto;
     }
     
-    .content .column1 img {
-    }
-    
     .content .column2 {
         width: auto;
     }
