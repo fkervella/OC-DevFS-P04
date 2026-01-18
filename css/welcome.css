@@ -56,6 +56,7 @@ p {
 .howDoesItWork {
     display: flex;
     flex-direction: column;
+    padding: 50px 0px 40px 0px;
 }
 
 .howDoesItWork .content {
@@ -87,15 +88,14 @@ p {
     height: 140px;
     width: 215px;
     padding: 10px 10px 10px 10px;
-    text-align: center;
+    justify-content: center;
     background-color: white;
-    font-weight: 400;
-    font-size: 14px;
     border-radius: 10px;
     box-sizing: border-box;
     font-family: 'inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
+    text-align: center;
 }
 
 .howDoesItWork .button-reverse {
@@ -112,7 +112,7 @@ p {
 .values {
     display: flex;
     flex-direction: column;
-    margin: 40px 250px 0px 250px;
+    margin: 40px 250px 50px 250px;
     box-sizing: border-box;
 }
 
@@ -131,7 +131,7 @@ p {
     top: -30px;
 }
 
-@media all and (max-width :800px) {
+@media all and (max-width :1000px) {
 
     p {
         padding: 0;
@@ -183,7 +183,6 @@ p {
     .howDoesItWork li {
         width: 100%;
         padding: 0px 50px 0px 50px;
-        height: 139px;
     }
 
     .howDoesItWork .button-reverse {
