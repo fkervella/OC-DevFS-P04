@@ -26,7 +26,7 @@ class UserController
     /**
      *  Déconnecte l'utilisateur courant.
      */
-    public function logOut(): void
+    public function showLogOut(): void
     {
         unset($_SESSION['user'], $_SESSION['userId']);
 
@@ -284,7 +284,7 @@ class UserController
     }
 
     /**
-     * Mise à jour de l'avatar de l'utilisateur
+     * Mise à jour de l'avatar de l'utilisateur.
      */
     public function uploadAvatar(): void
     {
@@ -308,21 +308,20 @@ class UserController
     }
 
     /**
-     * Affiche la page de mentions légales
+     * Affiche la page de mentions légales.
      */
-    public function showLegal():void
+    public function showLegal(): void
     {
         $view = new View('Mentions légales');
         $view->render('legal', []);
     }
-    
+
     /**
-     * Affiche la page de politique de confidentialité
+     * Affiche la page de politique de confidentialité.
      */
-    public function showConfidentiality():void
+    public function showConfidentiality(): void
     {
         $view = new View('Poltique de confidentialité');
         $view->render('confidentiality', []);
     }
-
 }
