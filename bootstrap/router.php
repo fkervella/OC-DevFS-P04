@@ -41,13 +41,19 @@ class Router
     public static function __callStatic(string $action, array $arguments)
     {
         try {
-            $controller = new self::$routes[$action][0]();
 
+            if(!array_key_exists($action, self::$routes))
+            {
+                throw new Exception("Erreur 404 : La page demandée n'existe pas");
+            }
+
+            $controller = new self::$routes[$action][0]();
             return $controller->{$action}();
+
         } catch (Exception $error) {
             // En cas d'erreur, affichage de la page d'erreur
             $errorView = new View('Erreur');
-            $errorView->render('errorPage', ['errorMessage' => 'Router : '.$error->getMessage()]);
+            $errorView->render('errorPage', ['errorMessage' => $error->getMessage()]);
         }
     }
 }
