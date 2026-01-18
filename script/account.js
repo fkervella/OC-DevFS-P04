@@ -11,12 +11,13 @@ function uploadFile(file, action, id="") {
     formData.append('image', file);
 
     let url = `index.php?action=${action}`
-    if (id !="")
-        url += `&id=${id}`
 
     fetch(url, {
         method: 'POST',
-        body: formData
+        body: formData,
+    })
+    .then(data => {
+        window.location.href="index.php?action=showAccount"
     })
     .catch(error => {
         console.error("Erreur : ", error);

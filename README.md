@@ -154,8 +154,6 @@ Messagerie : afficher correctement le fond de couleur des messages
 
 Toutes pages : faire une passe sur les couleurs de fond qui ne sont pas homogènes entre les pages et par rapport à la maquette
 
-4. Changement d'avatar / d'image de livre, faire en sorte que la page se rafraichisse correctement
-
 Vérification pages W3C validator et WCAG
 
 pages de mentions légales et politique de confidentialité

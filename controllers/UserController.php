@@ -303,7 +303,5 @@ class UserController
 
         $userManager = new UserManager();
         $userManager->updateAvatar($userId, $userAvatar);
-
-        Utils::redirect('showAccount');
     }
 }

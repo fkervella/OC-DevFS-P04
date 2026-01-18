@@ -414,7 +414,5 @@ class BookController
 
         $bookManager = new BookManager();
         $bookManager->updatePicture($bookId, $bookPicture);
-
-        Utils::redirect('showUpdateBook', ['bookId' => $bookId]);
     }
 }
