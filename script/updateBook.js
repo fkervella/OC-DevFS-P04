@@ -28,3 +28,17 @@ document.getElementById("bookPicture").addEventListener('change', function (e) {
     uploadFile(file, "uploadBookPicture", bookId);
 });
 
+//gestion de la hauteur du textearea
+const textarea = document.querySelector('textarea');
+
+// Fonction pour ajuster la hauteur
+function adjustHeight() {
+  textarea.style.height = 'auto';
+  textarea.style.height = textarea.scrollHeight + 'px';
+}
+
+textarea.addEventListener('input', adjustHeight);
+
+// Appelle la fonction une première fois pour initialiser la hauteur
+adjustHeight();
+
