@@ -22,7 +22,11 @@
         <?php foreach ($books as $book) { ?>
             <div class="bookCard">
                 <a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>">
-                <img src="<?php echo $book->getPicture().'?t='.time(); ?>" alt="image1">
+                <div class="imageContainer"><img src="<?php echo $book->getPicture().'?t='.time(); ?>" alt="image1"></div>
+                <?php if (0 === $book->getAvailability()): ?>
+                <div class="unavailable">non dispo.
+                </div>
+                <?php endif; ?>
                 <div class="title">
                     <?php echo $book->getTitle(); ?>
                 </div>

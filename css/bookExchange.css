@@ -49,6 +49,14 @@ label {
     column-gap: 20px
 }
 
+.unavailable {
+    font-size: 9px;
+    right: -120px;
+    display: flex;
+    position: relative;
+    top: -183px;
+}
+
 @media all and (max-width :1000px) {
 
     h1 {
@@ -84,4 +92,8 @@ label {
         margin-right: auto;
     }
 
+    .unavailable {
+        right: -80px;
+        top: -147px;
+    }
 }
