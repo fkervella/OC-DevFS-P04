@@ -83,8 +83,8 @@ class UserController
             $view->render(
                 'account',
                 [
-                    'pseudo' => $pseudo,
-                    'login' => $login,
+                    'pseudo' => htmlspecialchars_decode($pseudo, ENT_QUOTES),
+                    'login' => htmlspecialchars_decode($login, ENT_QUOTES),
                     'avatar' => $avatar,
                     'userId' => $userId,
                     'ecart' => $ecart,
@@ -122,8 +122,8 @@ class UserController
             $view->render(
                 'publicAccount',
                 [
-                    'pseudo' => $pseudo,
-                    'login' => $login,
+                    'pseudo' => htmlspecialchars_decode($pseudo, ENT_QUOTES),
+                    'login' => htmlspecialchars_decode($login, ENT_QUOTES),
                     'avatar' => $avatar,
                     'userId' => $publicUser,
                     'ecart' => $ecart,

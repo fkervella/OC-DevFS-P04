@@ -63,17 +63,17 @@
         ++$counter;
         ?>">
                 <div class="grid-row-cell hImage"><a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>">
-                <img src="<?php echo $book->getPicture().'?t='.time(); ?>" alt="couverture livre <?php echo $book->getTitle(); ?>">
+                <img src="<?php echo $book->getPicture().'?t='.time(); ?>" alt="couverture livre <?php echo htmlspecialchars_decode($book->getTitle(), ENT_QUOTES); ?>">
                 </a>
                 </div>
                 <div class="grid-row-cell hTitle">
-                <p class="bookTitle"><a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>"><?php echo $book->getTitle(); ?></a></p>
+                <p class="bookTitle"><a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>"><?php echo htmlspecialchars_decode($book->getTitle(), ENT_QUOTES); ?></a></p>
                 </div>
                 <div class="grid-row-cell hAuthor">
-                <p class="bookAuthor"><a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>"><?php echo $book->getAuthor(); ?></a></p>
+                <p class="bookAuthor"><a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>"><?php echo htmlspecialchars_decode($book->getAuthor(), ENT_QUOTES); ?></a></p>
                 </div>
                 <div class="grid-row-cell hDescription">
-                <p class="bookDescription"><a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>"><?php echo $book->getDescription(); ?></a></p>
+                <p class="bookDescription"><a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>"><?php echo htmlspecialchars_decode($book->getDescription(), ENT_QUOTES); ?></a></p>
                 </div>
             </div>
             <?php } ?>

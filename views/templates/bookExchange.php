@@ -22,17 +22,17 @@
         <?php foreach ($books as $book) { ?>
             <div class="bookCard">
                 <a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>">
-                <div class="imageContainer"><img src="<?php echo $book->getPicture().'?t='.time(); ?>" alt="image1"></div>
-                <?php if (0 === $book->getAvailability()): ?>
+                <div class="imageContainer"><img src="<?php echo $book->getPicture().'?t='.time(); ?>" alt="image livre <?php echo htmlspecialchars_decode($book->getTitle(), ENT_QUOTES); ?>"></div>
+                <?php if (0 === $book->getAvailability()) { ?>
                 <div class="unavailable">non dispo.
                 </div>
-                <?php endif; ?>
+                <?php } ?>
                 <div class="title">
-                    <?php echo $book->getTitle(); ?>
+                    <?php echo htmlspecialchars_decode($book->getTitle(), ENT_QUOTES); ?>
                 </div>
-                    <div class="author"><?php echo $book->getAuthor(); ?>
+                    <div class="author"><?php echo htmlspecialchars_decode($book->getAuthor(), ENT_QUOTES); ?>
                     </div>
-                        <div class="seller">Vendu par : <?php echo $book->getSellerPseudo(); ?>
+                        <div class="seller">Vendu par : <?php echo htmlspecialchars_decode($book->getSellerPseudo(), ENT_QUOTES); ?>
                     </div>
                 </a>
             </div>

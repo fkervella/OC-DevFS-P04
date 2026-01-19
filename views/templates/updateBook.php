@@ -11,18 +11,18 @@
 <div class="content">
     <div class="column1">
         <label>Photo</label>
-        <img src="<?php echo $book->getPicture(); ?>" alt="image du livre <?php echo $book->getTitle(); ?>">
+        <img src="<?php echo $book->getPicture(); ?>" alt="image du livre <?php echo htmlspecialchars_decode($book->getTitle(), ENT_QUOTES); ?>">
         <input type="file" id="bookPicture" accept="image/png, image/jpeg, image/svg">
         <a class="updatePicture" onclick="document.getElementById('bookPicture').click()">Modifier la photo</a>
     </div>
     <div class="column2">
         <form method="post" action="index.php?action=updateBook" enctype="multipart/form-data">
             <label for="title">Titre</label>
-            <input type="text" name="title" id="title" class="title" value="<?php echo $book->getTitle(); ?>">
+            <input type="text" name="title" id="title" class="title" value="<?php echo htmlspecialchars_decode($book->getTitle(), ENT_QUOTES); ?>">
             <label for="author">Auteur</label>
-            <input type="text" name="author" id="author" class="author" value="<?php echo $book->getAuthor(); ?>">
+            <input type="text" name="author" id="author" class="author" value="<?php echo htmlspecialchars_decode($book->getAuthor(), ENT_QUOTES); ?>">
             <label for="description">Description</label>
-            <textarea name="description" id="description" class="description"><?php echo $book->getDescription(); ?></textarea>
+            <textarea name="description" id="description" class="description"><?php echo htmlspecialchars_decode($book->getDescription(), ENT_QUOTES); ?></textarea>
             <label for="availability">Disponibilité</label>
             <select name="availability" id="availability" class="availability">
             <option value="available" <?php if (1 === $book->getAvailability()) {

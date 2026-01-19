@@ -34,11 +34,11 @@
                     <a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>">
                     <img src="<?php echo $book->getPicture(); ?>" alt="image1">
                     <div class="title">
-                        <?php echo $book->getTitle(); ?>
+                        <?php echo htmlspecialchars_decode($book->getTitle(), ENT_QUOTES); ?>
                     </div>
-                        <div class="author"><?php echo $book->getAuthor(); ?>
+                        <div class="author"><?php echo htmlspecialchars_decode($book->getAuthor(), ENT_QUOTES); ?>
                         </div>
-                            <div class="seller">Vendu par : <?php echo $book->getSellerPseudo(); ?>
+                            <div class="seller">Vendu par : <?php echo htmlspecialchars_decode($book->getSellerPseudo(), ENT_QUOTES); ?>
                         </div>
                     </a>
                 </div>

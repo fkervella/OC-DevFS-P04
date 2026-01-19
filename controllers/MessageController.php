@@ -57,7 +57,6 @@ class MessageController
         $view = new View('Messagerie');
         $view->render('chat', [
             'userId' => $userId,
-            // 'bookId' => $bookId,
             'chats' => $chats,
             'currentChat' => $currentChat,
             'messages' => $messages,

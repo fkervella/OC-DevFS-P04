@@ -17,12 +17,12 @@
                                         echo 'selectedChat';
                                     }
                 ?>">
-                <img src="<?php echo $chat->getOtherUserAvatar().'?t='.time(); ?>" alt="<?php echo $chat->getOtherUserPseudo(); ?>">
-                    <div class="userName"><?php echo $chat->getOtherUserPseudo(); ?>
+                <img src="<?php echo $chat->getOtherUserAvatar().'?t='.time(); ?>" alt="<?php echo htmlspecialchars_decode($chat->getOtherUserPseudo(), ENT_QUOTES); ?>">
+                    <div class="userName"><?php echo htmlspecialchars_decode($chat->getOtherUserPseudo(), ENT_QUOTES); ?>
                     </div>
                     <div class="lastMessageDate"><?php echo Utils::getDateHourMinute($chat->getLastMessageDate()); ?>
                     </div>
-                    <p class="lastMessage"><?php echo $chat->getLastMessage(); ?>
+                    <p class="lastMessage"><?php echo htmlspecialchars_decode($chat->getLastMessage(), ENT_QUOTES); ?>
                     </p>
                 </div>
             </a>
@@ -34,8 +34,8 @@
             <div class="back" id="back">Retour
             </div>
             <div class="user">
-            <img src="<?php echo $currentChat->getOtherUserAvatar().'?t='.time(); ?>" alt="avatar de <?php echo $currentChat->getOtherUserPseudo(); ?>">
-                <div class="userNameMessage"><?php echo $currentChat->getOtherUserPseudo(); ?>
+            <img src="<?php echo $currentChat->getOtherUserAvatar().'?t='.time(); ?>" alt="avatar de <?php echo htmlspecialchars_decode($currentChat->getOtherUserPseudo(), ENT_QUOTES); ?>">
+                <div class="userNameMessage"><?php echo htmlspecialchars_decode($currentChat->getOtherUserPseudo(), ENT_QUOTES); ?>
                 </div>
             </div>
             <?php if (isset($messages)) { ?>
@@ -52,7 +52,7 @@
                     <div class="userAvatar">
                     </div>
                     <?php } else { ?>
-                    <img class="userAvatar" src="<?php echo $currentChat->getOtherUserAvatar().'?t='.time(); ?>" alt="avatar de <?php echo $currentChat->getOtherUserPseudo(); ?>">
+                    <img class="userAvatar" src="<?php echo $currentChat->getOtherUserAvatar().'?t='.time(); ?>" alt="avatar de <?php echo htmlspecialchars_decode($currentChat->getOtherUserPseudo(), ENT_QUOTES); ?>">
                     <?php } ?>
                     <div class="messageDate"><?php echo Utils::getDateDayMonthYearHourMinute($message->getDatetime()); ?>
                     </div>
@@ -61,7 +61,7 @@
                         } else {
                             echo 'receivedMessage';
                         }
-                    ?>"><?php echo $message->getMessage(); ?>
+                    ?>"><?php echo htmlspecialchars_decode($message->getMessage(), ENT_QUOTES); ?>
                     </div>
                 </div>
                 <?php } ?>
