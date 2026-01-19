@@ -98,6 +98,11 @@ textarea, .title, .author, .description, .availability
 
 @media all and (max-width :1000px) {
 
+    .page 
+    {
+        margin: 20px 20px 20px 20px;
+    }
+
     .content 
     {
         flex-direction: column;
@@ -106,14 +111,28 @@ textarea, .title, .author, .description, .availability
     .content .column1 {
         width: auto;
     }
-    
+   
+    .content .column1 img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
     .content .column2 {
         width: auto;
     }
     
-    textarea, .title, .author, .description, .availability
+    .title, .author, .description, .availability
     {
         height: fit-content;
         min-height: 50px;
+    }
+
+    textarea {
+        min-height: 50px;
+        height: auto;
+        overflow-y: hidden;
+        box-sizing: border-box;
+        resize: none;
     }
 }
