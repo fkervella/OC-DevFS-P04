@@ -93,7 +93,7 @@ class MessageController
             $book = $bookManager->getBookById($bookId);
             $sellerId = $book->getSellerId();
         } else {
-            // Cas d'une nouvelle conversation demadnée depuis la page compte publique de l'utilisateur
+            // Cas d'une nouvelle conversation demandée depuis la page compte publique de l'utilisateur
             $sellerId = intval(htmlspecialchars(Utils::request('userId')));
         }
 
