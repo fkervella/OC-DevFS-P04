@@ -1,4 +1,10 @@
 function uploadFile(file, action, id="") {
+
+    if (file.size > 2000000) // envion 2Mo
+    {
+        alert ('Le fichier dépasse 2Mo. Veuillez sélectionner un autre fichier');
+    }
+
     const formData = new FormData();
     formData.append('image', file);
 
