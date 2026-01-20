@@ -87,10 +87,13 @@ class Utils
     /**
      * Cette méthode extrait les heures minutes et secondes d'une date.
      *
-     * @param string $inputDate date au format chaine de carectère
+     * @param ?string $inputDate date au format chaine de carectère
      */
-    public static function getDateHourMinute(string $inputDate): ?string
+    public static function getDateHourMinute(?string $inputDate): ?string
     {
+        if (is_null($inputDate)) 
+            return null;
+        
         try {
             preg_match('/\d{4}-\d{2}-\d{2}\s(\d{2}):(\d{2}):(\d{2})/', $inputDate, $matches);
 
