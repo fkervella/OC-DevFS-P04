@@ -32,7 +32,9 @@
                 <?php foreach ($books as $book) { ?>
                 <div class="bookCard">
                     <a href="index.php?action=showBookDetail&bookId=<?php echo $book->getId(); ?>">
-                    <img src="<?php echo $book->getPicture(); ?>" alt="image1">
+                    <div class="imageContainer">
+                        <img src="<?php echo $book->getPicture(); ?>" alt="image1">
+                    </div>
                     <div class="title">
                         <?php echo htmlspecialchars_decode($book->getTitle(), ENT_QUOTES); ?>
                     </div>
