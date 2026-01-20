@@ -5,7 +5,7 @@ vendor/
 *.swp
 .php-cs-fixer.*
 .vscode/
-img/books/
-img/users/
-!img/users/default.png
-!img/books/default.png
+#img/books/
+#img/users/
+#!img/users/default.png
+#!img/books/default.png
