@@ -29,7 +29,7 @@
             </div>
         </a>
         <?php if (isset($_SESSION['userId']) && $user->getId() !== $_SESSION['userId']) { ?>
-        <a href="index.php?action=showNewMessage&bookId=<?php echo $book->getId(); ?>">
+        <a href="index.php?action=showNewMessage&userId=<?php echo $book->getSellerId(); ?>">
             <div class="button">Envoyer un message
             </div>
         </a>
