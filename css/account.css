@@ -202,6 +202,7 @@
 
 .grid-row-cell {
     text-align: left;
+    align-content: center;
 }
 
 .hImage{
