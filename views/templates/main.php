@@ -37,7 +37,7 @@ if (isset($viewScript) && !empty($viewScript)) {
         <header>
             <nav class="screenMenu">
                 <div class="logo">
-                    <a href='index.php'><img src='img/logo.svg' alt='Tomtroc logo'></a>
+                    <a href='index.php?action=showHome'><img src='img/logo.svg' alt='Tomtroc logo'></a>
                 </div>
                 <div class="menu">
                 <a href='index.php?action=showHome' <?php if ('welcome' === $viewName) {
@@ -113,10 +113,10 @@ if (isset($viewScript) && !empty($viewScript)) {
                 <a href='index.php?action=showLegal'>Mentions légales</a>
             </div>
             <div class="box">
-                <a href='index.php'>TomTroc©</a>
+                <a href='index.php?action=showHome'>TomTroc©</a>
             </div>
             <div class="logoFooter">
-                <a href='index.php'>
+                <a href='index.php?action=showHome'>
                     <div class="element1"><img src="img/T.png" alt="T"></div>
                     <div class="element2"><img src="img/T.png" alt="T"></div>
                 </a>
