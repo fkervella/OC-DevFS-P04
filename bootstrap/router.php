@@ -41,7 +41,7 @@ class Router
     public static function __callStatic(string $action, array $arguments)
     {
         try {
-            if (!array_key_exists($action, self::$routes)) {
+            if ( empty($action) || !array_key_exists($action, self::$routes)) {
                 throw new Exception("Erreur 404 : La page demandée n'existe pas");
             }
 

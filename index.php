@@ -6,7 +6,7 @@ require_once 'config/autoload.php';
 
 require_once 'bootstrap/router.php';
 
-$action = Utils::request('action', 'showHome');
+$action = Utils::request('action', 'undefined');
 
 try {
     Router::$action();
