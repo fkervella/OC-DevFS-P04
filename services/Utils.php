@@ -91,9 +91,10 @@ class Utils
      */
     public static function getDateHourMinute(?string $inputDate): ?string
     {
-        if (is_null($inputDate)) 
+        if (is_null($inputDate)) {
             return null;
-        
+        }
+
         try {
             preg_match('/\d{4}-\d{2}-\d{2}\s(\d{2}):(\d{2}):(\d{2})/', $inputDate, $matches);
 
