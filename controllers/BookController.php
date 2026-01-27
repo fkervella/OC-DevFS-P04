@@ -120,7 +120,7 @@ class BookController
 
         // 2.
         $view = new View("Ajout d'un livre");
-        $view->render('addBook', [], 'addBook.css');
+        $view->render('addBook', [], 'updateBook.css', 'addBook.js');
     }
 
     /**
