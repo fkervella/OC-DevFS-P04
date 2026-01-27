@@ -27,10 +27,10 @@
             }
 
 if (isset($viewScript) && !empty($viewScript)) {
-    echo "<script type=\"module\" src=\"./script/{$viewScript}\" defer></script>";
+    echo "<script src=\"./script/{$viewScript}\" defer></script>";
 }
 ?>
-        <script type="module" src="./script/menu.js" defer></script>
+        <script src="./script/menu.js" defer></script>
     </head>
 
     <body>
